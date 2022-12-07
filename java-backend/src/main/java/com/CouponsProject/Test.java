@@ -41,12 +41,8 @@ public class Test {
     private LoginManager loginManager;
 
 
-    private Test() {
-        super();
-    }
-
-
     public void systemTest() {
+        //use this to fresh start each time you running the program
 //        adminService.deleteAll();
 
 
@@ -68,7 +64,7 @@ public class Test {
 
 
             try {
-//                // 19584413 = admin ID
+//                // 19584413 = admin fixed ID
                 if (loginManager.loginM(ClientType.Administrator, userNameInput, userPasswordInput) == 19584413) {
                     adminNeedToBeLoggedIn = false;
 
