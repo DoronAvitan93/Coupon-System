@@ -12,7 +12,6 @@ import java.util.List;
 @Component
 public class DailyJobExpirationCoupons extends Thread {
 
-    private static DailyJobExpirationCoupons dailyJobExpirationCoupons;
 
     @Autowired
     private CouponsRepository couponsRepository;
@@ -21,26 +20,15 @@ public class DailyJobExpirationCoupons extends Thread {
         super();
     }
 
-    public static DailyJobExpirationCoupons getInstance() {
-        return dailyJobExpirationCoupons;
-    }
-
-
-    boolean quit = false;
-
-    public void setQuit(boolean quit) {
-        this.quit = quit;
-    }
-
 
     @Override
     public void run() {
-
-        while (!quit) {
+        while (true) {
             try {
                 System.out.println();
                 System.out.println("Daily job has  started!");
 
+                //Finding coupons that their date is before the local date (now)
                 List<Coupon> allExpiredCoupons = couponsRepository.findByEndDateBefore(LocalDate.now());
                 if (!allExpiredCoupons.isEmpty()) {
                     System.out.println("All expired coupons: )" + allExpiredCoupons);
@@ -52,15 +40,15 @@ public class DailyJobExpirationCoupons extends Thread {
                     }
                     //1000ms * 60 = 1 minutes * 60 = 60 minutes * 24 = 24 hours - one day
                     allExpiredCoupons.clear();
-                    Thread.sleep(1000*60*60*24);
+                    Thread.sleep(1000 * 60 * 60 * 24);
 
 
                 } else {
                     System.out.println("There is no expired coupons.");
-                    System.out.println("Daily job has ended please proceed.");
+                    System.out.println("Daily job has ended, will run again in 24h, please proceed.");
                     System.out.println();
                     //1000ms * 60 = 1 minutes * 60 = 60 minutes * 24 = 24 hours - one day
-                    Thread.sleep(1000*60*60*24);
+                    Thread.sleep(1000 * 60 * 60 * 24);
                 }
 
             } catch (Exception e) {
