@@ -22,6 +22,7 @@ const MessageModal = (props) => {
             </header>
             <div className='content'>
               <h3>{props.message}</h3>
+              <h2>{props.messageToken}</h2>
             </div>
             <footer className='actions'>
               <Button onClick={props.onConfirm}>Ok</Button>

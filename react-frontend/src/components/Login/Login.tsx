@@ -29,7 +29,7 @@ const Login: React.FC<Props> = (props: Props) => {
     const passwordRef = useRef<HTMLInputElement>();
 
 
-    const [messageState, setMessageState] = useState<{ title: string, message: string }>(null);
+    const [messageState, setMessageState] = useState<{ title: string, message: string, messageToken?: string }>(null);
 
     const loginHandler = async (event) => {
         try {
@@ -60,7 +60,7 @@ const Login: React.FC<Props> = (props: Props) => {
             //if ok
             console.log("Response from login: " + responseFromLogin)
             if (selectUserTypeRef.current.value === "Customer") {
-                setMessageState({ title: "Customer logged successfully!", message: "You have been logged in to Coupon system!" })
+                setMessageState({ title: "Customer logged successfully!", message: "You have been logged in to Coupon system!", messageToken: "You have 30 minutes before you need to re-login again" })
                 dispatch(authActions.setClientTypeCustomer())
                 dispatch(authActions.setCustomerIdAfterLogin(responseFromLogin))
                 console.log("dispatch client type: " + selectUserTypeRef.current.value)
@@ -75,11 +75,11 @@ const Login: React.FC<Props> = (props: Props) => {
                     dispatch(authActions.setIsRelogin(true));
                     navigate("/home")
                     //5 minutes for example
-                }, 1000 * 60 * 5);
+                }, 1000 * 60 * 30);
             }
 
             if (selectUserTypeRef.current.value === "Company") {
-                setMessageState({ title: "Company logged in successfully!", message: "You have been logged in to Coupon system!" })
+                setMessageState({ title: "Company logged in successfully!", message: "You have been logged in to Coupon system!", messageToken: "You have 30 minutes before you need to re-login again" })
                 dispatch(authActions.setClientTypeCompany())
                 dispatch(authActions.setCompanyIdAfterLogin(responseFromLogin))
                 console.log("dispatch client type: " + selectUserTypeRef.current.value)
@@ -95,16 +95,16 @@ const Login: React.FC<Props> = (props: Props) => {
                     dispatch(authActions.setIsRelogin(true));
                     navigate("/home")
                     //5 minutes for example
-                }, 1000 * 10);
+                }, 1000 * 60 * 30);
 
             }
             if (selectUserTypeRef.current.value === "Administrator") {
-                setMessageState({ title: "Welcome back Admin !", message: "You have been logged in to Coupon system" })
+                setMessageState({ title: "Welcome back Admin !", message: "You have been logged in to Coupon system", messageToken: "You have 30 minutes before you need to re-login again" })
                 dispatch(authActions.setClientTypeAdmin())
                 dispatch(authActions.setAdminIdAfterLogin(responseFromLogin));
                 console.log("dispatch client type: " + selectUserTypeRef.current.value)
-                
-               
+
+
 
 
                 //30 mins "Token"
@@ -117,7 +117,7 @@ const Login: React.FC<Props> = (props: Props) => {
                     dispatch(authActions.setIsRelogin(true));
                     navigate("/home")
                     //5 minutes for example
-                }, 1000 * 10);
+                }, 1000 * 60 * 30);
             }
 
 
@@ -155,6 +155,7 @@ const Login: React.FC<Props> = (props: Props) => {
                 {messageState &&
                     <MessageModal title={messageState.title}
                         message={messageState.message}
+                        messageToken={messageState.messageToken}
                         onConfirm={onMessageConfirmHandler} />}
 
                 <form onSubmit={loginHandler} >
