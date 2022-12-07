@@ -6,6 +6,7 @@ import com.CouponsProject.CouponSystemEntities.Customer;
 import com.CouponsProject.CouponSystemEntities.Customer_vs_coupons;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -13,7 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//Business Logic
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Service
 public class CustomerService extends ClientServiceAbs {
@@ -93,8 +96,7 @@ public class CustomerService extends ClientServiceAbs {
             Coupon customerCouponToList = couponsRepository.findById(c.getCouponID());
             fullDetailsCustomerCoupons.add(customerCouponToList);
         }
-        List<Coupon> fullCustomerCouponsByCategory = fullDetailsCustomerCoupons.stream().filter(coupon -> coupon.getCategory() == category).collect(Collectors.toList());
-        return fullCustomerCouponsByCategory;
+        return fullDetailsCustomerCoupons.stream().filter(coupon -> coupon.getCategory() == category).collect(Collectors.toList());
     }
 
 
@@ -107,8 +109,7 @@ public class CustomerService extends ClientServiceAbs {
             Coupon customerCouponToList = couponsRepository.findById(c.getCouponID());
             fullDetailsCustomerCoupons.add(customerCouponToList);
         }
-        List<Coupon> fullCustomerCouponsByMaxPrice = fullDetailsCustomerCoupons.stream().filter(coupon -> coupon.getPrice() <= price).collect(Collectors.toList());
-        return fullCustomerCouponsByMaxPrice;
+        return fullDetailsCustomerCoupons.stream().filter(coupon -> coupon.getPrice() <= price).collect(Collectors.toList());
     }
 }
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
 
+//Login logic
 
 @Component
 public class LoginManager {

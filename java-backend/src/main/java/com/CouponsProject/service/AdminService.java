@@ -6,19 +6,21 @@ import com.CouponsProject.CouponSystemEntities.Coupon;
 import com.CouponsProject.CouponSystemEntities.Customer;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 //Business Logic
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Service
 public class AdminService extends ClientServiceAbs {
 
     /////////////// COMPANY FUNCTIONS /////////////
 
-    // Add Company
+    // Register Company
     public Company addCompany(Company company) {
         try {
             //checking if company name already exist
@@ -28,7 +30,7 @@ public class AdminService extends ClientServiceAbs {
                     return companiesRepository.save(company);
                 }
             }
-            System.out.println("Company already exist!");
+
             return null;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -43,7 +45,9 @@ public class AdminService extends ClientServiceAbs {
             Company resUpdateCompany = companiesRepository.findById(company.getId());
             //checking if email is already exist before updating
             if (companiesRepository.findByEmail(company.getEmail()) == null) {
+                //updating mail
                 resUpdateCompany.setEmail(company.getEmail());
+                //updating password
                 resUpdateCompany.setPassword(company.getPassword());
                 companiesRepository.save(resUpdateCompany);
                 return resUpdateCompany;
@@ -59,9 +63,12 @@ public class AdminService extends ClientServiceAbs {
     //Delete company by ID
     public void deleteCompanyById(int id) {
         try {
+            //check if the company exist
             if (companiesRepository.findById(id) != null) {
+                //delete company by ID
                 companiesRepository.deleteById(id);
             }
+//            System.out.println("Company don't exist!");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -70,6 +77,7 @@ public class AdminService extends ClientServiceAbs {
 
     //Get all companies
     public List<Company> getAllCompanies() {
+        //find all companies in DB
         return companiesRepository.findAll();
     }
 
@@ -87,14 +95,14 @@ public class AdminService extends ClientServiceAbs {
     ///////////// CUSTOMER FUNCTIONS /////////////
 
 
-    //Add customer
+    //Register customer
     public Customer addCustomer(Customer customer) {
         try {
             //checking if customer email exist already.
             if (customerRepository.findByEmail(customer.getEmail()) == null) {
                 return customerRepository.save(customer);
             }
-            System.out.println("Customer email already exist!");
+//            System.out.println("Customer email already exist!");
             return null;
 
         } catch (Exception e) {
@@ -130,7 +138,7 @@ public class AdminService extends ClientServiceAbs {
 
 
     //Delete customer by ID
-    //@Transactional
+//    @Transactional
     public void deleteCustomerById(int id) {
         try {
             if (customerRepository.findById(id) != null) {
@@ -156,7 +164,6 @@ public class AdminService extends ClientServiceAbs {
     //Find all coupons by category
     public List<Coupon> findCouponsByCategory(Category category) {
         try {
-
             return couponsRepository.findByCategory(category);
         } catch (Exception e) {
             throw new RuntimeException(e);

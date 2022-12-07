@@ -4,11 +4,13 @@ import com.CouponsProject.CouponSystemEntities.Category;
 import com.CouponsProject.CouponSystemEntities.Company;
 import com.CouponsProject.CouponSystemEntities.Coupon;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+//Business Logic
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Service
 public class CompanyService extends ClientServiceAbs {
