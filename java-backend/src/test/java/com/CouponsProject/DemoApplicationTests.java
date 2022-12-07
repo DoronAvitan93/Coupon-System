@@ -1,4 +1,4 @@
-package com.CouponsProject2;
+package com.CouponsProject;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

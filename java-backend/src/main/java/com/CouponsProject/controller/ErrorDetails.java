@@ -1,4 +1,4 @@
-package com.CouponsProject2.controller;
+package com.CouponsProject.controller;
 
 public class ErrorDetails {
 

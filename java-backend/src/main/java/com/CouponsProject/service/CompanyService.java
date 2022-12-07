@@ -1,14 +1,11 @@
-package com.CouponsProject2.service;
+package com.CouponsProject.service;
 
-import com.CouponsProject2.CouponSystemEntities.Category;
-import com.CouponsProject2.CouponSystemEntities.Company;
-import com.CouponsProject2.CouponSystemEntities.Coupon;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.CouponsProject.CouponSystemEntities.Category;
+import com.CouponsProject.CouponSystemEntities.Company;
+import com.CouponsProject.CouponSystemEntities.Coupon;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.List;
 
 

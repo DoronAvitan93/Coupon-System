@@ -1,8 +1,7 @@
-package com.CouponsProject2;
+package com.CouponsProject;
 
-import com.CouponsProject2.ExpirationCoupons.DailyJobExpirationCoupons;
+import com.CouponsProject.ExpirationCoupons.DailyJobExpirationCoupons;
 
-import com.CouponsProject2.service.AdminService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -45,12 +44,12 @@ public class Application {
 
 
         //testing the system
-        try {
-            Thread.sleep(2000);
-            while (true) test.systemTest();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+//        try {
+//            Thread.sleep(2000);
+//            while (true) test.systemTest();
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
 
 
     }

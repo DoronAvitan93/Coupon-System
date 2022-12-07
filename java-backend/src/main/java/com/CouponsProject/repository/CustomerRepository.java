@@ -1,6 +1,6 @@
-package com.CouponsProject2.repository;
+package com.CouponsProject.repository;
 
-import com.CouponsProject2.CouponSystemEntities.Customer;
+import com.CouponsProject.CouponSystemEntities.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

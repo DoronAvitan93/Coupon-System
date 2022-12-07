@@ -1,7 +1,7 @@
-package com.CouponsProject2.ExpirationCoupons;
+package com.CouponsProject.ExpirationCoupons;
 
-import com.CouponsProject2.CouponSystemEntities.Coupon;
-import com.CouponsProject2.repository.CouponsRepository;
+import com.CouponsProject.CouponSystemEntities.Coupon;
+import com.CouponsProject.repository.CouponsRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

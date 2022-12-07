@@ -1,11 +1,11 @@
-package com.CouponsProject2.controller;
+package com.CouponsProject.controller;
 import org.springframework.stereotype.Controller;
 
-import com.CouponsProject2.CouponSystemEntities.Category;
-import com.CouponsProject2.CouponSystemEntities.Coupon;
-import com.CouponsProject2.CouponSystemEntities.Customer;
+import com.CouponsProject.CouponSystemEntities.Category;
+import com.CouponsProject.CouponSystemEntities.Coupon;
+import com.CouponsProject.CouponSystemEntities.Customer;
 
-import com.CouponsProject2.service.ClientType;
+import com.CouponsProject.service.ClientType;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

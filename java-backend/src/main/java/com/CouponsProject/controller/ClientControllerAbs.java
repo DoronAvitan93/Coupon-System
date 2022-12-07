@@ -1,6 +1,6 @@
-package com.CouponsProject2.controller;
+package com.CouponsProject.controller;
 
-import com.CouponsProject2.service.*;
+import com.CouponsProject.service.*;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

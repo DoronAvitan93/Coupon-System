@@ -1,13 +1,11 @@
-package com.CouponsProject2.service;
+package com.CouponsProject.service;
 
 
-import com.CouponsProject2.repository.CompaniesRepository;
-import com.CouponsProject2.repository.CouponsRepository;
-import com.CouponsProject2.repository.CustomerRepository;
-import com.CouponsProject2.repository.Customer_vs_coupons_repository;
+import com.CouponsProject.repository.CompaniesRepository;
+import com.CouponsProject.repository.CouponsRepository;
+import com.CouponsProject.repository.CustomerRepository;
+import com.CouponsProject.repository.Customer_vs_coupons_repository;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.sql.SQLException;
 
 public abstract class ClientServiceAbs {
 

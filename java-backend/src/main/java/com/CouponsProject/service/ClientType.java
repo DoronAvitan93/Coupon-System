@@ -1,4 +1,4 @@
-package com.CouponsProject2.service;
+package com.CouponsProject.service;
 
 public enum ClientType {
     Administrator, Company, Customer

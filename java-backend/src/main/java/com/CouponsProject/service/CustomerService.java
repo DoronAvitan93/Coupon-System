@@ -1,9 +1,9 @@
-package com.CouponsProject2.service;
+package com.CouponsProject.service;
 
-import com.CouponsProject2.CouponSystemEntities.Category;
-import com.CouponsProject2.CouponSystemEntities.Coupon;
-import com.CouponsProject2.CouponSystemEntities.Customer;
-import com.CouponsProject2.CouponSystemEntities.Customer_vs_coupons;
+import com.CouponsProject.CouponSystemEntities.Category;
+import com.CouponsProject.CouponSystemEntities.Coupon;
+import com.CouponsProject.CouponSystemEntities.Customer;
+import com.CouponsProject.CouponSystemEntities.Customer_vs_coupons;
 
 import lombok.Data;
 import org.springframework.stereotype.Service;

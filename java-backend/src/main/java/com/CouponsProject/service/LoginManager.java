@@ -1,7 +1,7 @@
-package com.CouponsProject2.service;
+package com.CouponsProject.service;
 
-import com.CouponsProject2.CouponSystemEntities.Company;
-import com.CouponsProject2.CouponSystemEntities.Customer;
+import com.CouponsProject.CouponSystemEntities.Company;
+import com.CouponsProject.CouponSystemEntities.Customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

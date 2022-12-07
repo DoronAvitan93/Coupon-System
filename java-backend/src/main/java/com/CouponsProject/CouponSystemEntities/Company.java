@@ -1,4 +1,4 @@
-package com.CouponsProject2.CouponSystemEntities;
+package com.CouponsProject.CouponSystemEntities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

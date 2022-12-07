@@ -1,15 +1,15 @@
-package com.CouponsProject2;
+package com.CouponsProject;
 
-import com.CouponsProject2.CouponSystemEntities.Category;
-import com.CouponsProject2.CouponSystemEntities.Company;
-import com.CouponsProject2.CouponSystemEntities.Coupon;
-import com.CouponsProject2.CouponSystemEntities.Customer;
+import com.CouponsProject.CouponSystemEntities.Category;
+import com.CouponsProject.CouponSystemEntities.Company;
+import com.CouponsProject.CouponSystemEntities.Coupon;
+import com.CouponsProject.CouponSystemEntities.Customer;
 
-import com.CouponsProject2.repository.CompaniesRepository;
-import com.CouponsProject2.repository.CouponsRepository;
-import com.CouponsProject2.repository.CustomerRepository;
+import com.CouponsProject.repository.CompaniesRepository;
+import com.CouponsProject.repository.CouponsRepository;
+import com.CouponsProject.repository.CustomerRepository;
 
-import com.CouponsProject2.service.*;
+import com.CouponsProject.service.*;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

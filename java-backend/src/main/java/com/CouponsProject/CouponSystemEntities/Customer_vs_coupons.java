@@ -1,4 +1,4 @@
-package com.CouponsProject2.CouponSystemEntities;
+package com.CouponsProject.CouponSystemEntities;
 
 import lombok.*;
 
