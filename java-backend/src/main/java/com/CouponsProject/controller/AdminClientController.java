@@ -6,7 +6,6 @@ import com.CouponsProject.CouponSystemEntities.Coupon;
 import com.CouponsProject.CouponSystemEntities.Customer;
 import com.CouponsProject.service.ClientType;
 
-import lombok.EqualsAndHashCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import lombok.Data;
-
+import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
