@@ -39,40 +39,43 @@ public class LoginManager {
             //Admin Login
 
             if (clientType == ClientType.Administrator) {
+                //checking login inputs
                 if (clientEmail.equals(adminEmail) && clientPassword.equals(adminPassword)) {
-//                    System.out.println("Admin logged successfully");
+                    System.out.println("Admin logged successfully");
                     System.out.println();
 
-                    //fixed ID for security
+                    //fixed ID
                     return 19584413;
                 } else {
-//                    System.out.println("Admin login Error - incorrect email / password");
+                    System.out.println("Admin login Error - incorrect email / password");
                     System.out.println();
                 }
             } else
 
                 //Company Login
                 if (clientType == ClientType.Company) {
+                    //checking login inputs in the DB (email and password)
                     Company resCompany = companyService.companiesRepository.findByEmailAndPassword(clientEmail, clientPassword);
                     if (resCompany != null) {
-//                        System.out.println("Company Logged Successfully");
+                        System.out.println("Company Logged Successfully");
                         System.out.println();
                         return resCompany.getId();
                     } else {
-//                        System.out.println("Company login Error - incorrect email / password");
+                        System.out.println("Company login Error - incorrect email / password");
                         System.out.println();
                     }
                 } else
 
                     //Customer Login
                     if (clientType == ClientType.Customer) {
+                        //checking login inputs in the DB (email and password)
                         Customer resCustomer = customerService.customerRepository.findByEmailAndPassword(clientEmail, clientPassword);
                         if (resCustomer != null) {
-//                            System.out.println("Customer Logged Successfully");
+                            System.out.println("Customer Logged Successfully");
                             System.out.println();
                             return resCustomer.getId();
                         } else {
-//                            System.out.println("Customer login Error - incorrect email / password");
+                            System.out.println("Customer login Error - incorrect email / password");
                             System.out.println();
                         }
                     } else {
