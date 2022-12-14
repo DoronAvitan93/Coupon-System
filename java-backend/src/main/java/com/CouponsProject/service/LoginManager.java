@@ -47,8 +47,10 @@ public class LoginManager {
                     //fixed ID
                     return 19584413;
                 } else {
+
 //                    System.out.println("Admin login Error - incorrect email / password");
 //                    System.out.println();
+                    return -1;
                 }
             } else
 
@@ -63,6 +65,7 @@ public class LoginManager {
                     } else {
 //                        System.out.println("Company login Error - incorrect email / password");
 //                        System.out.println();
+                        return -1;
                     }
                 } else
 
@@ -77,17 +80,18 @@ public class LoginManager {
                         } else {
 //                            System.out.println("Customer login Error - incorrect email / password");
 //                            System.out.println();
+                            return -1;
                         }
                     } else {
-                        return -1;
+                        System.out.println("ENTER SOMETHING");
+                        return -2;
+
                     }
         } catch (Exception e) {
             System.out.println("Error - Cant access to the DataBase.");
             System.out.println(e);
             return -1;
         }
-
-        return -1;
     }
 }
 

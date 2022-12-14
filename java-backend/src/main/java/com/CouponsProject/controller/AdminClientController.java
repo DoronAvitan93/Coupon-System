@@ -34,34 +34,36 @@ public class AdminClientController extends ClientControllerAbs {
 
         // "19584413" fixed admin ID
         int adminID = loginManager.loginM(clientType, email, password);
-
+        // checking if adminID from loginManager is the fixed ID for Admin
         if (adminID == 19584413 && clientType == ClientType.Administrator) {
             System.out.println("Admin Logged Successfully"); // print to backend
             System.out.println();
-            ResponseEntity<?> responseWrapper = new ResponseEntity<>(adminID, HttpStatus.OK); // print to client
+            ResponseEntity<?> responseWrapper = new ResponseEntity<>("Admin Logged Successfully", HttpStatus.OK); // print to client
+            return responseWrapper;
+
+        } else {
+            System.out.println("Admin login Error - incorrect email / password"); // print to backend
+            System.out.println();
+            ResponseEntity<String> responseWrapper = new ResponseEntity<>("Admin login Error - incorrect email / password ", HttpStatus.BAD_REQUEST); // print to client
+
             return responseWrapper;
         }
-
-        System.out.println("Admin login Error - incorrect email / password"); // print to backend
-        System.out.println();
-        ResponseEntity<String> responseWrapper = new ResponseEntity<>("Admin login Error - incorrect email / password ", HttpStatus.BAD_REQUEST); // print to client
-
-        return responseWrapper;
     }
 
 
+    //Register company
     @PostMapping("/addCompany")
     @ResponseBody
     public ResponseEntity<?> addCompany(@RequestBody Company company) throws Exception { // http://localhost:8080/CouponApp/addCompany
-
         Company res = adminService.addCompany(company);
+
         if (res != null) {
             System.out.println("Company added successfully!"); // print to backend
             System.out.println(company);
             ResponseEntity<?> response = new ResponseEntity<>("Company added successfully! " + company, HttpStatus.OK); // print to the client
             return response;
-        } else {
 
+        } else {
             System.out.println("Cant add company - email or name already exist."); // print to backend
             ResponseEntity<?> response = new ResponseEntity<>("Cant add company - email or name already exist.", HttpStatus.BAD_REQUEST); // print to the client
             return response;
@@ -70,7 +72,6 @@ public class AdminClientController extends ClientControllerAbs {
 
 
     // Update company
-    // Working + test if + postman
     // id = what company to update, email = update to new email, password = update to new password
     @PutMapping("/updateCompany/")
     @ResponseBody
@@ -82,11 +83,13 @@ public class AdminClientController extends ClientControllerAbs {
                 System.out.println("Company updated successfully! " + adminService.findCompanyById(company.getId())); // print to backend
                 ResponseEntity<?> response = new ResponseEntity<>("Company updated successfully! " + adminService.findCompanyById(company.getId()), HttpStatus.OK);
                 return response;
+
             } else {
                 System.out.println("Email already exist!"); //print to backend
                 ResponseEntity<?> response = new ResponseEntity<>("Email already exist!", HttpStatus.BAD_REQUEST);
                 return response;
             }
+
         } else {
             System.out.println("No company exist by this ID: " + company.getId()); //print to backend
             ResponseEntity<?> response = new ResponseEntity<>("No company exist by this ID: " + company.getId(), HttpStatus.BAD_REQUEST);
@@ -96,30 +99,32 @@ public class AdminClientController extends ClientControllerAbs {
 
 
     // Delete company by ID
-    // Working + test if exist + postman
     @DeleteMapping("deleteCompanyById/{id}")
     @ResponseBody
     public ResponseEntity<?> deleteCompanyById(@PathVariable int id) throws Exception { // http://localhost:8080/CouponApp/deleteCompanyById/{id}
+        //checking if company exist
         if (adminService.findCompanyById(id) != null) {
+            //if company exist - delete it
             adminService.deleteCompanyById(id);
             System.out.println("Company & company coupons deleted Successfully!"); // print to backend
             System.out.println();
             ResponseEntity<String> responseWrapper = new ResponseEntity<>("Company & company coupons deleted Successfully! ", HttpStatus.OK); // print to client
             return responseWrapper;
+        } else {
+            ResponseEntity<String> responseWrapper = new ResponseEntity<>("No company exist by this ID: " + id, HttpStatus.BAD_REQUEST); // print to client
+            System.out.println("Error, no company exist by this ID: " + id); // print to backend
+            System.out.println();
+            return responseWrapper;
         }
-        ResponseEntity<String> responseWrapper = new ResponseEntity<>("No company exist by this ID: " + id, HttpStatus.BAD_REQUEST); // print to client
-        System.out.println("Error, no company exist by this ID: " + id); // print to backend
-        System.out.println();
-        return responseWrapper;
     }
 
 
     // Get all companies
-    // Working + test if there is companies + postman
     @GetMapping("/getAllCompanies") // http://localhost:8080/CouponApp/getAllCompanies
     @ResponseBody
     public ResponseEntity<?> getAllCompanies() { // we can use <?> too.
-        List<Company> res = adminService.getAllCompanies(); //main function.
+        List<Company> res = adminService.getAllCompanies();
+        //checking if there is companies
         if (!res.isEmpty()) {
             System.out.println("Companies found: " + res.size());
             System.out.println("Company List: "); // print to backend
@@ -127,46 +132,43 @@ public class AdminClientController extends ClientControllerAbs {
             System.out.println();
             ResponseEntity<List<Company>> responseWrapper = new ResponseEntity<>(res, HttpStatus.OK);
             return responseWrapper;
+
+        } else {
+            System.out.println("There is no companies!"); // return to backend
+            System.out.println();
+            ResponseEntity<String> responseWrapper = new ResponseEntity<>("There is no companies!", HttpStatus.BAD_REQUEST);
+            return responseWrapper;
         }
-        System.out.println("There is no companies!"); // return to backend
-        System.out.println();
-        ResponseEntity<String> responseWrapper = new ResponseEntity<>("There is no companies!", HttpStatus.BAD_REQUEST);
-        return responseWrapper;
     }
 
 
     // Find company by ID
-    // Working + test if exist + postman
     @GetMapping("/findCompanyById/{id}")  // http://localhost:8080/CouponApp/findCompanyById/id
     @ResponseBody
     public ResponseEntity<?> getCompanyById(@PathVariable int id) throws Exception {
         Company res = adminService.findCompanyById(id);
+        //checking if company exist
         if (res != null) {
             System.out.println("Company from DB by ID: " + id); // print to backend
             System.out.println(res); // print to backend
             System.out.println();
             ResponseEntity<Company> responseWrapper = new ResponseEntity<>(res, HttpStatus.OK);
             return responseWrapper;
+        } else {
+            System.out.println("No company exist by this ID: " + id); // return to backend
+            System.out.println();
+            ResponseEntity<?> responseWrapper = new ResponseEntity<>("No company exist by this ID: " + id, HttpStatus.BAD_REQUEST); // return to client
+            return responseWrapper;
         }
-        System.out.println("No company exist by this ID: " + id); // return to backend
-        System.out.println();
-        ResponseEntity<?> responseWrapper = new ResponseEntity<>("No company exist by this ID: " + id, HttpStatus.BAD_REQUEST); // return to client
-        return responseWrapper;
     }
 
 
-    // Add Customer
-    //JSON:
-    //  {
-    //    "firstName": "enterFirstName",
-    //    "lastName": "enterLastName",
-    //    "email": "enterEmail",
-    //    "password": "enterPassword"
-    //  }
+    // Register Customer
     @PostMapping("/addCustomer")
     @ResponseBody
     public ResponseEntity<?> addCustomer(@RequestBody Customer customer) throws Exception { // http://localhost:8080/CouponApp/addCustomer
-        Customer res = adminService.addCustomer(customer); //main function.
+        Customer res = adminService.addCustomer(customer);
+        //checking if customer already exist
         if (res != null) {
             System.out.println("Customer added successfully!"); // print to backend
             System.out.println(customer);
@@ -186,72 +188,81 @@ public class AdminClientController extends ClientControllerAbs {
     @PutMapping("/updateCustomer/{id}")
     @ResponseBody
     public ResponseEntity<?> updateCustomer(@PathVariable Integer id, @RequestBody Customer customer) throws Exception { // http://localhost:8080/CouponApp/updateCustomer/{id}
+        //checking if customer exist
         if (adminService.findCustomerById(id) != null) {
             adminService.updateCustomer(id, customer.getFirstName(), customer.getLastName(), customer.getEmail(), customer.getPassword());
             System.out.println("Customer updated successfully! " + adminService.findCustomerById(id)); // print to backend
             ResponseEntity<?> response = new ResponseEntity<>("Customer updated successfully! " + adminService.findCustomerById(id), HttpStatus.OK);
             return response;
+
+        } else {
+            System.out.println("No customer exist by this ID: " + id); //print to backend
+            ResponseEntity<?> response = new ResponseEntity<>("No customer exist by this ID: " + id, HttpStatus.BAD_REQUEST);
+            return response;
         }
-        System.out.println("No customer exist by this ID: " + id); //print to backend
-        ResponseEntity<?> response = new ResponseEntity<>("No customer exist by this ID: " + id, HttpStatus.BAD_REQUEST);
-        return response;
     }
 
 
     // Delete customer by ID
-    // Working + if exist + postman
     @DeleteMapping("deleteCustomer/{id}")
     @ResponseBody
     public ResponseEntity<?> deleteCustomer(@PathVariable int id) throws Exception { // http://localhost:8080/CouponApp/deleteCustomer/{id}
+        //checking if customer exist
         if (adminService.findCustomerById(id) != null) {
             adminService.deleteCustomerById(id);
             System.out.println("Customer deleted Successfully!"); // print to backend
             System.out.println();
             ResponseEntity<String> responseWrapper = new ResponseEntity<>("Customer deleted successfully! ", HttpStatus.OK); // print to client
             return responseWrapper;
+
+        } else {
+            ResponseEntity<String> responseWrapper = new ResponseEntity<>("No customer exist by this ID: " + id, HttpStatus.BAD_REQUEST); // print to client
+            System.out.println("Error, no customer exist by this ID: " + id); // print to backend
+            System.out.println();
+            return responseWrapper;
         }
-        ResponseEntity<String> responseWrapper = new ResponseEntity<>("No customer exist by this ID: " + id, HttpStatus.BAD_REQUEST); // print to client
-        System.out.println("Error, no customer exist by this ID: " + id); // print to backend
-        System.out.println();
-        return responseWrapper;
     }
 
 
     // Get all customers
-    // Working + if exist + postman
     @GetMapping("/getAllCustomers") // http://localhost:8080/CouponApp/getAllCustomers
     @ResponseBody
     public ResponseEntity<?> getAllCustomers() {
-        List<Customer> res = adminService.getAllCustomers(); //main function.
+        List<Customer> res = adminService.getAllCustomers();
+        //check if there is customers
         if (!res.isEmpty()) {
             System.out.println("Customer's List: "); // print to backend
             System.out.println(res); // print to backend
             System.out.println();
             ResponseEntity<List<?>> responseWrapper = new ResponseEntity<>(res, HttpStatus.OK);
             return responseWrapper;
+
+        } else {
+            ResponseEntity<String> responseWrapper = new ResponseEntity<>("There is no customers!", HttpStatus.BAD_REQUEST);
+            return responseWrapper;
         }
-        ResponseEntity<String> responseWrapper = new ResponseEntity<>("There is no customers!", HttpStatus.BAD_REQUEST);
-        return responseWrapper;
     }
 
 
     // Find customer by ID
-    // Working + if exist + postman
     @GetMapping("/findCustomerById/{id}")  // http://localhost:8080/CouponApp/findCustomerById/{id}
     @ResponseBody
     public ResponseEntity<?> getCustomerById(@PathVariable int id) throws Exception {
         Customer res = adminService.findCustomerById(id);
+        //check if customer exist
         if (res != null) {
             System.out.println("Customer from DB by ID: " + id); // print to backend
             System.out.println(res); // print to backend
             System.out.println();
             ResponseEntity<Customer> responseWrapper = new ResponseEntity<>(res, HttpStatus.OK);
             return responseWrapper;
+
+        } else {
+            System.out.println("No customer exist by this ID: " + id); // return to backend
+            System.out.println();
+            ResponseEntity<?> responseWrapper = new ResponseEntity<>("No customer exist by this ID: " + id, HttpStatus.BAD_REQUEST); // return to client
+            return responseWrapper;
         }
-        System.out.println("No customer exist by this ID: " + id); // return to backend
-        System.out.println();
-        ResponseEntity<?> responseWrapper = new ResponseEntity<>("No customer exist by this ID: " + id, HttpStatus.BAD_REQUEST); // return to client
-        return responseWrapper;
     }
 
 
@@ -260,17 +271,20 @@ public class AdminClientController extends ClientControllerAbs {
     @ResponseBody
     public ResponseEntity<?> findCouponsByCategory(@PathVariable Category category) throws Exception { // http://localhost:8080/CouponApp/findAllCouponsByCategory/{category}
         List<Coupon> res = adminService.findCouponsByCategory(category);
+        //check if coupons exist by category
         if (!res.isEmpty()) {
             System.out.println("All coupons from DB with category: " + category.toString().toLowerCase()); // print to backend
             System.out.println(res); // print to backend
             System.out.println();
             ResponseEntity<List<Coupon>> responseWrapper = new ResponseEntity<>(res, HttpStatus.OK);
             return responseWrapper;
+
+        } else {
+            System.out.println("No coupons exist by this category: " + category.toString().toLowerCase()); // return to backend
+            System.out.println();
+            ResponseEntity<?> responseWrapper = new ResponseEntity<>("No coupons exist by this category: " + category.toString().toLowerCase(), HttpStatus.BAD_REQUEST); // return to client
+            return responseWrapper;
         }
-        System.out.println("No coupons exist by this category: " + category.toString().toLowerCase()); // return to backend
-        System.out.println();
-        ResponseEntity<?> responseWrapper = new ResponseEntity<>("No coupons exist by this category: " + category.toString().toLowerCase(), HttpStatus.BAD_REQUEST); // return to client
-        return responseWrapper;
     }
 }
 
