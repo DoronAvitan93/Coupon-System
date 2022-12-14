@@ -23,15 +23,19 @@ public class CompanyService extends ClientServiceAbs {
     //Add coupon
     public Coupon addCoupon(Coupon coupon) {
         try {
+            //checking if there is coupon with the same input Title
             if (couponsRepository.findByTitle(coupon.getTitle()).isEmpty()) {
+                //save coupon to DB
                 couponsRepository.save(coupon);
                 return coupon;
             } else {
+                //if there is input Title already - then check if the company added the coupon already with this Title.
                 if (couponsRepository.findByCompanyId(coupon.getCompany().getId()) == null) {
+                    //save coupon to DB
                     couponsRepository.save(coupon);
                     return coupon;
                 }
-                System.out.println("Coupon already exist!");
+//                System.out.println("Coupon already exist!");
                 return null;
             }
         } catch (Exception e) {
@@ -62,7 +66,6 @@ public class CompanyService extends ClientServiceAbs {
     //Find company coupons by company ID
     public List<Coupon> findByCompanyId(int companyID) {
         try {
-
             return couponsRepository.findByCompanyId(companyID);
         } catch (Exception e) {
             throw new RuntimeException(e);
