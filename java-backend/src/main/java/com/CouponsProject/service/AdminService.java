@@ -138,13 +138,14 @@ public class AdminService extends ClientServiceAbs {
 
 
     //Delete customer by ID
-//    @Transactional
     public void deleteCustomerById(int id) {
         try {
+            //checking if customer exist
             if (customerRepository.findById(id) != null) {
-                customer_vs_coupons_repository.deleteByCustomerID(id);
+                //delete customer from DB
                 customerRepository.deleteById(id);
-
+                //delete customer coupons
+                customer_vs_coupons_repository.deleteByCustomerID(id);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -160,6 +161,7 @@ public class AdminService extends ClientServiceAbs {
             throw new RuntimeException(e);
         }
     }
+
 
     //Find all coupons by category
     public List<Coupon> findCouponsByCategory(Category category) {
