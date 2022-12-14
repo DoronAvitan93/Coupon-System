@@ -6,6 +6,7 @@ import com.CouponsProject.CouponSystemEntities.Coupon;
 import com.CouponsProject.CouponSystemEntities.Customer;
 import com.CouponsProject.service.ClientType;
 
+import lombok.EqualsAndHashCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import java.util.List;
 import lombok.Data;
 
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Controller
 @RequestMapping("CouponApp")
@@ -54,7 +56,7 @@ public class AdminClientController extends ClientControllerAbs {
     //Register company
     @PostMapping("/addCompany")
     @ResponseBody
-    public ResponseEntity<?> addCompany(@RequestBody Company company) throws Exception { // http://localhost:8080/CouponApp/addCompany
+    public ResponseEntity<?> addCompany(@RequestBody Company company) { // http://localhost:8080/CouponApp/addCompany
         Company res = adminService.addCompany(company);
 
         if (res != null) {
@@ -75,7 +77,7 @@ public class AdminClientController extends ClientControllerAbs {
     // id = what company to update, email = update to new email, password = update to new password
     @PutMapping("/updateCompany/")
     @ResponseBody
-    public ResponseEntity<?> updateCompany(@RequestBody Company company) throws Exception { // http://localhost:8080/CouponApp/updateCompany/
+    public ResponseEntity<?> updateCompany(@RequestBody Company company) { // http://localhost:8080/CouponApp/updateCompany/
         //check if company exist by id
         if (adminService.findCompanyById(company.getId()) != null) {
             //check if email exist already
@@ -101,7 +103,7 @@ public class AdminClientController extends ClientControllerAbs {
     // Delete company by ID
     @DeleteMapping("deleteCompanyById/{id}")
     @ResponseBody
-    public ResponseEntity<?> deleteCompanyById(@PathVariable int id) throws Exception { // http://localhost:8080/CouponApp/deleteCompanyById/{id}
+    public ResponseEntity<?> deleteCompanyById(@PathVariable int id) { // http://localhost:8080/CouponApp/deleteCompanyById/{id}
         //check if company exist
         if (adminService.findCompanyById(id) != null) {
             //if company exist - delete it
@@ -145,7 +147,7 @@ public class AdminClientController extends ClientControllerAbs {
     // Find company by ID
     @GetMapping("/findCompanyById/{id}")  // http://localhost:8080/CouponApp/findCompanyById/id
     @ResponseBody
-    public ResponseEntity<?> getCompanyById(@PathVariable int id) throws Exception {
+    public ResponseEntity<?> getCompanyById(@PathVariable int id)   {
         Company res = adminService.findCompanyById(id);
         //check if company exist
         if (res != null) {
@@ -166,7 +168,7 @@ public class AdminClientController extends ClientControllerAbs {
     // Register Customer
     @PostMapping("/addCustomer")
     @ResponseBody
-    public ResponseEntity<?> addCustomer(@RequestBody Customer customer) throws Exception { // http://localhost:8080/CouponApp/addCustomer
+    public ResponseEntity<?> addCustomer(@RequestBody Customer customer) { // http://localhost:8080/CouponApp/addCustomer
         Customer res = adminService.addCustomer(customer);
         //check if customer already exist
         if (res != null) {
@@ -187,7 +189,7 @@ public class AdminClientController extends ClientControllerAbs {
     // email = update to new email, password = update to new password
     @PutMapping("/updateCustomer/{id}")
     @ResponseBody
-    public ResponseEntity<?> updateCustomer(@PathVariable Integer id, @RequestBody Customer customer) throws Exception { // http://localhost:8080/CouponApp/updateCustomer/{id}
+    public ResponseEntity<?> updateCustomer(@PathVariable Integer id, @RequestBody Customer customer) { // http://localhost:8080/CouponApp/updateCustomer/{id}
         //check if customer exist
         if (adminService.findCustomerById(id) != null) {
             adminService.updateCustomer(id, customer.getFirstName(), customer.getLastName(), customer.getEmail(), customer.getPassword());
@@ -269,7 +271,7 @@ public class AdminClientController extends ClientControllerAbs {
     //get all specific coupons with given category
     @GetMapping("/findAllCouponsByCategory/{category}")
     @ResponseBody
-    public ResponseEntity<?> findCouponsByCategory(@PathVariable Category category) throws Exception { // http://localhost:8080/CouponApp/findAllCouponsByCategory/{category}
+    public ResponseEntity<?> findCouponsByCategory(@PathVariable Category category) { // http://localhost:8080/CouponApp/findAllCouponsByCategory/{category}
         List<Coupon> res = adminService.findCouponsByCategory(category);
         //check if coupons exist by category
         if (!res.isEmpty()) {
