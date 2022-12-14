@@ -39,7 +39,7 @@ public class LoginManager {
             //Admin Login
 
             if (clientType == ClientType.Administrator) {
-                //checking login inputs
+                //check login inputs
                 if (clientEmail.equals(adminEmail) && clientPassword.equals(adminPassword)) {
 //                    System.out.println("Admin logged successfully");
 //                    System.out.println();
@@ -56,7 +56,7 @@ public class LoginManager {
 
                 //Company Login
                 if (clientType == ClientType.Company) {
-                    //checking login inputs in the DB (email and password)
+                    //check login inputs in the DB (email and password)
                     Company resCompany = companyService.companiesRepository.findByEmailAndPassword(clientEmail, clientPassword);
                     if (resCompany != null) {
 //                        System.out.println("Company Logged Successfully");
@@ -71,7 +71,7 @@ public class LoginManager {
 
                     //Customer Login
                     if (clientType == ClientType.Customer) {
-                        //checking login inputs in the DB (email and password)
+                        //check login inputs in the DB (email and password)
                         Customer resCustomer = customerService.customerRepository.findByEmailAndPassword(clientEmail, clientPassword);
                         if (resCustomer != null) {
 //                            System.out.println("Customer Logged Successfully");

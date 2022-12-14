@@ -76,9 +76,9 @@ public class AdminClientController extends ClientControllerAbs {
     @PutMapping("/updateCompany/")
     @ResponseBody
     public ResponseEntity<?> updateCompany(@RequestBody Company company) throws Exception { // http://localhost:8080/CouponApp/updateCompany/
-        //checking if company exist by id
+        //check if company exist by id
         if (adminService.findCompanyById(company.getId()) != null) {
-            //checking if email exist already
+            //check if email exist already
             if (adminService.updateCompany(company) != null) {
                 System.out.println("Company updated successfully! " + adminService.findCompanyById(company.getId())); // print to backend
                 ResponseEntity<?> response = new ResponseEntity<>("Company updated successfully! " + adminService.findCompanyById(company.getId()), HttpStatus.OK);
@@ -102,7 +102,7 @@ public class AdminClientController extends ClientControllerAbs {
     @DeleteMapping("deleteCompanyById/{id}")
     @ResponseBody
     public ResponseEntity<?> deleteCompanyById(@PathVariable int id) throws Exception { // http://localhost:8080/CouponApp/deleteCompanyById/{id}
-        //checking if company exist
+        //check if company exist
         if (adminService.findCompanyById(id) != null) {
             //if company exist - delete it
             adminService.deleteCompanyById(id);
@@ -124,7 +124,7 @@ public class AdminClientController extends ClientControllerAbs {
     @ResponseBody
     public ResponseEntity<?> getAllCompanies() { // we can use <?> too.
         List<Company> res = adminService.getAllCompanies();
-        //checking if there is companies
+        //check if there is companies
         if (!res.isEmpty()) {
             System.out.println("Companies found: " + res.size());
             System.out.println("Company List: "); // print to backend
@@ -147,7 +147,7 @@ public class AdminClientController extends ClientControllerAbs {
     @ResponseBody
     public ResponseEntity<?> getCompanyById(@PathVariable int id) throws Exception {
         Company res = adminService.findCompanyById(id);
-        //checking if company exist
+        //check if company exist
         if (res != null) {
             System.out.println("Company from DB by ID: " + id); // print to backend
             System.out.println(res); // print to backend
@@ -168,7 +168,7 @@ public class AdminClientController extends ClientControllerAbs {
     @ResponseBody
     public ResponseEntity<?> addCustomer(@RequestBody Customer customer) throws Exception { // http://localhost:8080/CouponApp/addCustomer
         Customer res = adminService.addCustomer(customer);
-        //checking if customer already exist
+        //check if customer already exist
         if (res != null) {
             System.out.println("Customer added successfully!"); // print to backend
             System.out.println(customer);
@@ -188,7 +188,7 @@ public class AdminClientController extends ClientControllerAbs {
     @PutMapping("/updateCustomer/{id}")
     @ResponseBody
     public ResponseEntity<?> updateCustomer(@PathVariable Integer id, @RequestBody Customer customer) throws Exception { // http://localhost:8080/CouponApp/updateCustomer/{id}
-        //checking if customer exist
+        //check if customer exist
         if (adminService.findCustomerById(id) != null) {
             adminService.updateCustomer(id, customer.getFirstName(), customer.getLastName(), customer.getEmail(), customer.getPassword());
             System.out.println("Customer updated successfully! " + adminService.findCustomerById(id)); // print to backend
@@ -207,7 +207,7 @@ public class AdminClientController extends ClientControllerAbs {
     @DeleteMapping("deleteCustomer/{id}")
     @ResponseBody
     public ResponseEntity<?> deleteCustomer(@PathVariable int id) throws Exception { // http://localhost:8080/CouponApp/deleteCustomer/{id}
-        //checking if customer exist
+        //check if customer exist
         if (adminService.findCustomerById(id) != null) {
             adminService.deleteCustomerById(id);
             System.out.println("Customer deleted Successfully!"); // print to backend

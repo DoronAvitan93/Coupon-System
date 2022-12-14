@@ -23,9 +23,9 @@ public class AdminService extends ClientServiceAbs {
     // Register Company
     public Company addCompany(Company company) {
         try {
-            //checking if company name already exist
+            //check if company name already exist
             if (companiesRepository.findByName(company.getName()) == null) {
-                //checking if company email already exist
+                //check if company email already exist
                 if (companiesRepository.findByEmail(company.getEmail()) == null) {
                     return companiesRepository.save(company);
                 }
@@ -43,7 +43,7 @@ public class AdminService extends ClientServiceAbs {
         try {
             //company that will be updated
             Company resUpdateCompany = companiesRepository.findById(company.getId());
-            //checking if email is already exist before updating
+            //check if email is already exist before updating
             if (companiesRepository.findByEmail(company.getEmail()) == null) {
                 //updating mail
                 resUpdateCompany.setEmail(company.getEmail());
@@ -98,7 +98,7 @@ public class AdminService extends ClientServiceAbs {
     //Register customer
     public Customer addCustomer(Customer customer) {
         try {
-            //checking if customer email exist already.
+            //check if customer email exist already.
             if (customerRepository.findByEmail(customer.getEmail()) == null) {
                 return customerRepository.save(customer);
             }
@@ -140,7 +140,7 @@ public class AdminService extends ClientServiceAbs {
     //Delete customer by ID
     public void deleteCustomerById(int id) {
         try {
-            //checking if customer exist
+            //check if customer exist
             if (customerRepository.findById(id) != null) {
                 //delete customer from DB
                 customerRepository.deleteById(id);

@@ -52,14 +52,14 @@ public class CustomerClientController extends ClientControllerAbs {
     public ResponseEntity<?> purchaseCoupon(@PathVariable int couponID, @PathVariable int customerID) throws Exception { // http://localhost:8080/CouponApp/purchaseCoupon/couponID/customerID
         System.out.println("Using purchaseCoupon function..."); // print to backend
 
-        //checking if coupon exist
+        //check if coupon exist
         if (companyService.findCouponById(couponID) == null) {
             System.out.println("Coupon does not exist!"); // print to backend
             ResponseEntity<?> response = new ResponseEntity<>("Coupon does not exist!", HttpStatus.BAD_REQUEST); // print to client
             return response;
 
         } else {
-            //checking if customer exist
+            //check if customer exist
             if (customerService.findCustomerById(customerID) == null) {
                 System.out.println("Customer does not exist!"); // print to backend
                 ResponseEntity<?> response = new ResponseEntity<>("Customer does not exist!", HttpStatus.NOT_ACCEPTABLE); // print to client
@@ -69,7 +69,7 @@ public class CustomerClientController extends ClientControllerAbs {
                 //using the purchaseCoupon function and declaring int return by the result
                 int customerServiceIntReturn = customerService.purchaseCoupon(companyService.findCouponById(couponID), customerService.findCustomerById(customerID));
 
-                //checking if coupon end date is expired, will return int 1 if yes
+                //check if coupon end date is expired, will return int 1 if yes
                 if (customerServiceIntReturn == 1) {
 //                    System.out.println("enter 1");
                     System.out.println("Coupon expired - can't purchase coupon!");
@@ -77,7 +77,7 @@ public class CustomerClientController extends ClientControllerAbs {
                     return response;
 
                 } else {
-                    //checking if coupon amount is > 0, will return int 2 if yes
+                    //check if coupon amount is > 0, will return int 2 if yes
                     if (customerServiceIntReturn == 2) {
 //                        System.out.println("enter 2");
                         System.out.println("Coupon amount is 0 - can't purchase coupon!");
@@ -85,7 +85,7 @@ public class CustomerClientController extends ClientControllerAbs {
                         return response;
 
                     } else {
-                        //checking if customer already purchased this coupon, will return int 3 if yes
+                        //check if customer already purchased this coupon, will return int 3 if yes
                         if (customerServiceIntReturn == 3) {
 //                            System.out.println("enter 3");
                             System.out.println("Customer already purchased this coupon!");
@@ -114,14 +114,14 @@ public class CustomerClientController extends ClientControllerAbs {
     @GetMapping("/findCustomerCoupons/{id}")
     @ResponseBody
     public ResponseEntity<?> getAllCustomerCoupons(@PathVariable int id) throws Exception { // http://localhost:8080/CouponApp/findCustomerCoupons/{id}
-        //checking if customer exist
+        //check if customer exist
         Customer resCustomer = customerService.findCustomerById(id);
 
         //if costumer exist
         if (resCustomer != null) {
             List<Coupon> customerCoupons = customerService.getAllCostumerCoupons(id);
 
-            //checking if customer have coupons, if exist - will print
+            //check if customer have coupons, if exist - will print
             if (!customerCoupons.isEmpty()) {
                 System.out.println("All customer coupons from DB :"); // print to backend
                 System.out.println(customerCoupons); // print to backend
@@ -169,14 +169,14 @@ public class CustomerClientController extends ClientControllerAbs {
     @GetMapping("/findCustomerCouponsWithMaxPrice/{id}/{price}")
     @ResponseBody
     public ResponseEntity<?> getAllCustomerCouponsWithCategory(@PathVariable int id, @PathVariable int price) throws Exception { // http://localhost:8080/CouponApp/findCustomerCouponsWithMaxPrice/{id}/{price}
-        //checking if customer exist
+        //check if customer exist
         Customer resCustomer = customerService.findCustomerById(id);
 
         //if costumer exist
         if (resCustomer != null) {
             List<Coupon> customerCouponsByMaxPrice = customerService.getAllCostumerCouponsWithMaxPrice(id, price);
 
-            //checking if customer have coupons, if exist - will print
+            //check if customer have coupons, if exist - will print
             if (!customerCouponsByMaxPrice.isEmpty()) {
                 System.out.println("All customer coupons by max price from DB :"); // print to backend
                 System.out.println(customerCouponsByMaxPrice); // print to backend

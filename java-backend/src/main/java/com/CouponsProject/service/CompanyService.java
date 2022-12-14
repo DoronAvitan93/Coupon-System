@@ -23,7 +23,7 @@ public class CompanyService extends ClientServiceAbs {
     //Add coupon
     public Coupon addCoupon(Coupon coupon) {
         try {
-            //checking if there is coupon with the same input Title
+            //check if there is coupon with the same input Title
             if (couponsRepository.findByTitle(coupon.getTitle()).isEmpty()) {
                 //save coupon to DB
                 couponsRepository.save(coupon);
