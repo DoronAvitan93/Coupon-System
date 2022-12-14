@@ -32,10 +32,10 @@ public class AdminClientController extends ClientControllerAbs {
     //http://localhost:8080/CouponApp/login/Administrator/{clientType}/{email}/{password}
     public ResponseEntity<?> login(@PathVariable ClientType clientType, @PathVariable String email, @PathVariable String password) throws SQLException {
 
-        // "0" means true
+        // "19584413" fixed admin ID
         int adminID = loginManager.loginM(clientType, email, password);
 
-        if (adminID > 0 && clientType == ClientType.Administrator) {
+        if (adminID == 19584413 && clientType == ClientType.Administrator) {
             System.out.println("Admin Logged Successfully"); // print to backend
             System.out.println();
             ResponseEntity<?> responseWrapper = new ResponseEntity<>(adminID, HttpStatus.OK); // print to client
@@ -48,16 +48,6 @@ public class AdminClientController extends ClientControllerAbs {
 
         return responseWrapper;
     }
-
-
-// Add Company
-    // Working + if email or name exist + postman
-    // JSON:
-    //  {
-    //    "name": "enterName",
-    //    "email": "enterEmail",
-    //    "password": "enterPassword"
-    //  }
 
 
     @PostMapping("/addCompany")
@@ -117,7 +107,7 @@ public class AdminClientController extends ClientControllerAbs {
             ResponseEntity<String> responseWrapper = new ResponseEntity<>("Company & company coupons deleted Successfully! ", HttpStatus.OK); // print to client
             return responseWrapper;
         }
-        ResponseEntity<String> responseWrapper = new ResponseEntity<>("No company exist by this ID: "+id, HttpStatus.BAD_REQUEST); // print to client
+        ResponseEntity<String> responseWrapper = new ResponseEntity<>("No company exist by this ID: " + id, HttpStatus.BAD_REQUEST); // print to client
         System.out.println("Error, no company exist by this ID: " + id); // print to backend
         System.out.println();
         return responseWrapper;
@@ -220,7 +210,7 @@ public class AdminClientController extends ClientControllerAbs {
             ResponseEntity<String> responseWrapper = new ResponseEntity<>("Customer deleted successfully! ", HttpStatus.OK); // print to client
             return responseWrapper;
         }
-        ResponseEntity<String> responseWrapper = new ResponseEntity<>("No customer exist by this ID: "+id, HttpStatus.BAD_REQUEST); // print to client
+        ResponseEntity<String> responseWrapper = new ResponseEntity<>("No customer exist by this ID: " + id, HttpStatus.BAD_REQUEST); // print to client
         System.out.println("Error, no customer exist by this ID: " + id); // print to backend
         System.out.println();
         return responseWrapper;
@@ -260,7 +250,7 @@ public class AdminClientController extends ClientControllerAbs {
         }
         System.out.println("No customer exist by this ID: " + id); // return to backend
         System.out.println();
-        ResponseEntity<?> responseWrapper = new ResponseEntity<>("No customer exist by this ID: "+id, HttpStatus.BAD_REQUEST); // return to client
+        ResponseEntity<?> responseWrapper = new ResponseEntity<>("No customer exist by this ID: " + id, HttpStatus.BAD_REQUEST); // return to client
         return responseWrapper;
     }
 
