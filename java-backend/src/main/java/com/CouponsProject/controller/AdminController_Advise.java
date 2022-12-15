@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestController
 public class AdminController_Advise {
 
+
+    //Catching errors from the controller
     @ExceptionHandler(value = {Exception.class})
     public ResponseEntity<ErrorDetails> handle(Exception e) {
         ErrorDetails error = new ErrorDetails("Custom Error", e.getMessage());
