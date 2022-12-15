@@ -32,6 +32,7 @@ public class AdminClientController extends ClientControllerAbs {
     @Override
     //http://localhost:8080/CouponApp/login/Administrator/{clientType}/{email}/{password}
     public ResponseEntity<?> login(@PathVariable ClientType clientType, @PathVariable String email, @PathVariable String password) throws SQLException {
+        System.out.println("Using login function..."); // print to backend
 
         // "19584413" fixed admin ID
         int adminID = loginManager.loginM(clientType, email, password);
@@ -56,8 +57,11 @@ public class AdminClientController extends ClientControllerAbs {
     @PostMapping("/addCompany")
     @ResponseBody
     public ResponseEntity<?> addCompany(@RequestBody Company company) { // http://localhost:8080/CouponApp/addCompany
+        System.out.println("Using addCompany function..."); // print to backend
+
         Company res = adminService.addCompany(company);
 
+        //check if company added successfully to the DB
         if (res != null) {
             System.out.println("Company added successfully!"); // print to backend
             System.out.println(company);
@@ -77,6 +81,8 @@ public class AdminClientController extends ClientControllerAbs {
     @PutMapping("/updateCompany/")
     @ResponseBody
     public ResponseEntity<?> updateCompany(@RequestBody Company company) { // http://localhost:8080/CouponApp/updateCompany/
+        System.out.println("Using updateCompany function..."); // print to backend
+
         //check if company exist by id
         if (adminService.findCompanyById(company.getId()) != null) {
             //check if email exist already
@@ -103,6 +109,8 @@ public class AdminClientController extends ClientControllerAbs {
     @DeleteMapping("deleteCompanyById/{id}")
     @ResponseBody
     public ResponseEntity<?> deleteCompanyById(@PathVariable int id) { // http://localhost:8080/CouponApp/deleteCompanyById/{id}
+        System.out.println("Using deleteCompanyById function..."); // print to backend
+
         //check if company exist
         if (adminService.findCompanyById(id) != null) {
             //if company exist - delete it
@@ -111,6 +119,7 @@ public class AdminClientController extends ClientControllerAbs {
             System.out.println();
             ResponseEntity<String> responseWrapper = new ResponseEntity<>("Company & company coupons deleted Successfully! ", HttpStatus.OK); // print to client
             return responseWrapper;
+
         } else {
             ResponseEntity<String> responseWrapper = new ResponseEntity<>("No company exist by this ID: " + id, HttpStatus.BAD_REQUEST); // print to client
             System.out.println("Error, no company exist by this ID: " + id); // print to backend
@@ -123,8 +132,12 @@ public class AdminClientController extends ClientControllerAbs {
     // Get all companies
     @GetMapping("/getAllCompanies") // http://localhost:8080/CouponApp/getAllCompanies
     @ResponseBody
-    public ResponseEntity<?> getAllCompanies() { // we can use <?> too.
+    public ResponseEntity<?> getAllCompanies() {
+        System.out.println("Using getAllCompanies function..."); // print to backend
+
+        ////making a list of all companies
         List<Company> res = adminService.getAllCompanies();
+
         //check if there is companies
         if (!res.isEmpty()) {
             System.out.println("Companies found: " + res.size());
@@ -146,8 +159,11 @@ public class AdminClientController extends ClientControllerAbs {
     // Find company by ID
     @GetMapping("/findCompanyById/{id}")  // http://localhost:8080/CouponApp/findCompanyById/id
     @ResponseBody
-    public ResponseEntity<?> getCompanyById(@PathVariable int id)   {
+    public ResponseEntity<?> getCompanyById(@PathVariable int id) {
+        System.out.println("Using getCompanyById function..."); // print to backend
+
         Company res = adminService.findCompanyById(id);
+
         //check if company exist
         if (res != null) {
             System.out.println("Company from DB by ID: " + id); // print to backend
@@ -168,7 +184,10 @@ public class AdminClientController extends ClientControllerAbs {
     @PostMapping("/addCustomer")
     @ResponseBody
     public ResponseEntity<?> addCustomer(@RequestBody Customer customer) { // http://localhost:8080/CouponApp/addCustomer
+        System.out.println("Using addCustomer function..."); // print to backend
+
         Customer res = adminService.addCustomer(customer);
+
         //check if customer already exist
         if (res != null) {
             System.out.println("Customer added successfully!"); // print to backend
@@ -189,6 +208,8 @@ public class AdminClientController extends ClientControllerAbs {
     @PutMapping("/updateCustomer/{id}")
     @ResponseBody
     public ResponseEntity<?> updateCustomer(@PathVariable Integer id, @RequestBody Customer customer) { // http://localhost:8080/CouponApp/updateCustomer/{id}
+        System.out.println("Using updateCustomer function..."); // print to backend
+
         //check if customer exist
         if (adminService.findCustomerById(id) != null) {
             adminService.updateCustomer(id, customer.getFirstName(), customer.getLastName(), customer.getEmail(), customer.getPassword());
@@ -207,7 +228,9 @@ public class AdminClientController extends ClientControllerAbs {
     // Delete customer by ID
     @DeleteMapping("deleteCustomer/{id}")
     @ResponseBody
-    public ResponseEntity<?> deleteCustomer(@PathVariable int id) throws Exception { // http://localhost:8080/CouponApp/deleteCustomer/{id}
+    public ResponseEntity<?> deleteCustomer(@PathVariable int id) { // http://localhost:8080/CouponApp/deleteCustomer/{id}
+        System.out.println("Using deleteCustomer function..."); // print to backend
+
         //check if customer exist
         if (adminService.findCustomerById(id) != null) {
             adminService.deleteCustomerById(id);
@@ -229,6 +252,9 @@ public class AdminClientController extends ClientControllerAbs {
     @GetMapping("/getAllCustomers") // http://localhost:8080/CouponApp/getAllCustomers
     @ResponseBody
     public ResponseEntity<?> getAllCustomers() {
+        System.out.println("Using getAllCustomers function..."); // print to backend
+
+        //making a list of all customers
         List<Customer> res = adminService.getAllCustomers();
         //check if there is customers
         if (!res.isEmpty()) {
@@ -248,7 +274,9 @@ public class AdminClientController extends ClientControllerAbs {
     // Find customer by ID
     @GetMapping("/findCustomerById/{id}")  // http://localhost:8080/CouponApp/findCustomerById/{id}
     @ResponseBody
-    public ResponseEntity<?> getCustomerById(@PathVariable int id) throws Exception {
+    public ResponseEntity<?> getCustomerById(@PathVariable int id) {
+        System.out.println("Using getCustomerById function..."); // print to backend
+
         Customer res = adminService.findCustomerById(id);
         //check if customer exist
         if (res != null) {
@@ -271,6 +299,9 @@ public class AdminClientController extends ClientControllerAbs {
     @GetMapping("/findAllCouponsByCategory/{category}")
     @ResponseBody
     public ResponseEntity<?> findCouponsByCategory(@PathVariable Category category) { // http://localhost:8080/CouponApp/findAllCouponsByCategory/{category}
+        System.out.println("Using findCouponsByCategory function..."); // print to backend
+
+        //making a list of coupons by category
         List<Coupon> res = adminService.findCouponsByCategory(category);
         //check if coupons exist by category
         if (!res.isEmpty()) {

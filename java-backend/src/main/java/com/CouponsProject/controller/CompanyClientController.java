@@ -27,7 +27,6 @@ import lombok.Data;
 public class CompanyClientController extends ClientControllerAbs {
 
 
-
     //Login Company
     @GetMapping("login/Company/{clientType}/{email}/{password}")
     @ResponseBody
@@ -55,7 +54,6 @@ public class CompanyClientController extends ClientControllerAbs {
     }
 
 
-
     // Add Coupon to company
     @PostMapping("/addCoupon")
     @ResponseBody
@@ -77,7 +75,6 @@ public class CompanyClientController extends ClientControllerAbs {
             return response;
         }
     }
-
 
 
     // Update coupon
@@ -102,7 +99,6 @@ public class CompanyClientController extends ClientControllerAbs {
         ResponseEntity<?> response = new ResponseEntity<>("No coupon exist by this ID: " + coupon.getId(), HttpStatus.BAD_REQUEST);
         return response;
     }
-
 
 
     // Delete coupon
@@ -131,7 +127,6 @@ public class CompanyClientController extends ClientControllerAbs {
     }
 
 
-
     //get all specific company coupons
     @GetMapping("/findCompanyCouponsByCompanyId/{id}")
     @ResponseBody
@@ -158,7 +153,6 @@ public class CompanyClientController extends ClientControllerAbs {
     }
 
 
-
     //get all specific company coupons with category
     @GetMapping("/findCompanyCouponsByCompanyIdAndCategory/{id}/{category}")
     @ResponseBody
@@ -183,7 +177,6 @@ public class CompanyClientController extends ClientControllerAbs {
             return responseWrapper;
         }
     }
-
 
 
     //get all specific company coupons by max price
@@ -213,7 +206,6 @@ public class CompanyClientController extends ClientControllerAbs {
     }
 
 
-
     // Find coupon by ID
     @GetMapping("/findCouponByID/{id}")  // http://localhost:8080/CouponApp/findCouponByID/{id}
     @ResponseBody
@@ -237,7 +229,6 @@ public class CompanyClientController extends ClientControllerAbs {
             return responseWrapper;
         }
     }
-
 
 
     // Get company details

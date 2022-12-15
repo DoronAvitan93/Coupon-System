@@ -23,7 +23,6 @@ import java.util.List;
 public class CustomerClientController extends ClientControllerAbs {
 
 
-
     //Login Customer
     @GetMapping("login/Customer/{clientType}/{email}/{password}")
     @ResponseBody
@@ -52,11 +51,10 @@ public class CustomerClientController extends ClientControllerAbs {
     }
 
 
-
     // Purchase Coupon
     @PostMapping("/purchaseCoupon/{couponID}/{customerID}")
     @ResponseBody
-    public ResponseEntity<?> purchaseCoupon(@PathVariable int couponID, @PathVariable int customerID) throws Exception { // http://localhost:8080/CouponApp/purchaseCoupon/couponID/customerID
+    public ResponseEntity<?> purchaseCoupon(@PathVariable int couponID, @PathVariable int customerID) { // http://localhost:8080/CouponApp/purchaseCoupon/couponID/customerID
         System.out.println("Using purchaseCoupon function..."); // print to backend
 
         //check if coupon exist
@@ -112,11 +110,10 @@ public class CustomerClientController extends ClientControllerAbs {
     }
 
 
-
     //get all customer coupons
     @GetMapping("/findCustomerCoupons/{id}")
     @ResponseBody
-    public ResponseEntity<?> getAllCustomerCoupons(@PathVariable int id) throws Exception { // http://localhost:8080/CouponApp/findCustomerCoupons/{id}
+    public ResponseEntity<?> getAllCustomerCoupons(@PathVariable int id) { // http://localhost:8080/CouponApp/findCustomerCoupons/{id}
         System.out.println("Using getAllCustomerCoupons function..."); // print to backend
 
         Customer resCustomer = customerService.findCustomerById(id);
@@ -150,11 +147,10 @@ public class CustomerClientController extends ClientControllerAbs {
     }
 
 
-
     //get all specific customer coupons with category
     @GetMapping("/findCustomerCouponsByCustomerIdAndCategory/{id}/{category}")
     @ResponseBody
-    public ResponseEntity<?> findCustomerCouponsByCustomerIdAndCategory(@PathVariable int id, @PathVariable Category category) throws Exception { // http://localhost:8080/CouponApp/findCustomerCouponsByCustomerIdAndCategory/{id}/{category}
+    public ResponseEntity<?> findCustomerCouponsByCustomerIdAndCategory(@PathVariable int id, @PathVariable Category category) { // http://localhost:8080/CouponApp/findCustomerCouponsByCustomerIdAndCategory/{id}/{category}
         System.out.println("Using findCustomerCouponsByCustomerIdAndCategory function..."); // print to backend
 
         //making a coupons list by customer id and specific category
@@ -177,11 +173,10 @@ public class CustomerClientController extends ClientControllerAbs {
     }
 
 
-
     //get all customer coupons by max price
     @GetMapping("/findCustomerCouponsWithMaxPrice/{id}/{price}")
     @ResponseBody
-    public ResponseEntity<?> getAllCustomerCouponsWithCategory(@PathVariable int id, @PathVariable int price) throws Exception { // http://localhost:8080/CouponApp/findCustomerCouponsWithMaxPrice/{id}/{price}
+    public ResponseEntity<?> getAllCustomerCouponsWithCategory(@PathVariable int id, @PathVariable int price) { // http://localhost:8080/CouponApp/findCustomerCouponsWithMaxPrice/{id}/{price}
         System.out.println("Using getAllCustomerCouponsWithCategory function..."); // print to backend
 
         //making a coupons list by company id and specific price
@@ -204,11 +199,10 @@ public class CustomerClientController extends ClientControllerAbs {
     }
 
 
-
     // Get customer details
     @GetMapping("/getCustomerDetailsById/{id}")  // http://localhost:8080/CouponApp/getCustomerDetailsById/{id}
     @ResponseBody
-    public ResponseEntity<?> getCompanyById(@PathVariable int id) throws Exception {
+    public ResponseEntity<?> getCompanyById(@PathVariable int id) {
         System.out.println("Using getCompanyById function..."); // print to backend
 
         Customer res = customerService.findCustomerById(id);
