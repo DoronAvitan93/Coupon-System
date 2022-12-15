@@ -30,20 +30,21 @@ const Login: React.FC<Props> = (props: Props) => {
 
 
     const [messageState, setMessageState] = useState<{ title: string, message: string, messageToken?: string }>(null);
+    const [loggedIn, setLoggedIn] = useState(false);
 
     const loginHandler = async (event) => {
         try {
             event.preventDefault()
 
             //check the inputs 
-            if (selectUserTypeRef.current.value === null ||
+            if (selectUserTypeRef.current.value === "Choose client" ||
                 emailRef.current.value.trim().length === 0 ||
                 passwordRef.current.value.trim().length === 0) {
 
-                setMessageState({ title: "Invalid input", message: "Please enter inputs" })
+                setMessageState({ title: "Invalid input", message: "Please enter valid inputs" })
                 return;
             }
-
+            console.log(selectUserTypeRef.current.value)
 
             const response = await fetch("http://localhost:8080/CouponApp/login/" + selectUserTypeRef.current.value + "/" + selectUserTypeRef.current.value + "/" + emailRef.current.value + "/" + passwordRef.current.value)
 
@@ -121,6 +122,8 @@ const Login: React.FC<Props> = (props: Props) => {
             }
 
 
+            setLoggedIn(true);
+
 
             // restart values
             selectUserTypeRef.current.value = ''
@@ -140,10 +143,12 @@ const Login: React.FC<Props> = (props: Props) => {
 
 
     const onMessageConfirmHandler = () => {
+        setMessageState(null);
+    }
+
+    const onMessageLoginConfirm = () => {
         navigate("/home")
         setMessageState(null);
-
-
     }
 
 
@@ -152,11 +157,22 @@ const Login: React.FC<Props> = (props: Props) => {
 
 
             <Card>
-                {messageState &&
+                {/* if logged in successfully - will use onMessageLoginConfirm() to navigate home */}
+                {messageState && loggedIn &&
                     <MessageModal title={messageState.title}
                         message={messageState.message}
                         messageToken={messageState.messageToken}
-                        onConfirm={onMessageConfirmHandler} />}
+                        onConfirm={onMessageLoginConfirm}
+                    />}
+
+                {/* if NOT logged in successfully - will use onMessageConfirmHandler() to try again */}
+                {messageState && !loggedIn &&
+                    <MessageModal title={messageState.title}
+                        message={messageState.message}
+                        messageToken={messageState.messageToken}
+                        onConfirm={onMessageConfirmHandler}
+                    />}
+
 
                 <form onSubmit={loginHandler} >
 
