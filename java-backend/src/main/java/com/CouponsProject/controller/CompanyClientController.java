@@ -59,7 +59,7 @@ public class CompanyClientController extends ClientControllerAbs {
     // Add Coupon to company
     @PostMapping("/addCoupon")
     @ResponseBody
-    public ResponseEntity<?> addCoupon(@RequestBody Coupon coupon) throws Exception { // http://localhost:8080/CouponApp/addCoupon
+    public ResponseEntity<?> addCoupon(@RequestBody Coupon coupon) { // http://localhost:8080/CouponApp/addCoupon
         System.out.println("Using addCoupon function..."); // print to backend
 
         Coupon res = companyService.addCoupon(coupon);
@@ -108,7 +108,7 @@ public class CompanyClientController extends ClientControllerAbs {
     // Delete coupon
     @DeleteMapping("/deleteCouponById/{couponID}/{companyID}")
     @ResponseBody
-    public ResponseEntity<?> deleteCouponById(@PathVariable int couponID, @PathVariable int companyID) throws Exception { // http://localhost:8080/CouponApp/deleteCouponById/{id}
+    public ResponseEntity<?> deleteCouponById(@PathVariable int couponID, @PathVariable int companyID) { // http://localhost:8080/CouponApp/deleteCouponById/{id}
         System.out.println("Using deleteCouponById function..."); // print to backend
 
         //check if coupon exist before trying to delete it
@@ -135,7 +135,7 @@ public class CompanyClientController extends ClientControllerAbs {
     //get all specific company coupons
     @GetMapping("/findCompanyCouponsByCompanyId/{id}")
     @ResponseBody
-    public ResponseEntity<?> getAllCompanyCoupons(@PathVariable int id) throws Exception { // http://localhost:8080/CouponApp/findCompanyCouponsByCompanyId/{id}
+    public ResponseEntity<?> getAllCompanyCoupons(@PathVariable int id) { // http://localhost:8080/CouponApp/findCompanyCouponsByCompanyId/{id}
         System.out.println("Using getAllCompanyCoupons function..."); // print to backend
 
         //making a coupons list by company id
@@ -162,7 +162,7 @@ public class CompanyClientController extends ClientControllerAbs {
     //get all specific company coupons with category
     @GetMapping("/findCompanyCouponsByCompanyIdAndCategory/{id}/{category}")
     @ResponseBody
-    public ResponseEntity<?> findCompanyCouponsByCompanyIdAndCategory(@PathVariable int id, @PathVariable Category category) throws Exception { // http://localhost:8080/CouponApp/findCompanyCouponsByCompanyIdAndCategory/{id}/{category}
+    public ResponseEntity<?> findCompanyCouponsByCompanyIdAndCategory(@PathVariable int id, @PathVariable Category category) { // http://localhost:8080/CouponApp/findCompanyCouponsByCompanyIdAndCategory/{id}/{category}
         System.out.println("Using findCompanyCouponsByCompanyIdAndCategory function..."); // print to backend
 
         //making a coupons list by company id and specific category
@@ -189,7 +189,7 @@ public class CompanyClientController extends ClientControllerAbs {
     //get all specific company coupons by max price
     @GetMapping("/findCompanyCouponsByCompanyIdAndMaxPrice/{id}/{price}") //
     @ResponseBody
-    public ResponseEntity<?> findCompanyCouponsByCompanyIdAndMaxPrice(@PathVariable int id, @PathVariable double price) throws Exception { // http://localhost:8080/CouponApp/findCompanyCouponsByCompanyIdAndMaxPrice/{id}/{price}
+    public ResponseEntity<?> findCompanyCouponsByCompanyIdAndMaxPrice(@PathVariable int id, @PathVariable double price) { // http://localhost:8080/CouponApp/findCompanyCouponsByCompanyIdAndMaxPrice/{id}/{price}
         System.out.println("Using findCompanyCouponsByCompanyIdAndMaxPrice function..."); // print to backend
 
         //making a coupons list by company id and specific price
@@ -217,7 +217,7 @@ public class CompanyClientController extends ClientControllerAbs {
     // Find coupon by ID
     @GetMapping("/findCouponByID/{id}")  // http://localhost:8080/CouponApp/findCouponByID/{id}
     @ResponseBody
-    public ResponseEntity<?> getCouponById(@PathVariable int id) throws Exception {
+    public ResponseEntity<?> getCouponById(@PathVariable int id) {
         System.out.println("Using getCouponById function..."); // print to backend
 
         Coupon res = companyService.findCouponById(id);
@@ -243,7 +243,7 @@ public class CompanyClientController extends ClientControllerAbs {
     // Get company details
     @GetMapping("/getCompanyDetailsById/{id}")  // http://localhost:8080/CouponApp/getCompanyDetailsById/{id}
     @ResponseBody
-    public ResponseEntity<?> getCompanyById(@PathVariable int id) throws Exception {
+    public ResponseEntity<?> getCompanyById(@PathVariable int id) {
         System.out.println("Using getCompanyById function..."); // print to backend
 
         Company res = companyService.getCompanyById(id);
