@@ -14,13 +14,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 // userName = admin@admin
 // userPassword = admin
 
-//Company login:
-//companyEmail = EmailComp(number 1 - 9)
-//companyPassword = PasswordComp(number given at Email)
-
-//Customer login:
-//customerEmail = EmailCus(number 1 - 9)
-//customerPassword = PasswordCus(number given at Email)
 
 @SpringBootApplication
 public class Application {
