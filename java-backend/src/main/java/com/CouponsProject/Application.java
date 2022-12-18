@@ -29,14 +29,12 @@ public class Application {
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
         Test test = ctx.getBean(Test.class);
+        //Thread that check the expiration of the coupons every 1h
+        DailyJobExpirationCoupons dailyJobExpirationCoupons = ctx.getBean(DailyJobExpirationCoupons.class);
 
         System.out.println();
         System.out.println("Spring boot is ON!");
         System.out.println();
-
-
-        //Thread that check the expiration of the coupons every 1h
-        DailyJobExpirationCoupons dailyJobExpirationCoupons = ctx.getBean(DailyJobExpirationCoupons.class);
 
 
         //Daily job for expired coupons
@@ -50,7 +48,5 @@ public class Application {
 //        } catch (Exception e) {
 //            System.out.println(e);
 //        }
-
-
     }
 }
