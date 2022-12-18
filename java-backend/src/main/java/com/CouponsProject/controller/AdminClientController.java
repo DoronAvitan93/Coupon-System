@@ -40,7 +40,7 @@ public class AdminClientController extends ClientControllerAbs {
         if (adminID == 19584413 && clientType == ClientType.Administrator) {
             System.out.println("Admin Logged Successfully"); // print to backend
             System.out.println();
-            ResponseEntity<?> responseWrapper = new ResponseEntity<>("Admin Logged Successfully", HttpStatus.OK); // print to client
+            ResponseEntity<?> responseWrapper = new ResponseEntity<>(adminID, HttpStatus.OK); // print to client
             return responseWrapper;
 
         } else {
