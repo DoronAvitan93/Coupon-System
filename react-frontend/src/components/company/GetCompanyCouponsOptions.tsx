@@ -6,8 +6,8 @@ import GetAllCompanyCoupons from './GetAllCompanyCoupons';
 import GetCompanyCouponsByPrice from './GetCompanyCouponsByPrice';
 import GetCompnayCouponsCategory from './GetCompanyCouponsCategory';
 import './Company.css'
-import Card from '../UI/Card';
 import Button from '../UI/Button';
+import Card from '../UI/Card';
 
 
 
@@ -15,6 +15,7 @@ const GetCompanyCouponsOptions = () => {
 
 
     const [categoryCouponState, setCategoryCouponState] = useState(null);
+    const [isShowCouponsCategory, setIsShowCouponsCategory] = useState(false);
 
     const [priceState, setPriceState] = useState(0);
     const [isShowCouponsPrice, setIsShowCouponsPrice] = useState(false);
@@ -32,14 +33,16 @@ const GetCompanyCouponsOptions = () => {
     const selectGetByOptionCouponsHandler = (event) => {
         setGetCouponsByOption(event.target.value)
         console.log(event.target.value)
+        setIsShowCouponsCategory(false)
+        setIsShowCouponsPrice(false)
 
     }
 
 
     const onChangeSelect = (event) => {
-        event.preventDefault();
-        console.log(event.target.value)
+
         setCategoryCouponState(event.target.value)
+        setIsShowCouponsCategory(true)
     }
 
 
@@ -56,13 +59,13 @@ const GetCompanyCouponsOptions = () => {
 
     return (
         <Fragment>
+
+            {messageState &&
+                <MessageModal title={messageState.title}
+                    message={messageState.message}
+                    onConfirm={onMessageConfirmHandler} />}
+
             <Card>
-                {messageState &&
-                    <MessageModal title={messageState.title}
-                        message={messageState.message}
-                        onConfirm={onMessageConfirmHandler} />}
-
-
                 <label className='label'>Show Company Coupons By:</label>
                 <select className='input__select' onChange={selectGetByOptionCouponsHandler} >
                     <option selected hidden>Choose option</option>
@@ -72,21 +75,16 @@ const GetCompanyCouponsOptions = () => {
                 </select>
                 <br />
 
-                {getCouponsByOption === "all" && <GetAllCompanyCoupons />}
-
                 {getCouponsByOption === "category" &&
-                    <>
-                        <label className='label'>Coupon category </label>
-                        <select className='input__select' onChange={onChangeSelect} >
-                            <option selected hidden>Choose Category</option>
-                            <option value="FOOD">Food</option>
-                            <option value="ELECTRICITY">Electricity</option>
-                            <option value="RESTAURANT">Restaurant</option>
-                            <option value="VACATION">Vacation</option>
-                        </select>
-                        <br />
-                        {categoryCouponState !== null && <GetCompnayCouponsCategory categoryCoupon={categoryCouponState} />}
-                    </>
+
+                    <><label className='label'>Coupon category </label><select className='input__select' onChange={onChangeSelect}>
+                        <option selected hidden>Choose Category</option>
+                        <option value="FOOD">Food</option>
+                        <option value="ELECTRICITY">Electricity</option>
+                        <option value="RESTAURANT">Restaurant</option>
+                        <option value="VACATION">Vacation</option>
+                    </select><br /></>
+
                 }
 
                 {getCouponsByOption === "price" &&
@@ -97,11 +95,20 @@ const GetCompanyCouponsOptions = () => {
                         <Button onClick={onClickToIsShow}>Get Coupon!</Button>
                         <br />
 
-                        {isShowCouponsPrice && <GetCompanyCouponsByPrice priceState={priceState} />}
+
                     </>
                 }
             </Card>
-        </Fragment>
+
+            {getCouponsByOption === "all" && <GetAllCompanyCoupons />}
+
+            {categoryCouponState && isShowCouponsCategory && < GetCompnayCouponsCategory categoryCoupon={categoryCouponState} />}
+
+            {isShowCouponsPrice && <GetCompanyCouponsByPrice priceState={priceState} />}
+
+
+
+        </Fragment >
     )
 }
 

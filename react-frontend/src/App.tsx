@@ -14,9 +14,10 @@ const App = () => {
   return (
     <Fragment >
       <RefreshHandler />
-      <Footer />
+      
       <MainHeader />
       <Routing />
+      <Footer />
     </Fragment>
   );
 }

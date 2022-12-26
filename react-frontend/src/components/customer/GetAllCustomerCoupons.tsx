@@ -99,53 +99,46 @@ const GetAllCustomerCoupons = () => {
 
             {customerCoupons != null &&
 
-                < Box
-                    sx={{
-                        height: 'auto',
-                        width: '100%'
-                    }
-                    }>
-
-                    <Typography
-                        variant='h3'
-                        component='h3'
-                        sx={{ textAlign: 'center', mt: 3, mb: 3 }}
+                <div className='card'>
+                    < Box
+                        sx={{
+                            height: 'auto',
+                            width: '100%'
+                        }
+                        }>
 
 
-                    >
-                        <h3>All Coupons</h3>
-                    </Typography>
 
+                        {customerCoupons != null &&
+                            <><h4>All Coupons</h4><DataGrid
+                                autoHeight
 
-                    {customerCoupons != null &&
+                                showCellRightBorder
+                                showColumnRightBorder
+                                disableSelectionOnClick
+                                disableExtendRowFullWidth
 
-                        <DataGrid
-                            autoHeight
+                                columns={columns}
+                                rows={customerCoupons}
+                                getRowId={row => row.id}
+                                rowsPerPageOptions={[10, 20, 30]}
+                                pageSize={pageSize}
+                                onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+                                getRowSpacing={params => ({
+                                    top: params.isFirstVisible ? 0 : 5,
+                                    bottom: params.isLastVisible ? 0 : 5,
+                                })}
+                                sx={{
+                                    "& .MuiDataGrid-row:hover": {
+                                        backgroundColor: red[100],
+                                    },
+                                    backgroundColor: '#ffe5e5',
+                                    borderRadius: '15px'
+                                }} /></>
+                        }
+                    </Box >
+                </div>
 
-                            showCellRightBorder
-                            showColumnRightBorder
-                            disableSelectionOnClick
-                            disableExtendRowFullWidth
-
-                            columns={columns}
-                            rows={customerCoupons}
-                            getRowId={row => row.id}
-                            rowsPerPageOptions={[10, 20, 30]}
-                            pageSize={pageSize}
-                            onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-                            getRowSpacing={params => ({
-                                top: params.isFirstVisible ? 0 : 5,
-                                bottom: params.isLastVisible ? 0 : 5,
-                            })}
-                            sx={{
-                                "& .MuiDataGrid-row:hover": {
-                                    backgroundColor: red[100],
-                                },
-                                backgroundColor: '#ffe5e5',
-                            }}
-                        />
-                    }
-                </Box >
             }
         </Fragment>
     )

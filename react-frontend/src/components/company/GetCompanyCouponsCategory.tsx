@@ -108,50 +108,43 @@ const GetCompnayCouponsCategory: React.FC<Props> = (props: Props) => {
                     message={messageState.message}
                     onConfirm={onMessageConfirmHandler} />}
 
-            < Box
-                sx={{
-                    height: 'auto',
-                    width: 'auto',
-                }
-                }>
-
-                <Typography
-                    variant='h3'
-                    component='h3'
-                    sx={{ textAlign: 'center', mt: 3, mb: 3 }}
-                >
-                    Coupons By Category: {props.categoryCoupon.toLocaleLowerCase()}
-                </Typography>
+            <div className='card'>
+                < Box
+                    sx={{
+                        height: 'auto',
+                        width: 'auto',
+                    }
+                    }>
 
 
-                {companiesCoupons != null &&
 
-                    <DataGrid
-                        autoHeight
-                        showCellRightBorder
-                        showColumnRightBorder
-                        disableSelectionOnClick
-                        disableExtendRowFullWidth
-                        columns={columns}
-                        rows={companiesCoupons}
-                        getRowId={row => row.id}
-                        rowsPerPageOptions={[10, 20, 30]}
-                        pageSize={pageSize}
-                        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-                        getRowSpacing={params => ({
-                            top: params.isFirstVisible ? 0 : 5,
-                            bottom: params.isLastVisible ? 0 : 5,
-                        })}
-                        sx={{
-                            "& .MuiDataGrid-row:hover": {
-                                backgroundColor: red[100],
-                            },
-                            backgroundColor: '#ffe5e5',
-                        }}
-                    />
-                }
-            </Box >
-
+                    {companiesCoupons != null &&
+                        <><h4>  Coupons by category: {props.categoryCoupon.toLocaleLowerCase()}</h4><DataGrid
+                            autoHeight
+                            showCellRightBorder
+                            showColumnRightBorder
+                            disableSelectionOnClick
+                            disableExtendRowFullWidth
+                            columns={columns}
+                            rows={companiesCoupons}
+                            getRowId={row => row.id}
+                            rowsPerPageOptions={[10, 20, 30]}
+                            pageSize={pageSize}
+                            onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+                            getRowSpacing={params => ({
+                                top: params.isFirstVisible ? 0 : 5,
+                                bottom: params.isLastVisible ? 0 : 5,
+                            })}
+                            sx={{
+                                "& .MuiDataGrid-row:hover": {
+                                    backgroundColor: red[100],
+                                },
+                                backgroundColor: '#ffe5e5',
+                                borderRadius: '15px'
+                            }} /></>
+                    }
+                </Box >
+            </div>
         </Fragment>
     )
 }

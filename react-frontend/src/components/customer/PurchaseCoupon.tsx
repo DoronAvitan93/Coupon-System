@@ -5,6 +5,7 @@ import { useState, Fragment, useEffect, useMemo } from "react";
 import MessageModal from "../UI/MessageModal";
 import CustomerAction from './CustomerAction';
 import './Customer.css'
+import Card from '../UI/Card';
 
 
 const PurchaseCoupon = () => {
@@ -24,7 +25,7 @@ const PurchaseCoupon = () => {
                 </Tooltip>)
         },
 
-        { field: 'category', headerName: 'Category', width: 80, flex: 0.4 },
+        { field: 'category'.toLowerCase(), headerName: 'Category', width: 80, flex: 0.4 },
         { field: 'price', headerName: 'Price', width: 60, flex: 0.3 },
         { field: 'amount', headerName: 'Amount', width: 60, flex: 0.3 },
         { field: 'startDate', headerName: 'Start Date', width: 60, flex: 0.6 },
@@ -115,13 +116,13 @@ const PurchaseCoupon = () => {
 
     return (
         <Fragment>
-            <div className='card'>
-                {messageState &&
-                    <MessageModal title={messageState.title}
-                        message={messageState.message}
-                        onConfirm={onMessageConfirmHandler} />}
 
+            {messageState &&
+                <MessageModal title={messageState.title}
+                    message={messageState.message}
+                    onConfirm={onMessageConfirmHandler} />}
 
+            <Card>
                 <label className='label'>Coupon category </label>
                 <select className='input__select' defaultValue={null} onChange={onChangeSelectHandler} >
                     <option hidden>Choose Category</option>
@@ -131,7 +132,9 @@ const PurchaseCoupon = () => {
                     <option value="VACATION">Vacation</option>
                 </select>
                 <br />
+            </Card>
 
+            <div className='card'>
                 < Box
                     sx={{
                         height: 'auto',
@@ -139,17 +142,7 @@ const PurchaseCoupon = () => {
                     }
                     }>
 
-                    <Typography
-                        variant='h3'
-                        component='h3'
-                        sx={{ textAlign: 'center', mt: 3, mb: 3 }}
-                    >
-                        Coupons By Category:
-                    </Typography>
-
-
                     {coupons != null &&
-
                         <DataGrid
                             autoHeight
                             showCellRightBorder
@@ -171,9 +164,9 @@ const PurchaseCoupon = () => {
                                     backgroundColor: red[100],
                                 },
                                 backgroundColor: '#ffe5e5',
+                                borderRadius: '15px'
                             }}
-                            onRowClick={params => setRowId(params.id)}
-                        />
+                            onRowClick={params => setRowId(params.id)} />
                     }
                 </Box >
             </div>

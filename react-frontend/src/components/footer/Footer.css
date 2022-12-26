@@ -1,9 +1,14 @@
 .footer {
-  width: auto;
-  height: 95px;
+
   position: fixed;
   bottom: 0;
   width: 100%;
+  flex: 0 0 50px;
+  margin-top:auto;
+  height: 95px;
+
+
+
 
 
   background: rgba(0, 0, 0, 0.76);

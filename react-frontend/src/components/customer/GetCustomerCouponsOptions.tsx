@@ -6,7 +6,7 @@ import GetAllCustomerCoupons from './GetAllCustomerCoupons';
 import GetCustomerCouponsByCategory from './GetCustomerCouponsByCategory';
 import GetCustomerCouponsByPrice from './GetCustomerCouponsByPrice';
 import './Customer.css'
-
+import Card from '../UI/Card';
 
 
 
@@ -62,8 +62,7 @@ const GetCustomerCouponsOptions = () => {
                     message={messageState.message}
                     onConfirm={onMessageConfirmHandler} />}
 
-            <div className='card'>
-
+            <Card>
                 <label className='label'>Show coupons by:</label>
                 <select className='input__select' onChange={selectGetByOptionCouponsHandler} >
                     <option selected hidden>Choose option</option>
@@ -74,8 +73,6 @@ const GetCustomerCouponsOptions = () => {
                 <br />
 
 
-
-                {getCouponsByOption === "all" && <GetAllCustomerCoupons />}
 
                 {getCouponsByOption === "category" &&
                     <>
@@ -88,7 +85,7 @@ const GetCustomerCouponsOptions = () => {
                             <option value="VACATION">Vacation</option>
                         </select>
                         <br />
-                        {categoryCouponState !== null && <GetCustomerCouponsByCategory categoryCoupon={categoryCouponState} />}
+
                     </>
                 }
 
@@ -100,12 +97,19 @@ const GetCustomerCouponsOptions = () => {
                         <Button onClick={onClickToIsShow}>Get Coupon!</Button>
                         <br />
 
-                        {isShowCouponsPrice && <GetCustomerCouponsByPrice priceState={priceState} />}
+
                     </>
                 }
+            </Card>
 
-            </div>
-        </Fragment>
+            {getCouponsByOption === "all" && <GetAllCustomerCoupons />}
+
+            {categoryCouponState !== null && <GetCustomerCouponsByCategory categoryCoupon={categoryCouponState} />}
+
+            {isShowCouponsPrice && <GetCustomerCouponsByPrice priceState={priceState} />}
+
+
+        </Fragment >
     )
 }
 

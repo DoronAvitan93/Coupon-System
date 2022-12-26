@@ -25,7 +25,7 @@ const Home: React.FC<Props> = (props) => {
 
 
     const dispatch = useDispatch()
-    
+
 
 
     useEffect(() => {
@@ -143,17 +143,16 @@ const Home: React.FC<Props> = (props) => {
                     {isAuth && isAuthType === "Customer" &&
                         <><ul>
                             <li>
-                                <NavLink to='/GetCustomerDetails'>Customer Details</NavLink>
+                                <NavLink to='/PurchaseCoupon'>Purchase Coupon</NavLink>
                             </li>
 
                             <li>
-                                <NavLink to='/PurchaseCoupon'>Purchase Coupon</NavLink>
+                                <NavLink to='/GetCustomerDetails'>Customer Details</NavLink>
                             </li>
 
                             <li>
                                 <NavLink to='/GetCustomerCouponOptions'>Get Customer Coupons</NavLink>
                             </li>
-
                         </ul></>
                     }
                 </NavGeneral>

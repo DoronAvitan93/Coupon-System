@@ -9,7 +9,13 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5%;
   margin: 0;
+
+ 
+
   background-color: #e7dede;
   text-align: center;
   background-image: url("./couponsImageBG.jpg");

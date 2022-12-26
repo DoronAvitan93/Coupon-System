@@ -148,7 +148,7 @@ const GetOneCustomer = () => {
 
     return (
         <Fragment>
-            <Card>
+            <div className='card'>
                 {messageState &&
                     <MessageModal title={messageState.title}
                         message={messageState.message}
@@ -209,10 +209,11 @@ const GetOneCustomer = () => {
                                     showColumnRightBorder
                                     disableExtendRowFullWidth
                                     disableSelectionOnClick
+                                    disableColumnFilter
                                     columns={couponsColumns}
                                     rows={customerCoupons}
                                     getRowId={row => row.id}
-                                    // rowsPerPageOptions={[10,20.30]}
+                                    rowsPerPageOptions={[10,20.30]}
                                     pageSize={pageSize}
                                     onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
                                     getRowSpacing={params => ({
@@ -224,11 +225,12 @@ const GetOneCustomer = () => {
                                             backgroundColor: red[100],
                                         },
                                         backgroundColor: '#ffe5e5',
+                                        borderRadius: '15px'
                                     }} /></>
                         }
                     </Box >
                 }
-            </Card>
+            </div>
         </Fragment>
 
     )

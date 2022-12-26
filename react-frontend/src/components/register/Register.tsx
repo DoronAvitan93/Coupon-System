@@ -12,6 +12,7 @@ const Register = (props) => {
 
     //user client type: Customer / Client
     const selectUserTypeRef = useRef<HTMLSelectElement>(); //register clientType
+    const [isShown, setIsShown] = useState(false);
 
     const nameRef = useRef<HTMLInputElement>(); //register name
     const lastNameRef = useRef<HTMLInputElement>();//register lastName
@@ -22,8 +23,10 @@ const Register = (props) => {
     const [messageState, setMessageState] = useState<{ title: string, message: string }>(null);
     const [selectUserTypeUseState, setselectUserTypeUseState] = useState("Customer")
 
+
     const selectedUserTypeOnChangeHandler = (event) => {
         setselectUserTypeUseState(event.target.value)
+        setIsShown(true);
     }
 
 
@@ -124,6 +127,12 @@ const Register = (props) => {
         navigate("/home")
     }
 
+    const isShownHandler = () => {
+        setIsShown(true)
+    }
+
+
+
 
 
 
@@ -138,26 +147,32 @@ const Register = (props) => {
                 <form onSubmit={registerCompany}>
                     <label className='label'>Client Type</label>
                     <select className='input__select' onChange={selectedUserTypeOnChangeHandler} ref={selectUserTypeRef}>
-                        <option hidden>Choose client</option>
-                        <option value="Customer">Customer</option>
+                        <option hidden >Choose client</option>
+
                         <option value="Company">Company</option>
+                        <option value="Customer">Customer</option>
                     </select>
                     <br />
 
                     {selectUserTypeUseState === "Company" &&
-                        <><label className='label'>Company name</label>
+                        <>
+                            <label className='label'>Company name</label>
                             <input className='input' type="text" ref={nameRef} />
-                            <br /></>}
+                            <br />
+                        </>
+                    }
 
-                    {selectUserTypeUseState === "Customer" &&
-                        <><label className='label'>First name</label>
-                            <input className='input' type="text" ref={nameRef} />
-                            <br /></>}
+                    {selectUserTypeUseState === "Customer" && isShown &&
+                        <>
+                            <label className='label'>First name</label><input className='input' type="text" ref={nameRef} />
+                            <br />
 
-                    {selectUserTypeUseState === "Customer" &&
-                        <><label className='label'>Last Name</label>
-                            <input className='input' type="text" ref={lastNameRef} />
-                            <br /></>}
+                            <label className='label'>Last Name</label><input className='input' type="text" ref={lastNameRef} />
+                            <br />
+                        </>
+                    }
+
+
 
                     <label className='label'>E-Mail</label>
                     <input className='input' type="email" ref={emailRef} />

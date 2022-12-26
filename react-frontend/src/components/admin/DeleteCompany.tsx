@@ -86,8 +86,6 @@ const DeleteCompany = () => {
                     </div>
                 </form>
             </Card>
-
-
         </Fragment>
     )
 }

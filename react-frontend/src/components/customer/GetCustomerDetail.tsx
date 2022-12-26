@@ -1,4 +1,6 @@
-
+import { Box } from '@mui/material';
+import { red } from '@mui/material/colors';
+import { DataGrid } from '@mui/x-data-grid';
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reduxIndex';
@@ -20,7 +22,7 @@ const GetCustomerDetails = () => {
     //Data Grid
     const [pageSize, setPageSize] = useState(10)
 
-    const columns = useMemo(() => [
+    const customerColumns = useMemo(() => [
         { field: 'id', headerName: 'ID', width: 35 },
         { field: 'firstName', headerName: 'First Name', width: 120, flex: 1 },
         { field: 'lastName', headerName: 'Last Name', width: 120, flex: 1 },
@@ -67,25 +69,51 @@ const GetCustomerDetails = () => {
 
     return (
         <Fragment>
-            <Card>
-                {messageState &&
-                    <MessageModal title={messageState.title}
-                        message={messageState.message}
-                        onConfirm={onMessageConfirmHandler} />}
+            {messageState &&
+                <MessageModal title={messageState.title}
+                    message={messageState.message}
+                    onConfirm={onMessageConfirmHandler} />}
 
-                {customerDetails != null &&
-                    <ul className='list'>
-                        <li>
-                            <h1>Customer details:</h1>
-                            <h3>Customer ID: {customerDetails.id}</h3>
-                            <h3>First Name: {customerDetails.firstName}</h3>
-                            <h3>Last Name: {customerDetails.lastName}</h3>
-                            <h3>E-Mail: {customerDetails.email}</h3>
-                            <h3>Password: {customerDetails.password}</h3>
-                            <br />
-                        </li>
-                    </ul >}
-            </Card>
+            {customerDetails &&
+                <div className='card'>
+                    <Box
+                        sx={{
+                            height: 'auto',
+                            width: 'auto',
+                        }
+                        }>
+
+                        <h4>Customer details</h4>
+
+                        <DataGrid
+                            autoHeight
+                            showCellRightBorder
+                            showColumnRightBorder
+                            disableExtendRowFullWidth
+                            disableSelectionOnClick
+                            columns={customerColumns}
+                            rows={customerDetails}
+                            getRowId={row => row.id}
+                            // rowsPerPageOptions={[10,20.30]}
+                            pageSize={pageSize}
+                            onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+                            getRowSpacing={params => ({
+                                top: params.isFirstVisible ? 0 : 5,
+                                bottom: params.isLastVisible ? 0 : 5,
+                            })}
+                            sx={{
+                                "& .MuiDataGrid-row:hover": {
+                                    backgroundColor: red[100],
+                                },
+                                backgroundColor: '#ffe5e5',
+                                borderRadius: '15px'
+                            }} />
+
+                        <br />
+
+                    </Box >
+                </div>
+            }
         </Fragment >
     )
 }

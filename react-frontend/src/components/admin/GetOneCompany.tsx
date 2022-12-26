@@ -1,8 +1,9 @@
 import { Box, Tooltip } from '@mui/material';
 import { red } from '@mui/material/colors';
 import { DataGrid, GridCellParams } from '@mui/x-data-grid';
-import { useMemo, useRef, useState } from 'react';
+import { Fragment, useMemo, useRef, useState } from 'react';
 import Button from '../UI/Button';
+import Card from '../UI/Card';
 import MessageModal from '../UI/MessageModal';
 import './Admin.css'
 
@@ -149,67 +150,42 @@ const GetOneCompany = () => {
 
 
     return (
-        <div className='card'>
-            {
-                messageState &&
+        <Fragment>
+            {messageState &&
                 <MessageModal title={messageState.title}
                     message={messageState.message}
                     onConfirm={onMessageConfirmHandler} />
             }
 
-
-            <form onSubmit={getCompanyHandler}>
-                <label className='label'>Company ID</label>
-                <input className='input' type="number" ref={companyIdRef} />
-                <br />
-                <Button type="submit">Get Company</Button>
-            </form>
+            <Card>
+                <form onSubmit={getCompanyHandler}>
+                    <label className='label'>Company ID</label>
+                    <input className='input' type="number" ref={companyIdRef} />
+                    <br />
+                    <Button type="submit">Get Company</Button>
+                </form>
+            </Card>
 
 
             {company &&
-                <Box
-                    sx={{
-                        height: 'auto',
-                        width: 'auto',
-                    }
-                    }>
-
-                    <h4>Company by ID</h4>
-
-                    <DataGrid
-                        autoHeight
-                        showCellRightBorder
-                        showColumnRightBorder
-                        disableExtendRowFullWidth
-                        disableSelectionOnClick
-                        columns={companyColumns}
-                        rows={company}
-                        getRowId={row => row.id}
-                        // rowsPerPageOptions={[10,20.30]}
-                        pageSize={pageSize}
-                        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-                        getRowSpacing={params => ({
-                            top: params.isFirstVisible ? 0 : 5,
-                            bottom: params.isLastVisible ? 0 : 5,
-                        })}
+                <div className='card'>
+                    <Box
                         sx={{
-                            "& .MuiDataGrid-row:hover": {
-                                backgroundColor: red[100],
-                            },
-                            backgroundColor: '#ffe5e5',
-                        }} />
+                            height: 'auto',
+                            width: 'auto',
+                        }
+                        }>
 
-                    <br />
+                        <h4>Company by ID</h4>
 
-                    {companiesCoupons &&
-                        <><h4>Company coupons</h4><DataGrid
+                        <DataGrid
                             autoHeight
                             showCellRightBorder
                             showColumnRightBorder
                             disableExtendRowFullWidth
                             disableSelectionOnClick
-                            columns={couponsColumns}
-                            rows={companiesCoupons}
+                            columns={companyColumns}
+                            rows={company}
                             getRowId={row => row.id}
                             // rowsPerPageOptions={[10,20.30]}
                             pageSize={pageSize}
@@ -223,11 +199,39 @@ const GetOneCompany = () => {
                                     backgroundColor: red[100],
                                 },
                                 backgroundColor: '#ffe5e5',
-                            }} /></>
-                    }
-                </Box >
+                            }} />
+
+                        <br />
+
+                        {companiesCoupons &&
+                            <><h4>Company coupons</h4><DataGrid
+                                autoHeight
+                                showCellRightBorder
+                                showColumnRightBorder
+                                disableExtendRowFullWidth
+                                disableSelectionOnClick
+                                columns={couponsColumns}
+                                rows={companiesCoupons}
+                                getRowId={row => row.id}
+                                // rowsPerPageOptions={[10,20.30]}
+                                pageSize={pageSize}
+                                onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+                                getRowSpacing={params => ({
+                                    top: params.isFirstVisible ? 0 : 5,
+                                    bottom: params.isLastVisible ? 0 : 5,
+                                })}
+                                sx={{
+                                    "& .MuiDataGrid-row:hover": {
+                                        backgroundColor: red[100],
+                                    },
+                                    backgroundColor: '#ffe5e5',
+                                    borderRadius: '15px'
+                                }} /></>
+                        }
+                    </Box >
+                </div>
             }
-        </div>
+        </Fragment>
     )
 }
 

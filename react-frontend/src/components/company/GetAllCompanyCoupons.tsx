@@ -94,8 +94,8 @@ const GetAllCompanyCoupons = () => {
 
 
     return (
-        <Fragment>
 
+        <div className='card'>
             < Box
                 sx={{
                     height: 'auto',
@@ -129,6 +129,7 @@ const GetAllCompanyCoupons = () => {
                                 backgroundColor: red[100],
                             },
                             backgroundColor: '#ffe5e5',
+                            borderRadius: '15px'
                         }}
                     />
                 }
@@ -138,8 +139,10 @@ const GetAllCompanyCoupons = () => {
                 <MessageModal title={messageState.title}
                     message={messageState.message}
                     onConfirm={onMessageConfirmHandler} />}
+        </div>
 
-        </Fragment>
+
+
     )
 }
 

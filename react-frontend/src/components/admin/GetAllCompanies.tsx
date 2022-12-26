@@ -72,8 +72,7 @@ const GetAllCompanies = () => {
 
     return (
         <Fragment>
-            <Card>
-
+            <div className='card'>
                 {messageState &&
                     <MessageModal title={messageState.title}
                         message={messageState.message}
@@ -112,13 +111,12 @@ const GetAllCompanies = () => {
                                     backgroundColor: red[100],
                                 },
                                 backgroundColor: '#ffe5e5',
+                                borderRadius: '15px'
                             }}
                         />
                     }
                 </Box >
-
-
-            </Card>
+            </div>
         </Fragment>
     )
 }

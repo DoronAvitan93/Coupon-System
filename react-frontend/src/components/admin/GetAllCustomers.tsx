@@ -73,25 +73,24 @@ const GetAllCustomers = () => {
 
     return (
         <Fragment>
-            <Card>
-                {messageState &&
-                    <MessageModal title={messageState.title}
-                        message={messageState.message}
-                        onConfirm={onMessageConfirmHandler} />}
+
+            {messageState &&
+                <MessageModal title={messageState.title}
+                    message={messageState.message}
+                    onConfirm={onMessageConfirmHandler} />}
 
 
 
-                < Box
-                    sx={{
-                        height: 'auto',
-                        width: 'auto',
-                    }
-                    }>
+            < Box
+                sx={{
+                    height: 'auto',
+                    width: 'auto',
+                }
+                }>
 
-                    <h4>All Customers</h4>
-
-                    {customers != null &&
-
+                {customers != null &&
+                    <div className='card'>
+                        <h4>All Customers</h4>
                         <DataGrid
                             autoHeight
                             showCellRightBorder
@@ -113,11 +112,12 @@ const GetAllCustomers = () => {
                                     backgroundColor: red[100],
                                 },
                                 backgroundColor: '#ffe5e5',
+                                borderRadius: '15px'
                             }}
                         />
-                    }
-                </Box >
-            </Card>
+                    </div>
+                }
+            </Box >
         </Fragment>
     )
 }

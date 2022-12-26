@@ -9,13 +9,7 @@ import './Company.css'
 
 
 
-
-type Props = {
-
-}
-
-
-const UpdateCoupon = (props) => {
+const UpdateCoupon = () => {
 
     const companyIdFromLogin = useSelector<RootState>(state => state.authRedux.companyIdAfterLogin);
 
@@ -136,13 +130,14 @@ const UpdateCoupon = (props) => {
                     <label className='label'>Coupon ID </label>
                     <input className='input' type="number" ref={couponIdRef} />
                     <br />
+                    <br />
 
                     <label className='label'>New title </label>
                     <input className='input' type="text" ref={titleRef} />
                     <br />
 
                     <label className='label'>New category </label>
-                    <select className='input__ClientType' ref={categoryRef}>
+                    <select className='input__select' ref={categoryRef}>
                         <option hidden>Choose category</option>
                         <option value="FOOD">Food</option>
                         <option value="ELECTRICITY">Electricity</option>
