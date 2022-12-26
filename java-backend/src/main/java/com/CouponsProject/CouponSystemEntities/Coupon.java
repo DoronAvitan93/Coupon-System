@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode(of = "id")
 @Entity(name = "coupon")
 @Builder
+@JsonIgnoreProperties(value = {"company"})
 public class Coupon {
 
     @Id
@@ -58,7 +59,6 @@ public class Coupon {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "companyID")
     @JsonSerialize
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "couponsList"})
     private Company company;
 
 

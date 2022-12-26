@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
@@ -88,18 +89,18 @@ public class AdminClientController extends ClientControllerAbs {
             //check if email exist already
             if (adminService.updateCompany(company) != null) {
                 System.out.println("Company updated successfully! " + adminService.findCompanyById(company.getId())); // print to backend
-                ResponseEntity<?> response = new ResponseEntity<>("Company updated successfully! " + adminService.findCompanyById(company.getId()), HttpStatus.OK);
+                ResponseEntity<String> response = new ResponseEntity<>("Company updated successfully!", HttpStatus.OK);
                 return response;
 
             } else {
                 System.out.println("Email already exist!"); //print to backend
-                ResponseEntity<?> response = new ResponseEntity<>("Email already exist!", HttpStatus.BAD_REQUEST);
+                ResponseEntity<String> response = new ResponseEntity<>("Email already exist!", HttpStatus.BAD_REQUEST);
                 return response;
             }
 
         } else {
             System.out.println("No company exist by this ID: " + company.getId()); //print to backend
-            ResponseEntity<?> response = new ResponseEntity<>("No company exist by this ID: " + company.getId(), HttpStatus.BAD_REQUEST);
+            ResponseEntity<String> response = new ResponseEntity("No company exist by this ID: " + company.getId(), HttpStatus.BAD_REQUEST);
             return response;
         }
     }
@@ -117,11 +118,11 @@ public class AdminClientController extends ClientControllerAbs {
             adminService.deleteCompanyById(id);
             System.out.println("Company & company coupons deleted Successfully!"); // print to backend
             System.out.println();
-            ResponseEntity<String> responseWrapper = new ResponseEntity<>("Company & company coupons deleted Successfully! ", HttpStatus.OK); // print to client
+            ResponseEntity<String> responseWrapper = new ResponseEntity("Company & company coupons deleted Successfully!", HttpStatus.OK); // print to client
             return responseWrapper;
 
         } else {
-            ResponseEntity<String> responseWrapper = new ResponseEntity<>("No company exist by this ID: " + id, HttpStatus.BAD_REQUEST); // print to client
+            ResponseEntity<String> responseWrapper = new ResponseEntity("No company exist by this ID: " + id, HttpStatus.BAD_REQUEST); // print to client
             System.out.println("Error, no company exist by this ID: " + id); // print to backend
             System.out.println();
             return responseWrapper;
@@ -144,13 +145,13 @@ public class AdminClientController extends ClientControllerAbs {
             System.out.println("Company List: "); // print to backend
             System.out.println(res); // print to backend
             System.out.println();
-            ResponseEntity<List<Company>> responseWrapper = new ResponseEntity<>(res, HttpStatus.OK);
+            ResponseEntity<List<Company>> responseWrapper = new ResponseEntity(res, HttpStatus.OK);
             return responseWrapper;
 
         } else {
             System.out.println("There is no companies!"); // return to backend
             System.out.println();
-            ResponseEntity<String> responseWrapper = new ResponseEntity<>("There is no companies!", HttpStatus.BAD_REQUEST);
+            ResponseEntity<String> responseWrapper = new ResponseEntity("There is no companies!", HttpStatus.BAD_REQUEST);
             return responseWrapper;
         }
     }
@@ -162,19 +163,22 @@ public class AdminClientController extends ClientControllerAbs {
     public ResponseEntity<?> getCompanyById(@PathVariable int id) {
         System.out.println("Using getCompanyById function..."); // print to backend
 
+        //creating a list for one Company - because MUI DataGrid only accept list - need to fix that
+        List listForMuiDataGrid = new ArrayList<>();
         Company res = adminService.findCompanyById(id);
 
         //check if company exist
         if (res != null) {
+            listForMuiDataGrid.add(res);
             System.out.println("Company from DB by ID: " + id); // print to backend
             System.out.println(res); // print to backend
             System.out.println();
-            ResponseEntity<Company> responseWrapper = new ResponseEntity<>(res, HttpStatus.OK);
+            ResponseEntity<List<Company>> responseWrapper = new ResponseEntity(listForMuiDataGrid, HttpStatus.OK);
             return responseWrapper;
         } else {
             System.out.println("No company exist by this ID: " + id); // return to backend
             System.out.println();
-            ResponseEntity<?> responseWrapper = new ResponseEntity<>("No company exist by this ID: " + id, HttpStatus.BAD_REQUEST); // return to client
+            ResponseEntity<String> responseWrapper = new ResponseEntity("No company exist by this ID: " + id, HttpStatus.BAD_REQUEST); // return to client
             return responseWrapper;
         }
     }
@@ -192,18 +196,19 @@ public class AdminClientController extends ClientControllerAbs {
         if (res != null) {
             System.out.println("Customer added successfully!"); // print to backend
             System.out.println(customer);
-            ResponseEntity<?> response = new ResponseEntity<>("Customer added successfully! " + customer, HttpStatus.OK); // print to the client
+            ResponseEntity<String> response = new ResponseEntity("Customer added successfully!", HttpStatus.OK); // print to the client
             return response;
         } else {
             System.out.println("Cant add customer - email already exist."); // print to backend
-            ResponseEntity<String> response = new ResponseEntity<>("Cant add customer - email already exist.", HttpStatus.BAD_REQUEST); // print to the client
+            ResponseEntity<String> response = new ResponseEntity("Cant add customer - email already exist", HttpStatus.BAD_REQUEST); // print to the client
             return response;
         }
     }
 
 
     // Update customer
-    // id = customer to update, firstName = update to new firstName, lastName = update to new lastName
+    // id = customer to update
+    // firstName = update to new firstName, lastName = update to new lastName
     // email = update to new email, password = update to new password
     @PutMapping("/updateCustomer/{id}")
     @ResponseBody
@@ -214,12 +219,12 @@ public class AdminClientController extends ClientControllerAbs {
         if (adminService.findCustomerById(id) != null) {
             adminService.updateCustomer(id, customer.getFirstName(), customer.getLastName(), customer.getEmail(), customer.getPassword());
             System.out.println("Customer updated successfully! " + adminService.findCustomerById(id)); // print to backend
-            ResponseEntity<?> response = new ResponseEntity<>("Customer updated successfully! " + adminService.findCustomerById(id), HttpStatus.OK);
+            ResponseEntity<String> response = new ResponseEntity("Customer updated successfully!", HttpStatus.OK);
             return response;
 
         } else {
             System.out.println("No customer exist by this ID: " + id); //print to backend
-            ResponseEntity<?> response = new ResponseEntity<>("No customer exist by this ID: " + id, HttpStatus.BAD_REQUEST);
+            ResponseEntity<String> response = new ResponseEntity("No customer exist by this ID: " + id, HttpStatus.BAD_REQUEST);
             return response;
         }
     }
@@ -236,11 +241,11 @@ public class AdminClientController extends ClientControllerAbs {
             adminService.deleteCustomerById(id);
             System.out.println("Customer deleted Successfully!"); // print to backend
             System.out.println();
-            ResponseEntity<String> responseWrapper = new ResponseEntity<>("Customer deleted successfully! ", HttpStatus.OK); // print to client
+            ResponseEntity<String> responseWrapper = new ResponseEntity("Customer deleted successfully!", HttpStatus.OK); // print to client
             return responseWrapper;
 
         } else {
-            ResponseEntity<String> responseWrapper = new ResponseEntity<>("No customer exist by this ID: " + id, HttpStatus.BAD_REQUEST); // print to client
+            ResponseEntity<String> responseWrapper = new ResponseEntity("No customer exist by this ID: " + id, HttpStatus.BAD_REQUEST); // print to client
             System.out.println("Error, no customer exist by this ID: " + id); // print to backend
             System.out.println();
             return responseWrapper;
@@ -277,19 +282,24 @@ public class AdminClientController extends ClientControllerAbs {
     public ResponseEntity<?> getCustomerById(@PathVariable int id) {
         System.out.println("Using getCustomerById function..."); // print to backend
 
+
+        //creating a list for one Company - because MUI DataGrid only accept list - need to fix that
+        List listForMuiDataGrid = new ArrayList<>();
         Customer res = adminService.findCustomerById(id);
+
         //check if customer exist
         if (res != null) {
+            listForMuiDataGrid.add(res);
             System.out.println("Customer from DB by ID: " + id); // print to backend
             System.out.println(res); // print to backend
             System.out.println();
-            ResponseEntity<Customer> responseWrapper = new ResponseEntity<>(res, HttpStatus.OK);
+            ResponseEntity<List<Company>> responseWrapper = new ResponseEntity(listForMuiDataGrid, HttpStatus.OK);
             return responseWrapper;
 
         } else {
             System.out.println("No customer exist by this ID: " + id); // return to backend
             System.out.println();
-            ResponseEntity<?> responseWrapper = new ResponseEntity<>("No customer exist by this ID: " + id, HttpStatus.BAD_REQUEST); // return to client
+            ResponseEntity<String> responseWrapper = new ResponseEntity("No customer exist by this ID: " + id, HttpStatus.BAD_REQUEST); // return to client
             return responseWrapper;
         }
     }
@@ -314,7 +324,7 @@ public class AdminClientController extends ClientControllerAbs {
         } else {
             System.out.println("No coupons exist by this category: " + category.toString().toLowerCase()); // return to backend
             System.out.println();
-            ResponseEntity<?> responseWrapper = new ResponseEntity<>("No coupons exist by this category: " + category.toString().toLowerCase(), HttpStatus.BAD_REQUEST); // return to client
+            ResponseEntity<String> responseWrapper = new ResponseEntity<>("No coupons exist by this category: " + category.toString().toLowerCase(), HttpStatus.BAD_REQUEST); // return to client
             return responseWrapper;
         }
     }

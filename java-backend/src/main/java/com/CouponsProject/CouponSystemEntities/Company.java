@@ -1,5 +1,6 @@
 package com.CouponsProject.CouponSystemEntities;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
@@ -15,6 +16,7 @@ import java.util.List;
 @Entity(name = "company")
 @NoArgsConstructor
 @Builder
+//@JsonIgnoreProperties(value = {"couponsList"}) // use this if you want to ignore coupon list when JSON company
 public class Company {
 
     @Id
@@ -36,10 +38,9 @@ public class Company {
 
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company", cascade = CascadeType.ALL) // from coupon
-//    @JsonIgnoreProperties("company")
     @JsonSerialize
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private List<Coupon> couponsList = new ArrayList<>(); //list from the project.
+
+    private List<Coupon> couponsList = new ArrayList<>();
 
     @Override
     public String toString() {
