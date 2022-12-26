@@ -5,12 +5,9 @@ import Card from '../UI/Card';
 import MessageModal from '../UI/MessageModal';
 import './Admin.css'
 
-type Props = {
-
-}
 
 
-const UpdateCompany = (props) => {
+const UpdateCompany = () => {
 
     const customerIdRef = useRef<HTMLInputElement>();//customer ID to update
     const firstNameRef = useRef<HTMLInputElement>(); //firstName to update
@@ -23,19 +20,9 @@ const UpdateCompany = (props) => {
 
 
     const updateCustomerHandler = async (event) => {
+        event.preventDefault()
 
         try {
-
-            event.preventDefault()
-
-            // const onlyDigitsForCustomerIdRef = customerIdRef.current.value.replace(/\D/g, '');
-
-            // if (onlyDigitsForCustomerIdRef === '') {
-            //     setMessageState({ title: "Invalid input", message: "Please enter only Digits for customerID" });
-            //     customerIdRef.current.value = '';
-            //     return;
-            // }
-
             //check the inputs 
             if (customerIdRef.current.value.trim().length === 0 ||
                 firstNameRef.current.value.trim().length === 0 ||
@@ -48,14 +35,7 @@ const UpdateCompany = (props) => {
             }
 
 
-
-            console.log("Customer ID to update before using onlyDigitsForCustomerIdRef: " + customerIdRef.current.value)
-            // console.log("Customer ID to update after using onlyDigitsForCustomerIdRef: " + onlyDigitsForCustomerIdRef)
-            console.log("updating first name: " + firstNameRef.current.value)
-            console.log("updating last name: " + lastNameRef.current.value)
-            console.log("updating email: " + emailRef.current.value)
-            console.log("updating password: " + passwordRef.current.value)
-
+            //json structure
             const dataToSend = {
                 firstName: firstNameRef.current.value,
                 lastName: lastNameRef.current.value,
@@ -70,8 +50,10 @@ const UpdateCompany = (props) => {
                 body: JSON.stringify(dataToSend)
             }
 
+            //java server side
             const response = await fetch("http://localhost:8080/CouponApp/updateCustomer/" + customerIdRef.current.value, requestOptions);
 
+            //using the first response from the server - to text
             const responseFromUpdateCustomer = await response.text();
 
             if (response.status === 400) { //BAD REQUEST

@@ -1,12 +1,17 @@
 .card {
-  background: rgba(245, 241, 241, 0.518);
+  background: rgba(253, 163, 163, 0.76);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 50px;
   font-size: x-large;
-  margin-top: 5%;
   font-family: Georgia, 'Times New Roman', Times, serif;
 
-  max-width: fit-content;
-  min-width: 450px;
+
   margin: 0 auto;
+  /* margin-top: 5%; */
+
+  width: fit-content;
+  height: fit-content;
+  max-width: 90%;
+  min-width: 40%;
+
 }

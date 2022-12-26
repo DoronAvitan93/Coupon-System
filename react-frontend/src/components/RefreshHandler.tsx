@@ -1,16 +1,16 @@
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { authActions } from "../store/authRedux";
-import { RootState } from "../store/reduxIndex";
 
 
 
-const RefreshHandler = (props) => {
+const RefreshHandler = () => {
 
 
-    const clientType = useSelector<RootState>(state => state.authRedux.clientType);
-
+    //local storage
     const loggedInStorageInfo = localStorage.getItem('isLogged');
+
+    //session storage
     const sessionInfo = sessionStorage.getItem("isLoggedSession");
 
     const adminID = localStorage.getItem('adminID');
@@ -34,12 +34,16 @@ const RefreshHandler = (props) => {
             dispatch(authActions.setCustomerIdAfterLogin(localStorage.getItem('customerID')))
         }
 
-    }, [clientType]
+    }
     )
 
+    //if client close the browser / tab (because we use "Token" like system(at Login.tsx))
+    if (sessionInfo !== '1') {
+        localStorage.clear();
+    }
 
 
-
+    //doesnt return anything
     return (
         <></>
     );

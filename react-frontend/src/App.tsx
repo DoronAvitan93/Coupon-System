@@ -2,17 +2,19 @@ import MainHeader from "./components/header/MainHeader";
 import { Fragment } from "react";
 import Routing from "./components/Routing";
 import RefreshHandler from "./components/RefreshHandler";
+import Footer from "./components/footer/Footer";
 
-//for fresh logins when restarting the project
 
 
-const App = (props) => {
 
-//TEST
+const App = () => {
+
+  //TEST
 
   return (
     <Fragment >
       <RefreshHandler />
+      <Footer />
       <MainHeader />
       <Routing />
     </Fragment>

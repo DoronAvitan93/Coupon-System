@@ -137,7 +137,7 @@ const Register = (props) => {
 
                 <form onSubmit={registerCompany}>
                     <label className='label'>Client Type</label>
-                    <select className='input__ClientType' onChange={selectedUserTypeOnChangeHandler} ref={selectUserTypeRef}>
+                    <select className='input__select' onChange={selectedUserTypeOnChangeHandler} ref={selectUserTypeRef}>
                         <option hidden>Choose client</option>
                         <option value="Customer">Customer</option>
                         <option value="Company">Company</option>

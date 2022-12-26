@@ -1,38 +1,33 @@
 import { Box, Tooltip, Typography } from '@mui/material'
-import { DataGrid, GridCellParams, gridClasses } from '@mui/x-data-grid'
-import { grey } from '@mui/material/colors';
-import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import { DataGrid, GridCellParams } from '@mui/x-data-grid'
+import { red } from '@mui/material/colors';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reduxIndex';
 import MessageModal from '../UI/MessageModal';
-import Card from '../UI/Card';
+import './Customer.css'
 
 
-type Props = {
-
-}
-
-
-const GetAllCustomerCoupons = (props) => {
+const GetAllCustomerCoupons = () => {
 
     const [pageSize, setPageSize] = useState(10)
 
     const columns = useMemo(() => [
-        { field: 'id', headerName: 'Id', width: 35, flex: 1 },
+        { field: 'id', headerName: 'Id', width: 35 },
 
         {
-            field: 'title', headerName: 'Title', width: 80, flex: 1,
+            field: 'title', headerName: 'Title', width: 70, flex: 0.6,
             renderCell: (params: GridCellParams) => (
                 <Tooltip title={<h2>{params.row.title}</h2>} >
                     <span className="table-cell-trucate">{params.row.title}</span>
                 </Tooltip>)
         },
 
-        { field: 'category', headerName: 'Category', width: 120, flex: 1 },
-        { field: 'price', headerName: 'Price', width: 80, flex: 1 },
-        { field: 'amount', headerName: 'Amount', width: 80, flex: 1 },
-        { field: 'startDate', headerName: 'Start Date', width: 100, flex: 1 },
-        { field: 'endDate', headerName: 'End Date', width: 100, flex: 1 },
+        { field: 'category', headerName: 'Category', width: 80, flex: 0.4 },
+        { field: 'price', headerName: 'Price', width: 60, flex: 0.3 },
+        { field: 'amount', headerName: 'Amount', width: 60, flex: 0.3 },
+        { field: 'startDate', headerName: 'Start Date', width: 60, flex: 0.6 },
+        { field: 'endDate', headerName: 'End Date', width: 60, flex: 0.6 },
 
         {
             field: 'image', headerName: 'Image', width: 150, flex: 1,
@@ -47,7 +42,7 @@ const GetAllCustomerCoupons = (props) => {
                 <Tooltip title={<h2>{params.row.description}</h2>} >
                     <span className="table-cell-trucate">{params.row.description}</span>
                 </Tooltip>)
-        }
+        },
     ], [])
 
 
@@ -107,7 +102,7 @@ const GetAllCustomerCoupons = (props) => {
                 < Box
                     sx={{
                         height: 'auto',
-                        width: '100%',
+                        width: '100%'
                     }
                     }>
 
@@ -115,8 +110,10 @@ const GetAllCustomerCoupons = (props) => {
                         variant='h3'
                         component='h3'
                         sx={{ textAlign: 'center', mt: 3, mb: 3 }}
+
+
                     >
-                       All Coupons
+                        <h3>All Coupons</h3>
                     </Typography>
 
 
@@ -124,9 +121,12 @@ const GetAllCustomerCoupons = (props) => {
 
                         <DataGrid
                             autoHeight
+
                             showCellRightBorder
                             showColumnRightBorder
+                            disableSelectionOnClick
                             disableExtendRowFullWidth
+
                             columns={columns}
                             rows={customerCoupons}
                             getRowId={row => row.id}
@@ -138,9 +138,10 @@ const GetAllCustomerCoupons = (props) => {
                                 bottom: params.isLastVisible ? 0 : 5,
                             })}
                             sx={{
-                                [`& .${gridClasses.row}`]: {
-                                    bgcolor: theme => theme.palette.mode === 'light' ? grey[200] : grey[900],
-                                }
+                                "& .MuiDataGrid-row:hover": {
+                                    backgroundColor: red[100],
+                                },
+                                backgroundColor: '#ffe5e5',
                             }}
                         />
                     }

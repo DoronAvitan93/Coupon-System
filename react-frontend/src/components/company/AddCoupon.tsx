@@ -125,7 +125,7 @@ const AddCoupon = (props) => {
                     <br />
 
                     <label className='label'>Coupon category</label>
-                    <select className='input__ClientType' ref={categoryRef}>
+                    <select className='input__select' ref={categoryRef}>
                         <option value="FOOD">Food</option>
                         <option value="ELECTRICITY">Electricity</option>
                         <option value="RESTAURANT">Restaurant</option>

@@ -1,18 +1,16 @@
 import { Fragment, useState } from 'react';
 import Button from '../UI/Button';
-import Card from '../UI/Card';
+
 import MessageModal from '../UI/MessageModal';
 import GetAllCustomerCoupons from './GetAllCustomerCoupons';
 import GetCustomerCouponsByCategory from './GetCustomerCouponsByCategory';
 import GetCustomerCouponsByPrice from './GetCustomerCouponsByPrice';
 import './Customer.css'
 
-type Props = {
-
-}
 
 
-const GetCustomerCouponsOptions = (props) => {
+
+const GetCustomerCouponsOptions = () => {
 
     const [categoryCouponState, setCategoryCouponState] = useState(null);
 
@@ -64,9 +62,10 @@ const GetCustomerCouponsOptions = (props) => {
                     message={messageState.message}
                     onConfirm={onMessageConfirmHandler} />}
 
-            <Card>
+            <div className='card'>
+
                 <label className='label'>Show coupons by:</label>
-                <select className='input__ClientType' onChange={selectGetByOptionCouponsHandler} >
+                <select className='input__select' onChange={selectGetByOptionCouponsHandler} >
                     <option selected hidden>Choose option</option>
                     <option value="all">All coupons</option>
                     <option value="category">Coupons  by category</option>
@@ -81,7 +80,7 @@ const GetCustomerCouponsOptions = (props) => {
                 {getCouponsByOption === "category" &&
                     <>
                         <label className='label'>Coupon category </label>
-                        <select className='input__ClientType' onChange={onChangeSelect} >
+                        <select className='input__select' onChange={onChangeSelect} >
                             <option selected hidden>Choose Category</option>
                             <option value="FOOD">Food</option>
                             <option value="ELECTRICITY">Electricity</option>
@@ -104,7 +103,8 @@ const GetCustomerCouponsOptions = (props) => {
                         {isShowCouponsPrice && <GetCustomerCouponsByPrice priceState={priceState} />}
                     </>
                 }
-            </Card>
+
+            </div>
         </Fragment>
     )
 }

@@ -20,14 +20,14 @@ const About = (props) => {
         <Fragment >
             <Card>
                 <h1>Welcome !</h1>
-                <h3>Hello, my name is Doron, I'm full stack graduate with experience with:</h3>
+                <h2>Hello, my name is Doron, I'm full stack graduate with experience in:</h2>
                 <h3> Java, Java SpringBoot, mySql, JavaScript, TypeScript, HTML, CSS, React.</h3>
-                <h3>My project - Coupon system, is a web app for companies who want to publish their coupons to customers</h3>
+                <h3>My project - Coupon system, is a web app for companies who want to publish their coupons to customers.</h3>
                 <p>Coupon system is built with Java SpringBoot, MySql JavaScript & ReactJS</p>
                 <p>I'm constantly learning new things, currently those things include gaining more experience with:</p>
                 <p>Java, JavaSpringBoot, mySql and ReactJS</p>
             </Card>
-            <Footer />
+
 
 
         </Fragment >

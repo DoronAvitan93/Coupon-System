@@ -1,39 +1,34 @@
 import { Box, Tooltip, Typography } from '@mui/material'
-import { DataGrid, GridCellParams, gridClasses } from '@mui/x-data-grid'
-import { grey } from '@mui/material/colors';
+import { DataGrid, GridCellParams } from '@mui/x-data-grid'
+import { red } from '@mui/material/colors';
 import { useState, Fragment, useEffect, useMemo } from "react";
 import MessageModal from "../UI/MessageModal";
-
 import CustomerAction from './CustomerAction';
-import Card from '../UI/Card';
+import './Customer.css'
 
 
-type Props = {
-
-}
-
-
-const PurchaseCoupon = (props) => {
+const PurchaseCoupon = () => {
 
     const [pageSize, setPageSize] = useState(10)
 
     const [rowId, setRowId] = useState(null)
 
     const columns = useMemo(() => [
-        { field: 'id', headerName: 'Id', width: 35, flex: 1 },
+        { field: 'id', headerName: 'Id', width: 35 },
 
         {
-            field: 'title', headerName: 'Title', width: 80, flex: 1,
+            field: 'title', headerName: 'Title', width: 70, flex: 0.6,
             renderCell: (params: GridCellParams) => (
                 <Tooltip title={<h2>{params.row.title}</h2>} >
                     <span className="table-cell-trucate">{params.row.title}</span>
                 </Tooltip>)
         },
-        { field: 'category', headerName: 'Category', width: 120, flex: 1 },
-        { field: 'price', headerName: 'Price', width: 80, flex: 1 },
-        { field: 'amount', headerName: 'Amount', width: 80, flex: 1 },
-        { field: 'startDate', headerName: 'Start Date', width: 100, flex: 1 },
-        { field: 'endDate', headerName: 'End Date', width: 100, flex: 1 },
+
+        { field: 'category', headerName: 'Category', width: 80, flex: 0.4 },
+        { field: 'price', headerName: 'Price', width: 60, flex: 0.3 },
+        { field: 'amount', headerName: 'Amount', width: 60, flex: 0.3 },
+        { field: 'startDate', headerName: 'Start Date', width: 60, flex: 0.6 },
+        { field: 'endDate', headerName: 'End Date', width: 60, flex: 0.6 },
 
         {
             field: 'image', headerName: 'Image', width: 150, flex: 1,
@@ -49,6 +44,7 @@ const PurchaseCoupon = (props) => {
                     <span className="table-cell-trucate">{params.row.description}</span>
                 </Tooltip>)
         },
+
         {
             field: 'actions',
             headerName: 'Purchase',
@@ -119,7 +115,7 @@ const PurchaseCoupon = (props) => {
 
     return (
         <Fragment>
-            <Card>
+            <div className='card'>
                 {messageState &&
                     <MessageModal title={messageState.title}
                         message={messageState.message}
@@ -127,7 +123,7 @@ const PurchaseCoupon = (props) => {
 
 
                 <label className='label'>Coupon category </label>
-                <select className='input__ClientType' defaultValue={null} onChange={onChangeSelectHandler} >
+                <select className='input__select' defaultValue={null} onChange={onChangeSelectHandler} >
                     <option hidden>Choose Category</option>
                     <option value="FOOD">Food</option>
                     <option value="ELECTRICITY">Electricity</option>
@@ -159,10 +155,11 @@ const PurchaseCoupon = (props) => {
                             showCellRightBorder
                             showColumnRightBorder
                             disableExtendRowFullWidth
+                            disableSelectionOnClick
                             columns={columns}
                             rows={coupons}
                             getRowId={row => row.id}
-                            rowsPerPageOptions={[10, 20, 30]}
+                            rowsPerPageOptions={[10, 20.30]}
                             pageSize={pageSize}
                             onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
                             getRowSpacing={params => ({
@@ -170,15 +167,16 @@ const PurchaseCoupon = (props) => {
                                 bottom: params.isLastVisible ? 0 : 5,
                             })}
                             sx={{
-                                [`& .${gridClasses.row}`]: {
-                                    bgcolor: theme => theme.palette.mode === 'light' ? grey[200] : grey[900],
-                                }
+                                "& .MuiDataGrid-row:hover": {
+                                    backgroundColor: red[100],
+                                },
+                                backgroundColor: '#ffe5e5',
                             }}
-                            onCellClick={params => setRowId(params.id)}
+                            onRowClick={params => setRowId(params.id)}
                         />
                     }
                 </Box >
-            </Card>
+            </div>
         </Fragment >
     )
 }

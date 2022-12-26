@@ -9,12 +9,9 @@ import './Company.css'
 import Card from '../UI/Card';
 import Button from '../UI/Button';
 
-type Props = {
-
-}
 
 
-const GetCompanyCouponsOptions = (props) => {
+const GetCompanyCouponsOptions = () => {
 
 
     const [categoryCouponState, setCategoryCouponState] = useState(null);
@@ -67,7 +64,7 @@ const GetCompanyCouponsOptions = (props) => {
 
 
                 <label className='label'>Show Company Coupons By:</label>
-                <select className='input__ClientType' onChange={selectGetByOptionCouponsHandler} >
+                <select className='input__select' onChange={selectGetByOptionCouponsHandler} >
                     <option selected hidden>Choose option</option>
                     <option value="all">All Coupons</option>
                     <option value="category">Coupons By Category</option>
@@ -80,7 +77,7 @@ const GetCompanyCouponsOptions = (props) => {
                 {getCouponsByOption === "category" &&
                     <>
                         <label className='label'>Coupon category </label>
-                        <select className='input__ClientType' onChange={onChangeSelect} >
+                        <select className='input__select' onChange={onChangeSelect} >
                             <option selected hidden>Choose Category</option>
                             <option value="FOOD">Food</option>
                             <option value="ELECTRICITY">Electricity</option>

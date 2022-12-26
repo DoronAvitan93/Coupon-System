@@ -5,8 +5,8 @@ import { authActions } from '../../store/authRedux';
 import MessageModal from '../UI/MessageModal';
 import { useNavigate } from "react-router-dom";
 import Button from '../UI/Button';
-import Card from '../UI/Card';
 import './Login.css'
+import Card from '../UI/Card';
 
 
 
@@ -154,9 +154,8 @@ const Login: React.FC<Props> = (props: Props) => {
 
     return (
         <Fragment>
-
-
             <Card>
+
                 {/* if logged in successfully - will use onMessageLoginConfirm() to navigate home */}
                 {messageState && loggedIn &&
                     <MessageModal title={messageState.title}
@@ -165,7 +164,7 @@ const Login: React.FC<Props> = (props: Props) => {
                         onConfirm={onMessageLoginConfirm}
                     />}
 
-                {/* if NOT logged in successfully - will use onMessageConfirmHandler() to try again */}
+                {/* if NOT logged in successfully - will use onMessageConfirmHandler() to try */}
                 {messageState && !loggedIn &&
                     <MessageModal title={messageState.title}
                         message={messageState.message}
@@ -177,7 +176,7 @@ const Login: React.FC<Props> = (props: Props) => {
                 <form onSubmit={loginHandler} >
 
                     <label className='label'>Client Type</label>
-                    <select className='input__ClientType' ref={selectUserTypeRef}  >
+                    <select className='input__select' ref={selectUserTypeRef}  >
                         <option hidden>Choose client</option>
                         <option value="Customer">Customer</option>
                         <option value="Company">Company</option>
@@ -195,6 +194,7 @@ const Login: React.FC<Props> = (props: Props) => {
 
                     <Button type="submit">Login!</Button>
                 </form>
+
             </Card>
         </Fragment >
     )

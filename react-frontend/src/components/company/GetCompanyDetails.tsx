@@ -6,12 +6,8 @@ import Card from '../UI/Card';
 import MessageModal from '../UI/MessageModal';
 import './Company.css'
 
-type Props = {
 
-}
-
-
-const GetCompanyDetails = (props) => {
+const GetCompanyDetails = () => {
 
     const companyIdFromLogin = useSelector<RootState>(state => state.authRedux.companyIdAfterLogin);
 
@@ -52,7 +48,7 @@ const GetCompanyDetails = (props) => {
 
     useEffect(() => {
         getCompanyDetailsHandler();
-    }, [props.categoryCoupon]
+    }, []
     )
 
 

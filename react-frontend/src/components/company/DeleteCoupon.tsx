@@ -72,6 +72,7 @@ const DeleteCoupon = (props) => {
                         message={messageState.message}
                         onConfirm={onMessageConfirmHandler} />}
 
+
                 <form onSubmit={deleteCoupon}>
 
                     <label className='label'>Coupon ID</label>

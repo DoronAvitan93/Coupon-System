@@ -1,23 +1,32 @@
 
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reduxIndex';
 import Card from '../UI/Card';
 import MessageModal from '../UI/MessageModal';
 
 
-type Props = {
-
-}
 
 
-const GetCustomerDetails = (props) => {
+
+const GetCustomerDetails = () => {
 
     const customerIdAfterLogin = useSelector<RootState>(state => state.authRedux.customerIdAfterLogin);
 
     const [messageState, setMessageState] = useState<{ title: string, message: string }>(null);
 
     const [customerDetails, setCompanyDetails] = useState(null)
+
+    //Data Grid
+    const [pageSize, setPageSize] = useState(10)
+
+    const columns = useMemo(() => [
+        { field: 'id', headerName: 'ID', width: 35 },
+        { field: 'firstName', headerName: 'First Name', width: 120, flex: 1 },
+        { field: 'lastName', headerName: 'Last Name', width: 120, flex: 1 },
+        { field: 'email', headerName: 'E-Mail', width: 120, flex: 1 },
+        { field: 'password', headerName: 'Password', width: 120, flex: 1 },
+    ], [])
 
 
     const getCustomerDetailsHandler = async () => {
@@ -52,7 +61,7 @@ const GetCustomerDetails = (props) => {
 
     useEffect(() => {
         getCustomerDetailsHandler();
-    }, [props.categoryCoupon]
+    }, []
     )
 
 

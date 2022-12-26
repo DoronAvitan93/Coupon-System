@@ -1,11 +1,11 @@
 import { useState, useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { RootState } from "../store/reduxIndex";
-import MessageModal from "./UI/MessageModal";
-import NavGeneral from "./UI/Nav";
-import Card from "./UI/Card";
-import { authActions } from "../store/authRedux";
+import { RootState } from "../../store/reduxIndex";
+import MessageModal from "../UI/MessageModal";
+import NavGeneral from "../UI/Nav";
+import Card from "../UI/Card";
+import { authActions } from "../../store/authRedux";
 
 
 

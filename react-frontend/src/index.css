@@ -10,8 +10,8 @@ html {
 
 body {
   margin: 0;
-  background-color: #ffffff;
+  background-color: #e7dede;
   text-align: center;
   background-image: url("./couponsImageBG.jpg");
-  background-size: contain;
+  background-size: auto;
 }
