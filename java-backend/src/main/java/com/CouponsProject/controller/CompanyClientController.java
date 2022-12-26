@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
@@ -237,14 +238,17 @@ public class CompanyClientController extends ClientControllerAbs {
     public ResponseEntity<?> getCompanyById(@PathVariable int id) {
         System.out.println("Using getCompanyById function..."); // print to backend
 
+        //creating a list for one Company - because MUI DataGrid only accept list - need to fix that
+        List listForMuiDataGrid = new ArrayList<>();
         Company res = companyService.getCompanyById(id);
 
         //check if company exist
         if (res != null) {
+            listForMuiDataGrid.add(res);
             System.out.println("Company from DB by ID: " + id); // print to backend
             System.out.println(res); // print to backend
             System.out.println();
-            ResponseEntity<Company> responseWrapper = new ResponseEntity<>(res, HttpStatus.OK);
+            ResponseEntity<List<Company>> responseWrapper = new ResponseEntity<>(listForMuiDataGrid, HttpStatus.OK);
             return responseWrapper;
 
         } else {

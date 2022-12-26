@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -205,19 +206,22 @@ public class CustomerClientController extends ClientControllerAbs {
     public ResponseEntity<?> getCompanyById(@PathVariable int id) {
         System.out.println("Using getCompanyById function..."); // print to backend
 
+        //creating a list for one Company - because MUI DataGrid only accept list - need to fix that
+        List listForMuiDataGrid = new ArrayList<>();
         Customer res = customerService.findCustomerById(id);
 
         //check if customer exist
         if (res != null) {
+            listForMuiDataGrid.add(res);
             System.out.println("Customer from DB by ID: " + id); // print to backend
             System.out.println(res); // print to backend
             System.out.println();
-            ResponseEntity<Customer> responseWrapper = new ResponseEntity<>(res, HttpStatus.OK);
+            ResponseEntity<List<Customer>> responseWrapper = new ResponseEntity<>(listForMuiDataGrid, HttpStatus.OK);
             return responseWrapper;
         }
         System.out.println("No Customer exist by this ID: " + id); // print to backend
         System.out.println();
-        ResponseEntity<?> responseWrapper = new ResponseEntity<>("Error, no customer exist by this ID ", HttpStatus.BAD_REQUEST); // print to client
+        ResponseEntity<String> responseWrapper = new ResponseEntity<>("Error, no customer exist by this ID ", HttpStatus.BAD_REQUEST); // print to client
         return responseWrapper;
     }
 }
