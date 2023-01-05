@@ -1,3 +1,63 @@
-.about {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+
+.about-container {
+  box-sizing: border-box;
+  background: linear-gradient(to right, #ff8080dc, #ff3333e8);
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: fit-content;
+  border-radius: 50px 50px 10px 10px;
+  margin: auto;
+  transition: background-color 0.5s;
+}
+
+.about-header {
+  font-family: 'Lobster', cursive;
+  font-size: 5em;
+  font-weight: bold;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+.about-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 26px;
+}
+
+
+
+.logo-react {
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+.logo-spring {
+  animation: flash 2.5s linear infinite;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
