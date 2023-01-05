@@ -47,7 +47,7 @@ const UpdateCompany = () => {
             }
 
             //java server side
-            const response = await fetch("http://localhost:8080/CouponApp/updateCompany/", requestOptions);
+            const response = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/updateCompany/", requestOptions);
 
             //using the first response from the server - to text
             const responseFromUpdateCompany = await response.text();

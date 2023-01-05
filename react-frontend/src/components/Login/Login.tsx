@@ -46,7 +46,7 @@ const Login: React.FC<Props> = (props: Props) => {
             }
             console.log(selectUserTypeRef.current.value)
 
-            const response = await fetch("http://localhost:8080/CouponApp/login/" + selectUserTypeRef.current.value + "/" + selectUserTypeRef.current.value + "/" + emailRef.current.value + "/" + passwordRef.current.value)
+            const response = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/login/" + selectUserTypeRef.current.value + "/" + selectUserTypeRef.current.value + "/" + emailRef.current.value + "/" + passwordRef.current.value)
 
             const responseFromLogin = await response.text();
 

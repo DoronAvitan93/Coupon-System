@@ -65,7 +65,7 @@ const GetCompanyCouponsByPrice: React.FC<Props> = (props: Props) => {
 
             //fetch all coupons by category
 
-            const response1 = await fetch("http://localhost:8080/CouponApp/findCustomerCouponsWithMaxPrice/" + customerIdFromLogin + "/" + props.priceState)
+            const response1 = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/findCustomerCouponsWithMaxPrice/" + customerIdFromLogin + "/" + props.priceState)
             const response2 = response1.clone();
             const responseFromGetCouponsByMaxPrice = await response1.text();
 

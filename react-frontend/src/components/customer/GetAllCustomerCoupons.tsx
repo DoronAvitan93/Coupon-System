@@ -56,7 +56,7 @@ const GetAllCustomerCoupons = () => {
     const getCustomerCoupons = async () => {
         try {
 
-            const response1 = await fetch("http://localhost:8080/CouponApp/findCustomerCoupons/" + customerIdFromLogin)
+            const response1 = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/findCustomerCoupons/" + customerIdFromLogin)
             const response2 = response1.clone();
             const responseFromGetAllCoupons = await response1.text();
 

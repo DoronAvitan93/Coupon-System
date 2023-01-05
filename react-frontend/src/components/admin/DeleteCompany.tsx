@@ -32,9 +32,9 @@ const DeleteCompany = () => {
                 method: 'DELETE',
                 headers: { "Content-Type": "application/json" },
             }
-
+            
             //java server side
-            const response = await fetch("http://localhost:8080/CouponApp/deleteCompanyById/" + companyIdRef.current.value, requestOptions);
+            const response = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/deleteCompanyById/" + companyIdRef.current.value, requestOptions);
 
             //using the first response from the server - to text
             const responseFromUpdateCompany = await response.text();

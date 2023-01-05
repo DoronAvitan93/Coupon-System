@@ -80,7 +80,7 @@ const UpdateCoupon = () => {
                 body: JSON.stringify(dataToSend)
             }
 
-            const response = await fetch("http://localhost:8080/CouponApp/updateCoupon/", requestOptions);
+            const response = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/updateCoupon/", requestOptions);
 
             const responseFromUpdateCoupon = await response.text();
 

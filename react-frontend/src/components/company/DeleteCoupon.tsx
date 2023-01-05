@@ -35,7 +35,7 @@ const DeleteCoupon = (props) => {
                 headers: { "Content-Type": "application/json" },
             }
 
-            const response = await fetch("http://localhost:8080/CouponApp/deleteCouponById/" + couponIdRef.current.value + "/" + companyIdFromLogin, requestOptions);
+            const response = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/deleteCouponById/" + couponIdRef.current.value + "/" + companyIdFromLogin, requestOptions);
 
             const responseFromDeleteCoupon = await response.text();
 

@@ -83,7 +83,7 @@ const GetOneCustomer = () => {
             }
 
             //java server side
-            const response1 = await fetch("http://localhost:8080/CouponApp/findCustomerById/" + customerIdRef.current.value);
+            const response1 = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/findCustomerById/" + customerIdRef.current.value);
             //cloning case - to use the response (we cant use the response twice, so I cloned the response.)
             const response2 = response1.clone();
             //using the first response from the server - to text
@@ -119,7 +119,7 @@ const GetOneCustomer = () => {
 
             console.log("GetCoupons " + customerIdRef.current.value)
 
-            const response1 = await fetch("http://localhost:8080/CouponApp/findCustomerCoupons/" + customerIdRef.current.value)
+            const response1 = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/findCustomerCoupons/" + customerIdRef.current.value)
             const response2 = response1.clone();
             const responseFromGetAllCoupons = await response2.text();
 

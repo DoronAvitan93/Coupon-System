@@ -70,7 +70,7 @@ const AddCoupon = (props) => {
                 body: JSON.stringify(dataToSend)
             }
 
-            const response = await fetch("http://localhost:8080/CouponApp/addCoupon", requestOptions)
+            const response = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/addCoupon", requestOptions)
 
             const responseFromDbAfterAddingCoupon = await response.text();
             console.log(responseFromDbAfterAddingCoupon)

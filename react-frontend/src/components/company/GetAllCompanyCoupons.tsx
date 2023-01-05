@@ -60,7 +60,7 @@ const GetAllCompanyCoupons = () => {
     const getCompaniesCouponsHandler = async () => {
         try {
 
-            const response1 = await fetch("http://localhost:8080/CouponApp/findCompanyCouponsByCompanyId/" + companyIdFromLogin)
+            const response1 = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/findCompanyCouponsByCompanyId/" + companyIdFromLogin)
             const response2 = response1.clone();
             const responseFromGetAllCoupons = await response1.text();
 

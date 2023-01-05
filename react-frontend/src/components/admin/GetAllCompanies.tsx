@@ -32,7 +32,7 @@ const GetAllCompanies = () => {
         try {
 
             //java server side
-            const response1 = await fetch(" http://localhost:8080/CouponApp/getAllCompanies")
+            const response1 = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/getAllCompanies")
 
             //cloning case - to use the response (we cant use the response twice, so I cloned the response.)
             const response2 = response1.clone();

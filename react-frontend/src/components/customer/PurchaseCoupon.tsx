@@ -68,7 +68,7 @@ const PurchaseCoupon = () => {
 
             //fetch all coupons by category
 
-            const response1 = await fetch("http://localhost:8080/CouponApp/findAllCouponsByCategory/" + categorySelect)
+            const response1 = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/findAllCouponsByCategory/" + categorySelect)
             const response2 = response1.clone();
             const responseFromGetACouponsByCategory = await response1.text();
 

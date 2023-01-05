@@ -63,7 +63,7 @@ const GetCustomerCouponsByCategory: React.FC<Props> = (props: Props) => {
             setCustomerCoupons(null);
             //fetch all coupons by category
 
-            const response1 = await fetch("http://localhost:8080/CouponApp/findCustomerCouponsByCustomerIdAndCategory/" + customerIdFromLogin + "/" + props.categoryCoupon)
+            const response1 = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/findCustomerCouponsByCustomerIdAndCategory/" + customerIdFromLogin + "/" + props.categoryCoupon)
             const response2 = response1.clone();
             const responseFromGetCouponsByCategory = await response1.text();
 

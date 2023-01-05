@@ -74,10 +74,10 @@ const Register = (props) => {
             let response = null;
 
             if (selectUserTypeRef.current.value === "Company") {
-                response = await fetch("http://localhost:8080/CouponApp/addCompany", requestOptions)
+                response = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/addCompany", requestOptions)
             }
             if (selectUserTypeRef.current.value === "Customer") {
-                response = await fetch("http://localhost:8080/CouponApp/addCustomer", requestOptions)
+                response = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/addCustomer", requestOptions)
             }
 
             const responseFromDbAfterRegister = await response.text();

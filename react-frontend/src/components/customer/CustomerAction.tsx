@@ -31,7 +31,7 @@ const CustomerAction = ({ params, rowId, setRowId }) => {
 
 
             setLoading(true)
-            const response = await fetch("http://localhost:8080/CouponApp/purchaseCoupon/" + params.id + "/" + customerIdAfterLogin, requestOptions)
+            const response = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/purchaseCoupon/" + params.id + "/" + customerIdAfterLogin, requestOptions)
 
             const responseFromPurchaseCoupon = await response.text();
 

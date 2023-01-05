@@ -34,7 +34,7 @@ const GetCustomerDetails = () => {
     const getCustomerDetailsHandler = async () => {
         try {
 
-            const response1 = await fetch("http://localhost:8080/CouponApp/getCustomerDetailsById/" + customerIdAfterLogin)
+            const response1 = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/getCustomerDetailsById/" + customerIdAfterLogin)
             const response2 = response1.clone();
             const responseFromCustomeryDetails = await response1.text();
 
