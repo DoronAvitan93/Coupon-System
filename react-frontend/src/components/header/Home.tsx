@@ -141,19 +141,23 @@ const Home: React.FC<Props> = (props) => {
 
                     {/* //customer components */}
                     {isAuth && isAuthType === "Customer" &&
-                        <><ul>
-                            <li>
-                                <NavLink to='/PurchaseCoupon'>Purchase Coupon</NavLink>
-                            </li>
+                        <>
+                            <ul>
+                                <li>
+                                    <NavLink to='/PurchaseCoupon'>Purchase Coupon</NavLink>
+                                </li>
+                            </ul>
+                            <br />
+                            <ul>
+                                <li>
+                                    <NavLink to='/GetCustomerDetails'>Customer Details</NavLink>
+                                </li>
 
-                            <li>
-                                <NavLink to='/GetCustomerDetails'>Customer Details</NavLink>
-                            </li>
-
-                            <li>
-                                <NavLink to='/GetCustomerCouponOptions'>Get Customer Coupons</NavLink>
-                            </li>
-                        </ul></>
+                                <li>
+                                    <NavLink to='/GetCustomerCouponOptions'>Customer Coupons</NavLink>
+                                </li>
+                            </ul>
+                        </>
                     }
                 </NavGeneral>
             </Card>

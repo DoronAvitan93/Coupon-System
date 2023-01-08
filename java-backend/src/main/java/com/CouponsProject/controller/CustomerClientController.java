@@ -135,7 +135,7 @@ public class CustomerClientController extends ClientControllerAbs {
             } else {
                 System.out.println("No coupons exist for this customer"); // return to backend
                 System.out.println();
-                ResponseEntity<String> responseWrapper = new ResponseEntity<>("No coupons exist for this customer: ", HttpStatus.BAD_REQUEST); // return to client
+                ResponseEntity<String> responseWrapper = new ResponseEntity<>("No coupons exist for this customer!", HttpStatus.BAD_REQUEST); // return to client
                 return responseWrapper;
             }
 

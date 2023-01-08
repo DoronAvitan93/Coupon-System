@@ -6,9 +6,6 @@ import './About.css'
 const About = () => {
 
 
-
-
-
     return (
         <Fragment >
             <div className='about-container'>
@@ -16,9 +13,8 @@ const About = () => {
                 <h2 className='about-text'>Hello, my name is Doron, I'm full stack graduate with experience in:</h2>
                 <h3 className='about-text'> Java, Spring Framework, SpringMVC, JPA, mySQL, HTML, CSS, Java script, TypeScript, React.</h3>
                 <h3 className='about-text'>My project - Coupon system, is a web app for both customers and companies.</h3>
-                <h3 className='about-text'>Coupon system is built with Java + Spring Framework for the backeEnd, MySql for the DB and ReactJS for the frontEnd </h3>
+                <h3 className='about-text'>Coupon system is built with Java + Spring Framework for backend with MySql for Database and React + Typescript for frontend. </h3>
                 <br />
-
 
                 <img className='logo-react' width='60px' src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" alt="React logo" />
                 <img className='logo-spring' width='100px' src="https://w7.pngwing.com/pngs/713/936/png-transparent-spring-framework-representational-state-transfer-java-api-for-restful-web-services-microservices-others-text-trademark-logo.png" alt="Spring logo" />
