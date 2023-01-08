@@ -146,9 +146,9 @@ public class CompanyClientController extends ClientControllerAbs {
             return responseWrapper;
 
         } else {
-            System.out.println("No coupons exist for this company: "); // return to backend
+            System.out.println("No coupons exist for this company!"); // return to backend
             System.out.println();
-            ResponseEntity<String> responseWrapper = new ResponseEntity<>("No coupons exist for this company: ", HttpStatus.BAD_REQUEST); // return to client
+            ResponseEntity<String> responseWrapper = new ResponseEntity<>("No coupons exist for this company!", HttpStatus.BAD_REQUEST); // return to client
             return responseWrapper;
         }
     }
@@ -172,7 +172,7 @@ public class CompanyClientController extends ClientControllerAbs {
             return responseWrapper;
 
         } else {
-            System.out.println("No coupons exist for this company: "); // return to backend
+            System.out.println("No coupons exist for this company with category: "+category); // return to backend
             System.out.println();
             ResponseEntity<?> responseWrapper = new ResponseEntity<>("No coupons exist for this company with category : " + category.toString().toLowerCase(), HttpStatus.BAD_REQUEST); // return to client
             return responseWrapper;

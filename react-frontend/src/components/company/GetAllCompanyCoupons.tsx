@@ -103,35 +103,35 @@ const GetAllCompanyCoupons = () => {
                 }
                 }>
 
-                <h4>All Coupons</h4>
+
 
 
                 {companiesCoupons != null &&
-
-                    <DataGrid
-                        autoHeight
-                        showCellRightBorder
-                        showColumnRightBorder
-                        disableSelectionOnClick
-                        disableExtendRowFullWidth
-                        columns={columns}
-                        rows={companiesCoupons}
-                        getRowId={row => row.id}
-                        rowsPerPageOptions={[10, 20, 30]}
-                        pageSize={pageSize}
-                        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-                        getRowSpacing={params => ({
-                            top: params.isFirstVisible ? 0 : 5,
-                            bottom: params.isLastVisible ? 0 : 5,
-                        })}
-                        sx={{
-                            "& .MuiDataGrid-row:hover": {
-                                backgroundColor: red[100],
-                            },
-                            backgroundColor: '#ffe5e5',
-                            borderRadius: '15px'
-                        }}
-                    />
+                    <>
+                        <h4>All Coupons</h4><DataGrid
+                            autoHeight
+                            showCellRightBorder
+                            showColumnRightBorder
+                            disableSelectionOnClick
+                            disableExtendRowFullWidth
+                            columns={columns}
+                            rows={companiesCoupons}
+                            getRowId={row => row.id}
+                            rowsPerPageOptions={[10, 20, 30]}
+                            pageSize={pageSize}
+                            onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+                            getRowSpacing={params => ({
+                                top: params.isFirstVisible ? 0 : 5,
+                                bottom: params.isLastVisible ? 0 : 5,
+                            })}
+                            sx={{
+                                "& .MuiDataGrid-row:hover": {
+                                    backgroundColor: red[100],
+                                },
+                                backgroundColor: '#ffe5e5',
+                                borderRadius: '15px'
+                            }} />
+                    </>
                 }
             </Box >
 
