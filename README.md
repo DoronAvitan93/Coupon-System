@@ -1,6 +1,6 @@
 
 # Coupon-System
-Coupon system - Java + TypeScript
+##Coupon system - Java + TypeScript
 
 
 To test the web-app: <br/>
