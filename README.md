@@ -10,7 +10,6 @@ see the demo coupons from companies, <br/>
 purchase demo coupons by category, <br/>
 see customer details. <br/>
 <br/>
-<br/>
 register as Company: <br/>
 post coupons to customers, <br/>
 delete company coupon, <br/>
