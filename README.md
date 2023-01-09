@@ -1,11 +1,12 @@
+
 # Coupon-System
-Coupon system - Java + TypeScript
+****Coupon system - Java + TypeScript
 
 
-To test the web-app: <br/>
+****To test the web-app: <br/>
 https://doron-coupon-app.web.app/home
 
-register as Customer: <br/>
+****register as Customer: <br/>
 see the demo coupons from companies, <br/>
 purchase demo coupons by category, <br/>
 see customer details. <br/>
@@ -16,7 +17,7 @@ delete company coupon, <br/>
 update company coupon, <br/>
 see company all coupons or by specific category / price. <br/>
 
-Register:<br/>
+****Register:<br/>
 cant use an already registered E-mail,<br/>
 client type selection,<br/>
 checking for invalid inputs or empty inputs.<br/>
@@ -25,7 +26,7 @@ Login:<br/>
 client type selection,<br/>
 E-mail & Password checking with the DB.<br/>
 
-Coupons:<br/>
+****Coupons:<br/>
 expiration date (when adding coupon, end date will be checked if it past <today date> and will be deleted if true.<br/>
 <br/>
 
