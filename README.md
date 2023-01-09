@@ -1,6 +1,6 @@
 
 # Coupon-System
-** Coupon system - Java + TypeScript **
+Coupon system - Java + TypeScript
 
 
 To test the web-app: <br/>
@@ -40,4 +40,4 @@ Password: admin<br/>
 Databse is backedup so you can do w/e you want there.<br/>
 <br/>
 
-It's my first project so be easy on me ! :)**
+It's my first project so be easy on me ! :)
