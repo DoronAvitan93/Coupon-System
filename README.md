@@ -16,7 +16,7 @@ post coupons to customers, <br/>
 delete company coupon, <br/>
 update company coupon, <br/>
 see company all coupons or by specific category / price. <br/>
-<br/>
+
 Register:<br/>
 cant use an already registered E-mail,<br/>
 client type selection,<br/>
