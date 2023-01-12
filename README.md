@@ -1,6 +1,7 @@
 
 # Coupon-System
 Coupon system - Java + TypeScript
+Loved the backend & frontend sides, but less on CSS ;)
 
 
 To test the web-app: <br/>
