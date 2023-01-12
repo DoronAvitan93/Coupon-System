@@ -12,7 +12,6 @@ const Home: React.FC = () => {
 
     const isAuth = useSelector<RootState>(state => state.authRedux.isAuthenticated);
     const isAuthType = useSelector<RootState>(state => state.authRedux.clientType);
-    const isAuthType22= useSelector<RootState>(state => state.authRedux.clientType);
 
     //using this to change messageState
     const isNeedToReLogin = useSelector<RootState>(state => state.authRedux.isNeedToReLogin);
