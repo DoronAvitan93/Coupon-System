@@ -10,13 +10,7 @@ import Card from '../UI/Card';
 
 
 
-
-type Props = {
-
-}
-
-
-const Login: React.FC<Props> = (props: Props) => {
+const Login: React.FC = () => {
 
     sessionStorage.setItem('loggedInSession', '1');
 

@@ -8,13 +8,7 @@ import Card from "../UI/Card";
 import { authActions } from "../../store/authRedux";
 
 
-
-type Props = {
-
-}
-
-
-const Home: React.FC<Props> = (props) => {
+const Home: React.FC = () => {
 
     const isAuth = useSelector<RootState>(state => state.authRedux.isAuthenticated);
     const isAuthType = useSelector<RootState>(state => state.authRedux.clientType);
@@ -27,7 +21,7 @@ const Home: React.FC<Props> = (props) => {
     const dispatch = useDispatch()
 
 
-
+    //using isNeedToReLogin in Login.tsx to be true after 30 minutes, so the user have to re-login.
     useEffect(() => {
         if (isNeedToReLogin) {
             setMessageState({ title: "Timeout", message: "Your Token time is expired - please re-login" })
@@ -53,19 +47,19 @@ const Home: React.FC<Props> = (props) => {
                         onConfirm={onMessageConfirmHandler} />}
 
 
-                <h1>Coupon System</h1>
-
-
                 <NavGeneral>
                     {!isAuth &&
-                        < ul >
-                            <li>
-                                <NavLink to='/login'>Login</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to='/register'>Register</NavLink>
-                            </li>
-                        </ul>}
+                        <>
+                            <h1>Hello,<br /> Please Log-In</h1>
+                            <ul>
+                                <li>
+                                    <NavLink to='/login'>Login</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/register'>Register</NavLink>
+                                </li>
+                            </ul>
+                        </>}
 
 
                     {/* //admin components */}

@@ -4,7 +4,6 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reduxIndex';
-import Card from '../UI/Card';
 import MessageModal from '../UI/MessageModal';
 
 
@@ -17,7 +16,7 @@ const GetCustomerDetails = () => {
 
     const [messageState, setMessageState] = useState<{ title: string, message: string }>(null);
 
-    const [customerDetails, setCompanyDetails] = useState(null)
+    const [customerDetails, setCustomerDetails] = useState(null)
 
     //Data Grid
     const [pageSize, setPageSize] = useState(10)
@@ -36,16 +35,16 @@ const GetCustomerDetails = () => {
 
             const response1 = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/getCustomerDetailsById/" + customerIdAfterLogin)
             const response2 = response1.clone();
-            const responseFromCustomeryDetails = await response1.text();
+            const responseFromCustomerDetails = await response1.text();
 
             if (response1.status === 400) { //BAD REQUEST
-                setMessageState({ title: "Oops! Something went wrong!", message: responseFromCustomeryDetails })
-                throw new Error(responseFromCustomeryDetails) // throwing error to stop code to continue and making error
+                setMessageState({ title: "Oops! Something went wrong!", message: responseFromCustomerDetails })
+                throw new Error(responseFromCustomerDetails) // throwing error to stop code to continue and making error
             }
 
             //if it pass the first "IF" - then:
             const data = await response2.json();
-            setCompanyDetails(data);
+            setCustomerDetails(data);
             console.log("Got company details: " + JSON.stringify(data))
         }
 
