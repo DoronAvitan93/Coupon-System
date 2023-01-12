@@ -40,6 +40,9 @@ const Home: React.FC = () => {
 
     return (
         <Fragment>
+            <br />
+            <br />
+            <br />
             <Card>
                 {messageState &&
                     <MessageModal title={messageState.title}
