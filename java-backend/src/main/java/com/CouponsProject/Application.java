@@ -26,7 +26,7 @@ public class Application {
         DailyJobExpirationCoupons dailyJobExpirationCoupons = ctx.getBean(DailyJobExpirationCoupons.class);
 
         System.out.println();
-        System.out.println("Spring boot is ON!");
+        System.out.println("Spring boot is ON! Coupon Project by Doron");
         System.out.println();
 
 
