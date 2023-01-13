@@ -21,6 +21,8 @@ const Register = (props) => {
 
 
     const [messageState, setMessageState] = useState<{ title: string, message: string }>(null);
+    const [registerSuccesfully, setRegisterSuccessfully] = useState(false);
+
     const [selectUserTypeUseState, setselectUserTypeUseState] = useState("Customer")
 
 
@@ -30,10 +32,17 @@ const Register = (props) => {
     }
 
 
-    const registerCompany = async (event) => {
+    const registerHandler = async (event) => {
         try {
 
             event.preventDefault()
+
+            //check the user type selection
+            if (selectUserTypeRef.current.value === "Choose client") {
+                setMessageState({ title: "Invalid input", message: "Please select user type" })
+                return;
+            }
+
             //check the inputs 
             if (nameRef.current.value.trim().length === 0 ||
                 emailRef.current.value.trim().length === 0 ||
@@ -44,6 +53,8 @@ const Register = (props) => {
             }
 
             let dataToSend = null;
+
+
 
             if (selectUserTypeRef.current.value === "Company") {
                 dataToSend = {
@@ -115,6 +126,9 @@ const Register = (props) => {
             emailRef.current.value = ''
             passwordRef.current.value = ''
 
+
+            setRegisterSuccessfully(true)
+
             //catching error
         } catch (error) {
             console.log("catching: " + error.message)
@@ -122,29 +136,32 @@ const Register = (props) => {
     }
 
 
-    const onMessageConfirmHandler = () => {
+    const onMessageConfirmErrorHandler = () => {
         setMessageState(null);
+    }
+
+    const onMessageRegisterConfirm = () => {
         navigate("/home")
+        setMessageState(null);
     }
-
-    const isShownHandler = () => {
-        setIsShown(true)
-    }
-
-
-
-
 
 
     return (
         <Fragment>
             <Card>
-                {messageState &&
+                {messageState && registerSuccesfully &&
                     <MessageModal title={messageState.title}
                         message={messageState.message}
-                        onConfirm={onMessageConfirmHandler} />}
+                        onConfirm={onMessageRegisterConfirm} />}
 
-                <form onSubmit={registerCompany}>
+                {messageState && !registerSuccesfully &&
+                    <MessageModal title={messageState.title}
+                        message={messageState.message}
+                        onConfirm={onMessageConfirmErrorHandler} />}
+
+
+
+                <form onSubmit={registerHandler}>
                     <label className='label'>Client Type</label>
                     <select className='input__select' onChange={selectedUserTypeOnChangeHandler} ref={selectUserTypeRef}>
                         <option hidden >Choose client</option>

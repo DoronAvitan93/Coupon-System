@@ -30,8 +30,14 @@ const Login: React.FC = () => {
         try {
             event.preventDefault()
 
+            //check the user type selection
+            if (selectUserTypeRef.current.value === "Choose client") {
+                setMessageState({ title: "Invalid input", message: "Please select user type" })
+                return;
+            }
+
             //check the inputs 
-            if (selectUserTypeRef.current.value === "Choose client" ||
+            if (
                 emailRef.current.value.trim().length === 0 ||
                 passwordRef.current.value.trim().length === 0) {
 
@@ -136,7 +142,7 @@ const Login: React.FC = () => {
     }
 
 
-    const onMessageConfirmHandler = () => {
+    const onMessageConfirmErrorHandler = () => {
         setMessageState(null);
     }
 
@@ -163,7 +169,7 @@ const Login: React.FC = () => {
                     <MessageModal title={messageState.title}
                         message={messageState.message}
                         messageToken={messageState.messageToken}
-                        onConfirm={onMessageConfirmHandler}
+                        onConfirm={onMessageConfirmErrorHandler}
                     />}
 
 

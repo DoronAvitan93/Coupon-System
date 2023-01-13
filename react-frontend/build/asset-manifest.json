@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.ed3fcfc2.css",
-    "main.js": "/static/js/main.db6b3e81.js",
+    "main.js": "/static/js/main.63a695b9.js",
     "static/media/couponsImageBG.jpg": "/static/media/couponsImageBG.b1c7b54b1361af4bb8ef.jpg",
     "index.html": "/index.html",
     "main.ed3fcfc2.css.map": "/static/css/main.ed3fcfc2.css.map",
-    "main.db6b3e81.js.map": "/static/js/main.db6b3e81.js.map"
+    "main.63a695b9.js.map": "/static/js/main.63a695b9.js.map"
   },
   "entrypoints": [
     "static/css/main.ed3fcfc2.css",
-    "static/js/main.db6b3e81.js"
+    "static/js/main.63a695b9.js"
   ]
 }

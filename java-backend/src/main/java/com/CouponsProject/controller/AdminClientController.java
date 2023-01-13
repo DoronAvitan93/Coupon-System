@@ -35,6 +35,7 @@ public class AdminClientController extends ClientControllerAbs {
     public ResponseEntity<?> login(@PathVariable ClientType clientType, @PathVariable String email, @PathVariable String password) throws SQLException {
         System.out.println("Using login function..."); // print to backend
 
+        
         // "19584413" fixed admin ID
         int adminID = loginManager.loginM(clientType, email, password);
         // checking if adminID from loginManager is the fixed ID for Admin
@@ -71,7 +72,7 @@ public class AdminClientController extends ClientControllerAbs {
 
         } else {
             System.out.println("Cant add company - email or name already exist."); // print to backend
-            ResponseEntity<?> response = new ResponseEntity<>("Cant add company - email or name already exist.", HttpStatus.BAD_REQUEST); // print to the client
+            ResponseEntity<String> response = new ResponseEntity<>("Cant add company - email or name already exist.", HttpStatus.BAD_REQUEST); // print to the client
             return response;
         }
     }
