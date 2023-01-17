@@ -35,7 +35,7 @@ public class AdminClientController extends ClientControllerAbs {
     public ResponseEntity<?> login(@PathVariable ClientType clientType, @PathVariable String email, @PathVariable String password) throws SQLException {
         System.out.println("Using login function..."); // print to backend
 
-        
+
         // "19584413" fixed admin ID
         int adminID = loginManager.loginM(clientType, email, password);
         // checking if adminID from loginManager is the fixed ID for Admin
