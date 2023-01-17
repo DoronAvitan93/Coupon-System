@@ -53,7 +53,7 @@ const Home: React.FC = () => {
                 <NavGeneral>
                     {!isAuth &&
                         <>
-                            <h1>Hello,<br /> Please Log-In</h1>
+                            <h1>Please Log-In</h1>
                             <ul>
                                 <li>
                                     <NavLink to='/login'>Login</NavLink>
