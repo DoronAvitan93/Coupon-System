@@ -1,0 +1,26 @@
+.input {
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 7px;
+    background-color: #00000099;
+    color: #edd747;
+    font-size: large;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.input__select {
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 7px;
+    background-color: #00000099;
+    color: #edd747;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.26);
+    outline: none;
+    width: auto;
+    font-size: large;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.label {
+    display: block;
+}

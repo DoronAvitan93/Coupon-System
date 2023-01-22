@@ -24,7 +24,7 @@ const About = () => {
 
                 <h2 className='about-text'>Java: Basic Java, Object Oriented Analysis & Design, Expressions & Flow Control,<br /> Arrays, Class Design, Exceptions, Collections, Threads, JDBC, SQL, Java 8 & Functional Programming.</h2>
                 <h3 className='about-text' >Server side: Spring Framework, Advanced Spring, Hibernate / JPA.</h3>
-                <h3 className='about-text' >Web: SpringMVC, HTML & CSS, JavaScript, TypeScript, Web Services - REST, ReactJS, Redux.</h3>
+                <h3 className='about-text' >Web: SpringMVC, HTML & CSS, Java Script, Web Services - REST, ReactJS, Redux.</h3>
                 <h3 className='about-text' >Databases: MySql, clearDB</h3>
                 <h3 className='about-text' >Cloud services: Heroku, FireBase</h3>
                 <h3 className='about-text' >Development Environment: Intellij, Visual Studio Code</h3>
