@@ -39,7 +39,6 @@ public class Company {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company", cascade = CascadeType.ALL) // from coupon
     @JsonSerialize
-
     private List<Coupon> couponsList = new ArrayList<>();
 
     @Override

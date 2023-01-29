@@ -77,13 +77,17 @@ const GetCompanyCouponsOptions = () => {
 
                 {getCouponsByOption === "category" &&
 
-                    <><label className='label'>Coupon category </label><select className='input__select' onChange={onChangeSelect}>
-                        <option selected hidden>Choose Category</option>
-                        <option value="FOOD">Food</option>
-                        <option value="ELECTRICITY">Electricity</option>
-                        <option value="RESTAURANT">Restaurant</option>
-                        <option value="VACATION">Vacation</option>
-                    </select><br /></>
+                    <>
+                        <label className='label'>Coupon category </label>
+                        <select className='input__select' onChange={onChangeSelect}>
+                            <option selected hidden>Choose Category</option>
+                            <option value="FOOD">Food</option>
+                            <option value="ELECTRICITY">Electricity</option>
+                            <option value="RESTAURANT">Restaurant</option>
+                            <option value="VACATION">Vacation</option>
+                        </select>
+                        <br />
+                    </>
 
                 }
 
