@@ -48,8 +48,8 @@ checking for invalid inputs or empty inputs,<br/>
 <br/>
 Login:<br/>
 client type selection,<br/>
-E-mail & Password checking with the DB.<br/>
-
+E-mail & Password checking with the DB .<br/>
+<br/>
 Coupons:<br/>
 expiration date thread that run auto every 24h
 <br/>
