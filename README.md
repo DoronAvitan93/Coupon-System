@@ -31,7 +31,7 @@ Register as Customer: <br/>
 see the demo coupons from companies, <br/>
 purchase demo coupons by category, <br/>
 see customer details. <br/>
-<br/>
+
 Register as Company: <br/>
 Add coupons that customers would see, <br/>
 delete company coupon, <br/>
