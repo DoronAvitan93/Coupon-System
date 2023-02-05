@@ -46,7 +46,7 @@ public class AdminClientController extends ClientControllerAbs {
             return responseWrapper;
 
         } else {
-            System.out.println("Admin login Error - incorrect email / password"); // print to backend
+            System.out.println("Admin login Error - Incorrect email / password"); // print to backend
             System.out.println();
             ResponseEntity<String> responseWrapper = new ResponseEntity<>("Admin login Error - incorrect email / password ", HttpStatus.BAD_REQUEST); // print to client
 
