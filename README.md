@@ -41,10 +41,9 @@ See company all coupons or by specific category / price. <br/>
 Register function:<br/>
 Cant use an already registered E-mail,<br/>
 Client type selection,<br/>
-Checking for invalid inputs or empty inputs,<br/>
+Checking for invalid inputs or empty inputs.<br/>
 
 ----------------------
-
 
 Login:<br/>
 Inputs check,
@@ -52,7 +51,7 @@ Client type selection,<br/>
 E-mail & Password checking with the DB.
 
 Coupons:<br/>
-Expiration date thread that run auto every 24h
+Expiration date thread that run auto every 24h.
 <br/>
 
 Admin functions:<br/>
