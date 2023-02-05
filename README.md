@@ -54,7 +54,7 @@ Coupons:<br/>
 expiration date thread that run auto every 24h
 <br/>
 
-To see admin functions:<br/>
+Admin functions:<br/>
 login:<br/>
 client type: Admin<br/>
 E-Mail: Admin@admin<br/>
