@@ -148,7 +148,6 @@ const GetOneCustomer = () => {
 
     return (
         <Fragment>
-
             {messageState &&
                 <MessageModal title={messageState.title}
                     message={messageState.message}
@@ -231,7 +230,8 @@ const GetOneCustomer = () => {
                         }
                     </Box >
 
-                </div>}
+                </div>
+            }
         </Fragment>
 
     )
