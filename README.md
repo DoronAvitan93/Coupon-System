@@ -12,7 +12,7 @@ https://doron-coupon-app.web.app/home
 
 Login demo companies:
 ----------------------
-E-mail: Dominos@dominos.com
+E-mail: Dominos@dominos.com <br/>
 Password: 231xcdeq
 
 E-mail: Mahsanei-Hashmal@hashmal.com <br/>
