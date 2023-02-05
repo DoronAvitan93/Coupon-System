@@ -3,37 +3,63 @@
 Coupon system - Java + TypeScript
 Loved the backend & frontend sides
 
+Using clearDB for DataBase, Using firebase and heroku to deploy.
+
+-----------
 
 To test the web-app: <br/>
 https://doron-coupon-app.web.app/home
 
-register as Customer: <br/>
-see the demo coupons from companies, <br/>
-purchase demo coupons by category, <br/>
-see customer details. <br/>
-<br/>
-register as Company: <br/>
-post coupons to customers, <br/>
-delete company coupon, <br/>
-update company coupon, <br/>
-see company all coupons or by specific category / price. <br/>
+Login demo companies:
+----------------------
+E-mail: Dominos@dominos.com <br/>
+Password: 231xcdeq
 
-Register:<br/>
-cant use an already registered E-mail,<br/>
-client type selection,<br/>
-checking for invalid inputs or empty inputs.<br/>
-<br/>
+E-mail: Mahsanei-Hashmal@hashmal.com <br/>
+Password: 177789xq
+
+E-mail: ProTrip@ProTrip.com <br/>
+Password: 7931xz
+
+E-mail: KSP@KSP.com <br/>
+Password: 8835x9
+
+E-mail: MachneYeuda@MachneYeuda.com <br/>
+Password: 1515x4
+</br>
+
+----------------------
+
+Register as Customer: <br/>
+See the demo coupons from companies, <br/>
+Purchase demo coupons by category, <br/>
+See customer details. <br/>
+
+Register as Company: <br/>
+Add coupons that customers would see, <br/>
+Delete company coupon, <br/>
+Update company coupon, <br/>
+See company all coupons or by specific category / price. <br/>
+
+Register function:<br/>
+Cant use an already registered E-mail,<br/>
+Client type selection,<br/>
+Checking for invalid inputs or empty inputs.<br/>
+
+----------------------
+
 Login:<br/>
-client type selection,<br/>
-E-mail & Password checking with the DB.<br/>
+Inputs check,
+Client type selection,<br/>
+E-mail & Password checking with the DB.
 
 Coupons:<br/>
-expiration date (when adding coupon, end date will be checked if it past <today date> and will be deleted if true.<br/>
+Expiration date thread that run auto every 24h.
 <br/>
 
-To see admin functions:<br/>
-login:<br/>
-client type: Admin<br/>
+Admin functions:<br/>
+Login:<br/>
+Client type: Admin<br/>
 E-Mail: Admin@admin<br/>
 Password: admin<br/>
 <br/>
