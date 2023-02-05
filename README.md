@@ -43,6 +43,8 @@ cant use an already registered E-mail,<br/>
 client type selection,<br/>
 checking for invalid inputs or empty inputs,<br/>
 
+----------------------
+
 <br/>
 Login:<br/>
 client type selection,<br/>
