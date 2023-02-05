@@ -28,9 +28,9 @@ Password: 1515x4
 ----------------------
 
 Register as Customer: <br/>
-see the demo coupons from companies, <br/>
-purchase demo coupons by category, <br/>
-see customer details. <br/>
+See the demo coupons from companies, <br/>
+Purchase demo coupons by category, <br/>
+See customer details. <br/>
 
 Register as Company: <br/>
 Add coupons that customers would see, <br/>
