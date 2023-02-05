@@ -8,6 +8,7 @@ To test the web-app: <br/>
 https://doron-coupon-app.web.app/home
 
 login demo companies:
+
 ----------------------
 E-mail: Dominos@dominos.com
 Password: 231xcdeq
