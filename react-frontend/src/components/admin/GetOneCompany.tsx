@@ -148,7 +148,6 @@ const GetOneCompany = () => {
     }
 
 
-
     return (
         <Fragment>
             {messageState &&
