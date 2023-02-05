@@ -12,16 +12,16 @@ Login demo companies:
 E-mail: Dominos@dominos.com
 Password: 231xcdeq
 
-E-mail: Mahsanei-Hashmal@hashmal.com
+E-mail: Mahsanei-Hashmal@hashmal.com <br/>
 Password: 177789xq
 
-E-mail: ProTrip@ProTrip.com
+E-mail: ProTrip@ProTrip.com <br/>
 Password: 7931xz
 
-E-mail: KSP@KSP.com
+E-mail: KSP@KSP.com <br/>
 Password: 8835x9
 
-E-mail: MachneYeuda@MachneYeuda.com
+E-mail: MachneYeuda@MachneYeuda.com <br/>
 Password: 1515x4
 </br>
 
