@@ -47,6 +47,7 @@ checking for invalid inputs or empty inputs,<br/>
 
 
 Login:<br/>
+Inputs check,
 client type selection,<br/>
 E-mail & Password checking with the DB.
 
