@@ -6,8 +6,8 @@ Loved the backend & frontend sides
 
 To test the web-app: <br/>
 https://doron-coupon-app.web.app/home
-
-login demo companies:
+**
+Login demo companies:**
 
 ----------------------
 E-mail: Dominos@dominos.com
