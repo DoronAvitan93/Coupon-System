@@ -34,30 +34,30 @@ see customer details. <br/>
 
 Register as Company: <br/>
 Add coupons that customers would see, <br/>
-delete company coupon, <br/>
-update company coupon, <br/>
-see company all coupons or by specific category / price. <br/>
+Delete company coupon, <br/>
+Update company coupon, <br/>
+See company all coupons or by specific category / price. <br/>
 
 Register function:<br/>
-cant use an already registered E-mail,<br/>
-client type selection,<br/>
-checking for invalid inputs or empty inputs,<br/>
+Cant use an already registered E-mail,<br/>
+Client type selection,<br/>
+Checking for invalid inputs or empty inputs,<br/>
 
 ----------------------
 
 
 Login:<br/>
 Inputs check,
-client type selection,<br/>
+Client type selection,<br/>
 E-mail & Password checking with the DB.
 
 Coupons:<br/>
-expiration date thread that run auto every 24h
+Expiration date thread that run auto every 24h
 <br/>
 
 Admin functions:<br/>
-login:<br/>
-client type: Admin<br/>
+Login:<br/>
+Client type: Admin<br/>
 E-Mail: Admin@admin<br/>
 Password: admin<br/>
 <br/>
