@@ -148,13 +148,13 @@ const GetOneCustomer = () => {
 
     return (
         <Fragment>
-            <div className='card'>
-                {messageState &&
-                    <MessageModal title={messageState.title}
-                        message={messageState.message}
-                        onConfirm={onMessageConfirmHandler} />}
 
+            {messageState &&
+                <MessageModal title={messageState.title}
+                    message={messageState.message}
+                    onConfirm={onMessageConfirmHandler} />}
 
+            <Card>
                 <form onSubmit={getCustomerHandler}>
                     <label className='label'>Customer ID</label>
                     <input className='input' type="text" ref={customerIdRef} />
@@ -162,9 +162,10 @@ const GetOneCustomer = () => {
 
                     <Button type="submit">Get customer</Button>
                 </form>
+            </Card>
 
-
-                {customer &&
+            {customer &&
+                <div className='card'>
                     <Box
                         sx={{
                             height: 'auto',
@@ -213,7 +214,7 @@ const GetOneCustomer = () => {
                                     columns={couponsColumns}
                                     rows={customerCoupons}
                                     getRowId={row => row.id}
-                                    rowsPerPageOptions={[10,20.30]}
+                                    rowsPerPageOptions={[10, 20.30]}
                                     pageSize={pageSize}
                                     onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
                                     getRowSpacing={params => ({
@@ -229,8 +230,8 @@ const GetOneCustomer = () => {
                                     }} /></>
                         }
                     </Box >
-                }
-            </div>
+
+                </div>}
         </Fragment>
 
     )
