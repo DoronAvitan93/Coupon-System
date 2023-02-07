@@ -95,13 +95,13 @@ public class AdminClientController extends ClientControllerAbs {
 
             } else {
                 System.out.println("Email already exist!"); //print to backend
-                ResponseEntity<String> response = new ResponseEntity<>("Email already exist!", HttpStatus.BAD_REQUEST);
+                ResponseEntity<String> response = new ResponseEntity<>("Email already exist!", HttpStatus.BAD_REQUEST); // print to client
                 return response;
             }
 
         } else {
             System.out.println("No company exist by this ID: " + company.getId()); //print to backend
-            ResponseEntity<String> response = new ResponseEntity("No company exist by this ID: " + company.getId(), HttpStatus.BAD_REQUEST);
+            ResponseEntity<String> response = new ResponseEntity("No company exist by this ID: " + company.getId(), HttpStatus.BAD_REQUEST); //print to client
             return response;
         }
     }
