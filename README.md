@@ -53,9 +53,13 @@ Inputs check,
 Client type selection,<br/>
 E-mail & Password checking with the DB.
 
+----------------------
+
 Coupons:<br/>
 Expiration date thread that run auto every 24h.
 <br/>
+
+----------------------
 
 Admin functions:<br/>
 Login:<br/>
@@ -63,6 +67,8 @@ Client type: Admin<br/>
 E-Mail: Admin@admin<br/>
 Password: admin<br/>
 <br/>
+
+----------------------
 
 Databse is backedup so you can do w/e you want there.<br/>
 <br/>
