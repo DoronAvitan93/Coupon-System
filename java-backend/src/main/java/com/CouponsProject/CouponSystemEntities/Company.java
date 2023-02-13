@@ -16,7 +16,7 @@ import java.util.List;
 @Entity(name = "company")
 @NoArgsConstructor
 @Builder
-//@JsonIgnoreProperties(value = {"couponsList"}) // use this if you want to ignore coupon list when JSON company
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "couponsList"})
 public class Company {
 
     @Id
@@ -38,7 +38,7 @@ public class Company {
 
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company", cascade = CascadeType.ALL) // from coupon
-    @JsonSerialize
+//    @JsonSerialize
     private List<Coupon> couponsList = new ArrayList<>();
 
     @Override

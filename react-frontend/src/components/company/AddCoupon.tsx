@@ -10,7 +10,7 @@ import './Company.css'
 
 
 
-const AddCoupon = (props) => {
+const AddCoupon = () => {
 
 
     //user client type: Customer / Client
@@ -32,7 +32,7 @@ const AddCoupon = (props) => {
 
     const addCoupon = async (event) => {
         try {
-
+            console.log(companyIdFromLogin)
             event.preventDefault();
             //check the inputs 
             if (categoryRef.current.value.trim().length === 0 ||
@@ -88,14 +88,14 @@ const AddCoupon = (props) => {
 
 
             //restart values
-            titleRef.current.value = ''
-            categoryRef.current.value = ''
-            descriptionRef.current.value = ''
-            amountRef.current.value = ''
-            priceRef.current.value = ''
-            startDateRef.current.value = ''
-            endDateRef.current.value = ''
-            imageUrlRef.current.value = ''
+            // titleRef.current.value = ''
+            // categoryRef.current.value = ''
+            // descriptionRef.current.value = ''
+            // amountRef.current.value = ''
+            // priceRef.current.value = ''
+            // startDateRef.current.value = ''
+            // endDateRef.current.value = ''
+            // imageUrlRef.current.value = ''
 
 
             //catching error

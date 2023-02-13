@@ -1,7 +1,7 @@
-import { Box, Tooltip, Typography } from '@mui/material'
-import { DataGrid, GridCellParams, gridClasses } from '@mui/x-data-grid'
+import { Box, Tooltip } from '@mui/material'
+import { DataGrid, GridCellParams } from '@mui/x-data-grid'
 import { red } from '@mui/material/colors';
-import { Fragment, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reduxIndex';
 

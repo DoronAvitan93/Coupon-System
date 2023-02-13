@@ -35,6 +35,7 @@ public class CompanyService extends ClientServiceAbs {
                     couponsRepository.save(coupon);
                     return coupon;
                 }
+//                if Company already have the same coupon title
 //                System.out.println("Coupon already exist!");
                 return null;
             }
