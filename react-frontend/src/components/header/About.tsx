@@ -23,18 +23,19 @@ const About = () => {
                 <h3 className='about-text' >Experience:</h3>
 
                 <h2 className='about-text'>Java: Basic Java, Object Oriented Analysis & Design, Expressions & Flow Control,<br /> Arrays, Class Design, Exceptions, Collections, Threads, JDBC, SQL, Java 8 & Functional Programming.</h2>
-                <h3 className='about-text' >Server side: Spring Framework, Advanced Spring, Hibernate / JPA.</h3>
-                <h3 className='about-text' >Web: SpringMVC, HTML & CSS, JavaScript, TypeScript, Web Services - REST, ReactJS, Redux.</h3>
+                <h3 className='about-text' >Server side: Spring Framework, Advanced Spring, SpringMVC, Hibernate / JPA.</h3>
+                <h3 className='about-text' >Web: SpringMVC, HTML & CSS, JavaScript, TypeScript, ReactJS, React Redux, React Router, Web Services - REST.</h3>
                 <h3 className='about-text' >Databases: MySql, clearDB</h3>
                 <h3 className='about-text' >Cloud services: Heroku, FireBase</h3>
                 <h3 className='about-text' >Development Environment: Intellij, Visual Studio Code</h3>
                 <h3 className='about-text' >Version control: Git & GitHub </h3>
                 <br />
-                <h3 className='about-text'>Experienced computer user with advanced skills in fast and accurate typing, including blind typing.</h3>
-                <h3 className='about-text'>Strong aptitude for self-learning and am able to quickly adapt to new technologies and systems.</h3>
-                <h3 className='about-text'>Highly skilled in using Google to search for and find information.</h3>
-                <h3 className='about-text'>Comfortable working independently or as part of a team, and my ability to solve problems and learn new things efficiently,</h3>
-                <h3 className='about-text'>combined with my passion for computer use, makes me a valuable asset in any team.</h3>
+                <h3 className='about-text'>👇</h3>
+                <h3 className='about-text'>Passionate about personal and professional growth,<br /> constantly seeking new opportunities to learn and challenge myself to reach new heights. 🚀</h3>
+                <h3 className='about-text'>Fueled by a passion for coding and a love of learning, <br />constantly seeking new and innovative ways to solve problems and improve my skills. 🕵️</h3>
+                <h3 className='about-text'>Proficient in computer use with a fast operating ability. 💻</h3>
+                <h3 className='about-text'>Possessing valuable skills and a strong work ethic,<br /> eager to join a team where I can contribute and continue to grow,<br /> while being part of a collaborative and successful environment. 🙏</h3>
+                <h3 className='about-text'>👆</h3>
             </div>
         </Fragment >
     );
