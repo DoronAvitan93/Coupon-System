@@ -3,12 +3,15 @@
 Coupon system - Java + TypeScript
 Loved the backend & frontend sides
 
-Using clearDB for DataBase, Using firebase and heroku to deploy.
+Using SQL clearDB(from heroku) for Databse, Using firebase and heroku to deploy.
 
 -----------
 
 To test the web-app: <br/>
 https://doron-coupon-app.web.app/home
+
+Login as a guest
+<hr/>
 
 Login demo companies:
 ----------------------
