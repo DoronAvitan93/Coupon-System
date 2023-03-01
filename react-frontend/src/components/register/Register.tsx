@@ -1,8 +1,9 @@
 import { Fragment, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Button from '../UI/Button';
 import Card from '../UI/Card';
 import MessageModal from '../UI/MessageModal';
+import Nav from '../UI/Nav';
 
 
 
@@ -199,7 +200,11 @@ const Register = (props) => {
                     <input className='input' type="password" ref={passwordRef} />
                     <br />
 
-                    <Button type="submit">Register!</Button>
+                    <Nav>
+                        <Button type="submit">Register!</Button>
+                        <NavLink to='/home'><i className="fa-solid fa-circle-arrow-left"></i></NavLink>
+                    </Nav>
+
 
                 </form>
             </Card>
