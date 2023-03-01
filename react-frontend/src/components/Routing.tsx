@@ -16,13 +16,14 @@ import GetCompanyDetails from "./company/GetCompanyDetails";
 import UpdateCoupon from "./company/updateCoupon";
 import GetCustomerDetail from "./customer/GetCustomerDetail";
 import PurchaseCoupon from "./customer/PurchaseCoupon";
-import About from "./header/About";
-import Home from "./header/Home";
+import About from "./main/About";
+import Home from "./main/Home";
 import Login from "./Login/Login";
 import Register from "./register/Register";
 import GetCompanyCouponsOptions from "./company/GetCompanyCouponsOptions";
 import GetCustomerCouponsOptions from "./customer/GetCustomerCouponsOptions";
-import Logout from "./header/Logout";
+import Logout from "./main/Logout";
+import GuestLogin from "./Login/GuestLogin";
 
 
 //Routing here
@@ -46,6 +47,8 @@ const Routing = () => {
         <Route path="register" element={<Register />} />
 
         <Route path="login" element={<Login />} />
+
+        <Route path="guestLogin" element={<GuestLogin />} />
 
         <Route path="logout" element={<Logout />} />
 
