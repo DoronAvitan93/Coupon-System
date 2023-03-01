@@ -16,24 +16,34 @@ const AddCoupon = () => {
     //user client type: Customer / Client
     // const selectUserTypeRef = useRef<HTMLSelectElement>(); //register clientType
 
+    //company ID from Login function
     const companyIdFromLogin = useSelector<RootState>(state => state.authRedux.companyIdAfterLogin);
 
-    const titleRef = useRef<HTMLInputElement>(); //coupon title
-    const categoryRef = useRef<HTMLSelectElement>(); //coupon category
-    const descriptionRef = useRef<HTMLInputElement>(); //coupon description
-    const amountRef = useRef<HTMLInputElement>(); //coupon amount
-    const priceRef = useRef<HTMLInputElement>(); //coupon price
-    const startDateRef = useRef<HTMLInputElement>(); //coupon startDate
-    const endDateRef = useRef<HTMLInputElement>();//coupon endDate
-    const imageUrlRef = useRef<HTMLInputElement>(); //coupon imageUrl
+    //coupon title
+    const titleRef = useRef<HTMLInputElement>();
+    //coupon category
+    const categoryRef = useRef<HTMLSelectElement>();
+    //coupon description
+    const descriptionRef = useRef<HTMLInputElement>();
+    //coupon amount
+    const amountRef = useRef<HTMLInputElement>();
+    //coupon price
+    const priceRef = useRef<HTMLInputElement>();
+    //coupon startDate
+    const startDateRef = useRef<HTMLInputElement>();
+    //coupon endDate
+    const endDateRef = useRef<HTMLInputElement>();
+    //coupon imageUrl
+    const imageUrlRef = useRef<HTMLInputElement>();
 
+    //popup message
     const [messageState, setMessageState] = useState<{ title: string, message: string }>(null);
 
 
     const addCoupon = async (event) => {
         try {
-            console.log(companyIdFromLogin)
             event.preventDefault();
+
             //check the inputs 
             if (categoryRef.current.value.trim().length === 0 ||
                 titleRef.current.value.trim().length === 0 ||
@@ -48,6 +58,7 @@ const AddCoupon = () => {
                 return;
             }
 
+            //Json structure
             const dataToSend = {
                 //coupon
                 title: titleRef.current.value,
@@ -88,14 +99,14 @@ const AddCoupon = () => {
 
 
             //restart values
-            // titleRef.current.value = ''
-            // categoryRef.current.value = ''
-            // descriptionRef.current.value = ''
-            // amountRef.current.value = ''
-            // priceRef.current.value = ''
-            // startDateRef.current.value = ''
-            // endDateRef.current.value = ''
-            // imageUrlRef.current.value = ''
+            titleRef.current.value = ''
+            categoryRef.current.value = ''
+            descriptionRef.current.value = ''
+            amountRef.current.value = ''
+            priceRef.current.value = ''
+            startDateRef.current.value = ''
+            endDateRef.current.value = ''
+            imageUrlRef.current.value = ''
 
 
             //catching error

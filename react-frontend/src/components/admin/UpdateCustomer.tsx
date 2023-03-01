@@ -8,14 +8,18 @@ import './Admin.css'
 
 
 const UpdateCompany = () => {
+    //customer ID to update
+    const customerIdRef = useRef<HTMLInputElement>();
+    //firstName to update
+    const firstNameRef = useRef<HTMLInputElement>();
+    //lastName to update
+    const lastNameRef = useRef<HTMLInputElement>();
+    //email to update
+    const emailRef = useRef<HTMLInputElement>();
+    //password to update
+    const passwordRef = useRef<HTMLInputElement>();
 
-    const customerIdRef = useRef<HTMLInputElement>();//customer ID to update
-    const firstNameRef = useRef<HTMLInputElement>(); //firstName to update
-    const lastNameRef = useRef<HTMLInputElement>(); //lastName to update
-    const emailRef = useRef<HTMLInputElement>(); //email to update
-    const passwordRef = useRef<HTMLInputElement>(); //password to update
-
-
+    //popup message
     const [messageState, setMessageState] = useState<{ title: string, message: string }>(null);
 
 

@@ -10,8 +10,10 @@ import Card from '../UI/Card';
 
 const PurchaseCoupon = () => {
 
-    const [pageSize, setPageSize] = useState(10)
+    //Datagrid mui page size
+    const [pageSize, setPageSize] = useState(5)
 
+    //Datagrid mui row size
     const [rowId, setRowId] = useState(null)
 
     const columns = useMemo(() => [
@@ -81,7 +83,7 @@ const PurchaseCoupon = () => {
             //if it pass the first "IF" - then:
             const data = await response2.json();
             setCoupons(data);
-            console.log("Got coupons: " + JSON.stringify(data))
+            // console.log("Got coupons: " + JSON.stringify(data))
 
         }
 
@@ -116,7 +118,6 @@ const PurchaseCoupon = () => {
 
     return (
         <Fragment>
-
             {messageState &&
                 <MessageModal title={messageState.title}
                     message={messageState.message}
@@ -152,7 +153,7 @@ const PurchaseCoupon = () => {
                             columns={columns}
                             rows={coupons}
                             getRowId={row => row.id}
-                            rowsPerPageOptions={[10, 20.30]}
+                            rowsPerPageOptions={[5, 10, 15]}
                             pageSize={pageSize}
                             onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
                             getRowSpacing={params => ({

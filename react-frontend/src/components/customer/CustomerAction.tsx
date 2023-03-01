@@ -19,9 +19,8 @@ const CustomerAction = ({ params, rowId, setRowId }) => {
     const [messageState, setMessageState] = useState<{ title: string, message: string }>(null);
 
     const handleSubmit = async () => {
-
+        console.log(customerIdAfterLogin)
         try {
-
             //purchase coupon
             const requestOptions =
             {
@@ -30,11 +29,15 @@ const CustomerAction = ({ params, rowId, setRowId }) => {
             }
 
 
+            if (customerIdAfterLogin === '82') { //BAD REQUEST
+                setMessageState({ title: "ERROR", message: "As a Guest - You cant purchase coupons!" })
+                setLoading(false)
+                throw new Error('Error') // throwing error to stop code to continue and making error
+            }
+
             setLoading(true)
             const response = await fetch("https://doron-coupon-web-app.herokuapp.com/CouponApp/purchaseCoupon/" + params.id + "/" + customerIdAfterLogin, requestOptions)
-
             const responseFromPurchaseCoupon = await response.text();
-
 
             if (response.status === 400) { //BAD REQUEST
                 setMessageState({ title: "Oops! Something went wrong!", message: responseFromPurchaseCoupon })

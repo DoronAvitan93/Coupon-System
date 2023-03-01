@@ -31,14 +31,14 @@ const GetCustomerCouponsOptions = () => {
         setGetCouponsByOption(event.target.value);
         //restart category value (when change options)
         setCategoryCouponState(null);
-        console.log(event.target.value);
+        // console.log(event.target.value);
 
     }
 
 
     const onChangeSelect = (event) => {
         event.preventDefault();
-        console.log(event.target.value);
+        // console.log(event.target.value);
         setCategoryCouponState(event.target.value);
     }
 
@@ -65,7 +65,7 @@ const GetCustomerCouponsOptions = () => {
             <Card>
                 <label className='label'>Show coupons by:</label>
                 <select className='input__select' onChange={selectGetByOptionCouponsHandler} >
-                    <option selected hidden>Choose option</option>
+                    <option hidden>Choose option</option>
                     <option value="all">All coupons</option>
                     <option value="category">Coupons  by category</option>
                     <option value="price">Coupons by price</option>
@@ -78,7 +78,7 @@ const GetCustomerCouponsOptions = () => {
                     <>
                         <label className='label'>Coupon category </label>
                         <select className='input__select' onChange={onChangeSelect} >
-                            <option selected hidden>Choose Category</option>
+                            <option hidden>Choose Category</option>
                             <option value="FOOD">Food</option>
                             <option value="ELECTRICITY">Electricity</option>
                             <option value="RESTAURANT">Restaurant</option>
