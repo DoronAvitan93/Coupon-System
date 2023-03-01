@@ -1,8 +1,9 @@
-import MainHeader from "./components/header/MainHeader";
+import MainHeader from "./components/main/MainHeader";
 import { Fragment } from "react";
 import Routing from "./components/Routing";
 import RefreshHandler from "./components/RefreshHandler";
 import Footer from "./components/footer/Footer";
+import Navigation from "./components/main/Navigation";
 
 
 
@@ -14,7 +15,7 @@ const App = () => {
   return (
     <Fragment >
       <RefreshHandler />
-      <MainHeader />
+      <Navigation />
       <Routing />
       <Footer />
     </Fragment>
