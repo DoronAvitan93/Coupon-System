@@ -20,10 +20,12 @@ const MessageModal = (props) => {
             <header className='header'>
               <h2>{props.title}</h2>
             </header>
+
             <div className='content'>
-              <h3>{props.message}</h3>
-              <h4>{props.messageToken}</h4>
+              <h2>{props.message}</h2>
+              <h3>{props.messageToken}</h3>
             </div>
+
             <footer className='actions'>
               <Button onClick={props.onConfirm}>Ok</Button>
             </footer>

@@ -5,7 +5,7 @@ type Props = {
     type?: "button" | "submit" | "reset" // "?" means: the user don't have to provide type
     onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
-const Button: React.FC<PropsWithChildren<Props>> = (props) => {
+const Nav: React.FC<PropsWithChildren<Props>> = (props) => {
 
 
 
@@ -19,4 +19,4 @@ const Button: React.FC<PropsWithChildren<Props>> = (props) => {
     );
 };
 
-export default Button;
+export default Nav;
