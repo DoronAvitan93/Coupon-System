@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import Button from '../UI/Button';
 import './Login.css'
 import Card from '../UI/Card';
+import { NavLink } from 'react-router-dom';
+import Nav from '../UI/Nav';
 
 
 
@@ -65,11 +67,12 @@ const Login: React.FC = () => {
                 setMessageState({ title: "Customer logged successfully!", message: "You have been logged in to Coupon system!", messageToken: "You have 30 minutes before you need to re-login again" })
                 dispatch(authActions.setClientTypeCustomer())
                 dispatch(authActions.setCustomerIdAfterLogin(responseFromLogin))
-                console.log("dispatch client type: " + selectUserTypeRef.current.value)
+                // console.log("dispatch client type: " + selectUserTypeRef.current.value)
 
 
                 //30 mins "Token"
                 const timer = setTimeout(function () {
+                    sessionStorage.clear();
                     localStorage.clear();
                     console.log("CLEARING LOCAL STORAGE");
                     dispatch(authActions.setIsAuthFalse());
@@ -84,12 +87,13 @@ const Login: React.FC = () => {
                 setMessageState({ title: "Company logged in successfully!", message: "You have been logged in to Coupon system!", messageToken: "You have 30 minutes before you need to re-login again" })
                 dispatch(authActions.setClientTypeCompany())
                 dispatch(authActions.setCompanyIdAfterLogin(responseFromLogin))
-                console.log("dispatch client type: " + selectUserTypeRef.current.value)
+                // console.log("dispatch client type: " + selectUserTypeRef.current.value)
 
 
 
                 //30 mins "Token"
                 const timer = setTimeout(function () {
+                    sessionStorage.clear();
                     localStorage.clear();
                     console.log("CLEARING LOCAL STORAGE");
                     dispatch(authActions.setIsAuthFalse());
@@ -193,7 +197,12 @@ const Login: React.FC = () => {
                     <input className='input' type="password" ref={passwordRef} />
                     <br />
 
-                    <Button type="submit">Login!</Button>
+                    {/* putting Nav here to wrap the 2 different buttons :) */}
+                    <Nav>
+                        <Button type="submit">Login!</Button>
+                        <NavLink to='/home'><i className="fa-solid fa-circle-arrow-left"></i></NavLink>
+                    </Nav>
+
                 </form>
 
             </Card>
