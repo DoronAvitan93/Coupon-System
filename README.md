@@ -1,7 +1,9 @@
 
 # Coupon-System
-Built with Java spring and ReactJS + Typescript
-Using SQL clearDB(from heroku) for Databse, Using firebase and heroku to deploy.
+Coupon system built with Java Spring + TypeScript & React
+Loved the backend & frontend sides
+
+Using clearDB (from heroku) for DataBase, Using firebase and heroku to deploy.
 
 -----------
 
