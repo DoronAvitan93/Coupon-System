@@ -36,13 +36,14 @@ const GuestLogin = () => {
 
             //30 mins "Token"
             const timer = setTimeout(function () {
+                sessionStorage.clear();
                 localStorage.clear();
                 console.log("CLEARING LOCAL STORAGE");
                 dispatch(authActions.setIsAuthFalse());
                 console.log("LoginOut - 30 mins pass, no token - need to Login again");
                 dispatch(authActions.setIsRelogin(true));
                 navigate("/home")
-                //5 minutes for example
+                //30 minutes
             }, 1000 * 60 * 30);
 
 
