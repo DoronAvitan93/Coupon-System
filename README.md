@@ -6,10 +6,10 @@ Using firebase and heroku to deploy. <br/>
 
 -----------
 
-To test the web-app: <br/>
+Test the web-app: <br/>
 https://doron-coupon-app.web.app/home
 
-Login as a guest
+Login as a guest (limited options)
 <hr/>
 
 Login demo companies:
